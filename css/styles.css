@@ -7300,3 +7300,17 @@ a.text-dark:hover, a.text-dark:focus {
 section {
   height: 100vh;
   border: 1px red solid; }
+
+#map_section h1 {
+  text-align: center; }
+
+#map_section #map {
+  margin: auto;
+  height: 70%;
+  width: 80%;
+  border: 1px red solid; }
+  #map_section #map .circle {
+    -webkit-transition: all ease 0.2s;
+    transition: all ease 0.2s;
+    color: #000064;
+    fill: rgba(0, 0, 200, 0.3); }

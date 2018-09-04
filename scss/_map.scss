@@ -1,0 +1,19 @@
+#map_section{
+
+	h1{
+		text-align: center;
+	}
+
+	#map{
+		margin: auto;
+		height: 70%;
+		width: 80%;
+		border: 1px red solid;
+
+		.circle{
+			transition: all ease 0.2s;
+			color: rgba(0,0,100,1);
+			fill: rgba(0,0,200,0.3);
+		}
+	}
+}
