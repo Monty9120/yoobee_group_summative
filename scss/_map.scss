@@ -1,5 +1,18 @@
 #map_section{
 
+	.filter{
+		width: 100%;
+		margin: auto;
+		height: 200px;
+		border: 1px red solid;
+		text-align: center;
+
+		h2{
+			padding-top: 5%;
+		}
+
+	}
+
 	h1{
 		text-align: center;
 	}
@@ -7,13 +20,26 @@
 	#map{
 		margin: auto;
 		height: 70%;
-		width: 80%;
+		width: 100%;
 		border: 1px red solid;
 
 		.circle{
 			transition: all ease 0.2s;
 			color: rgba(0,0,100,1);
 			fill: rgba(0,0,200,0.3);
+		}
+	}
+}
+
+
+@media only screen and (min-width: 50em){
+#map_section{
+		.filter{
+			width: 80%;
+		}
+		#map{
+			width: 80%;
+
 		}
 	}
 }

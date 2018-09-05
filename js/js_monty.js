@@ -28,23 +28,20 @@ $(function(){
 	  	var center = map.mouseEventToLatLng(e.originalEvent);
 
   		circle.setLatLng(center)
-  		console.log(center)
   		loadVenues(center.lat,center.lng)
 	});
 
 	//End of Leaflet Map
 
-	//FourSquare
+
 
 
 
 });
 
 
-
+//Find venues in selected area
 function loadVenues(lat,lng){
-
-
 
 	let exploreUrl = 'https://api.foursquare.com/v2/venues/explore'+key+'&ll='+lat+','+lng;
 
