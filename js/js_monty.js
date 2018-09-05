@@ -6,13 +6,18 @@ const key = version + clientId + clientSecret;
 
 console.log(key)
 var map;
+var venueGroup;
+
+
 
 $(function(){
 
 	//Leaflet Map
-	console.log('hello')
 	var center ={lat:-36.842744,lng:174.766994};
-	map = L.map('map').setView(center,20);
+	map = L.map('map',{
+		doubleClickZoom: false,
+	}).setView(center,14);
+	venueGroup = L.layerGroup().addTo(map);
 
 	L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoidGhhbHl4OTAiLCJhIjoiY2o2YjdrZHRlMWJmYjJybDd2cW1rYnVnNSJ9.j_DQLfixHfhioVjH6qmqkw').addTo(map);
 
@@ -22,9 +27,10 @@ $(function(){
 		weight:2,
 		className:'circle'
 	}).addTo(map);
+	console.log(circle)
+	console.log(circle._radius)
 
-
-	$( '#map').click(function(e) {
+	$( '#map').dblclick(function(e) {
 	  	var center = map.mouseEventToLatLng(e.originalEvent);
 
   		circle.setLatLng(center)
@@ -43,7 +49,7 @@ $(function(){
 //Find venues in selected area
 function loadVenues(lat,lng){
 
-	let exploreUrl = 'https://api.foursquare.com/v2/venues/explore'+key+'&ll='+lat+','+lng;
+	let exploreUrl = 'https://api.foursquare.com/v2/venues/explore'+key+'&radius=300&ll='+lat+','+lng;
 
 	$.ajax({
 		url:exploreUrl,
@@ -58,8 +64,9 @@ function loadVenues(lat,lng){
 					venueid:item.venue.id,
 				};
 			});
+			venueGroup.clearLayers();
 			_(venues).each(function(venue){
-				let marker = L.marker(venue.latlng).addTo(map);
+				let marker = L.marker(venue.latlng).addTo(venueGroup);
 				marker.bindPopup('<div>'+venue.name+'</div>');
 			});
 		}
