@@ -7310,6 +7310,10 @@ section {
   #map_section .filter h2 {
     padding-top: 5%; }
 
+#map_section .slidecontainer {
+  margin: auto;
+  text-align: center; }
+
 #map_section h1 {
   text-align: center; }
 
