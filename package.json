@@ -1,7 +1,6 @@
 {
-  "name": "demo",
+  "name": "fast",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,10 +8,19 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.24.6",
+    "browser-sync": "^2.24.7",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^5.0.0",
     "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Monty9120/yoobee_group_summative.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Monty9120/yoobee_group_summative/issues"
+  },
+  "homepage": "https://github.com/Monty9120/yoobee_group_summative#readme",
+  "description": ""
 }
