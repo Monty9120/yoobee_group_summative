@@ -7301,6 +7301,11 @@ section {
   height: 100vh;
   border: 1px red solid; }
 
+.header {
+  height: 100px;
+  width: 100%;
+  border: 1px red solid; }
+
 #map_section .filter {
   width: 100%;
   margin: auto;
