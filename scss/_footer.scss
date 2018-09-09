@@ -1,0 +1,62 @@
+.footer .container {
+	width: 100%;
+	font-family: $body-font;
+	background-color: $dark-grey;
+	padding: 1em 0;
+
+	.section {
+		
+		padding: .5em 0;
+		text-align: center;
+	
+		ul {
+			list-style-type: none;
+			padding: 0;
+
+
+			li {
+				list-style-type: none;
+
+				a {
+					color:	#fff;
+					text-transform: uppercase;
+					letter-spacing: .1em;
+				}
+			}
+		}
+	}
+
+	.sect1 {
+		
+		i {
+			color: $mint;
+			font-size: 1.5em;
+
+		}
+
+		h1 {
+			font-family: $display-font;
+			color: #fff;
+			letter-spacing: $l-space;
+		}
+
+	}
+
+	.sect3 {
+
+		ul {
+			display: flex;
+			justify-content: space-around;
+			
+			li {
+				margin: .5em;
+
+				a {
+					padding: .5em;
+				}
+			}
+		}
+	}
+
+}
+
