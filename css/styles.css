@@ -7297,9 +7297,60 @@ a.text-dark:hover, a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6; } }
 
-section {
-  height: 100vh;
-  border: 1px red solid; }
+.filter {
+  border: 1px green solid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: 0;
+  padding: 0.5em 1em;
+  height: 5em; }
+  .filter .container {
+    margin: 0;
+    padding: 0; }
+  .filter .filter-area {
+    width: 100%; }
+    .filter .filter-area #area-label {
+      display: none; }
+    .filter .filter-area .nice-select {
+      width: 100%;
+      height: 30px;
+      padding: 0;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      border: 1px red solid;
+      border-radius: 0;
+      line-height: 3em;
+      background-color: white;
+      text-transform: uppercase;
+      text-align: center; }
+    .filter .filter-area .current {
+      width: 100%;
+      text-align: center;
+      font-size: .8em;
+      height: 10px;
+      line-height: 2.5em; }
+  .filter .filter-search {
+    border: 1px #79E8CC solid;
+    margin-top: 1em;
+    height: 2em; }
+  .filter input.form-control {
+    font-size: 0.9em;
+    text-transform: uppercase; }
+  .filter .input-group.md-form.form-sm.form-2 input.amber-border {
+    border-radius: 0;
+    border: none;
+    height: 1.8em; }
+  .filter .input-group-append, .filter .input-group-text {
+    border-radius: 0;
+    background-color: inherit;
+    border: none;
+    height: 2em; }
 
 .header {
   height: 100px;
