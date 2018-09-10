@@ -8,41 +8,66 @@ console.log(key)
 var map;
 var venueGroup;
 var customRadius;
+var marker;
+
+// var locationIcon = L.icon({
+// 	iconUrl:'custom_images/icon_location.svg',
+// 	iconSize: [40,40],
+// });
+
+// var barIcon = L.icon({
+// 	iconUrl:'custom_images/icon_bar.svg',
+// 	iconSize: [40,40],
+// });
+
+// var foodIcon = L.icon({
+// 	iconUrl:'custom_images/icon_food.svg',
+// 	iconSize: [40,40],
+// });
+// var parkIcon = L.icon({
+// 	iconUrl:'custom_images/icon_park.svg',
+// 	iconSize: [40,40],
+// });
+
+// var hotelIcon = L.icon({
+// 	iconUrl:'custom_images/icon_hotel.svg',
+// 	iconSize: [40,40],
+// });
+
+// var gymIcon = L.icon({
+// 	iconUrl:'custom_images/icon_gym.svg',
+// 	iconSize: [40,40],
+// });
+
+// var cafeIcon = L.icon({
+// 	iconUrl:'custom_images/icon_coffee.svg',
+// 	iconSize: [40,40],
+// });
+
+// var harbourIcon = L.icon({
+// 	iconUrl:'custom_images/icon_boat.svg',
+// 	iconSize: [40,40],
+// })
 
 
-var locationIcon = L.icon({
-	iconUrl:'custom_images/icon_location.svg',
-	iconSize: [40,40],
-});
 
-var barIcon = L.icon({
-	iconUrl:'custom_images/icon_bar.svg',
-	iconSize: [40,40],
-});
+var locationIcon = 'custom_images/icon_location.svg';
 
-var foodIcon = L.icon({
-	iconUrl:'custom_images/icon_knifefork.svg',
-	iconSize: [40,40],
-});
-var parkIcon = L.icon({
-	iconUrl:'custom_images/icon_park.svg',
-	iconSize: [40,40],
-});
+var barIcon = 'custom_images/icon_bar.svg';
 
-var hotelIcon = L.icon({
-	iconUrl:'custom_images/icon_hotel.svg',
-	iconSize: [40,40],
-});
+var foodIcon = 'custom_images/icon_food.svg';
+var parkIcon = 'custom_images/icon_park.svg';
 
-var gymIcon = L.icon({
-	iconUrl:'custom_images/icon_gym.svg',
-	iconSize: [40,40],
-});
+var hotelIcon = 'custom_images/icon_hotel.svg';
 
-var cafeIcon = L.icon({
-	iconUrl:'custom_images/icon_coffee.svg',
-	iconSize: [40,40],
-});
+var gymIcon = 'custom_images/icon_gym.svg';
+
+var cafeIcon = 'custom_images/icon_coffee.svg';
+
+var harbourIcon = 'custom_images/icon_boat.svg';
+
+
+
 
 
 $(function(){
@@ -66,8 +91,10 @@ $(function(){
 	
 
 
-
-
+	$('#map').on('click','.custom-icon',function(){
+		$('.custom-icon').removeClass('selected-icon')
+		$(this).addClass('selected-icon')
+	});
 
 
 	$('#map').dblclick(function(e) {
@@ -76,6 +103,8 @@ $(function(){
   		circle.setLatLng(center)
   		loadVenues(center.lat,center.lng)
 	});
+
+
 
 	//End of Leaflet Map
 
@@ -86,14 +115,14 @@ $(function(){
 			customRadius = customRadius._mRadius
 
 
-		})
+	});
 
 
 
 
 
 });
-
+// -	-	-	-	-	jQuery end 	-	-	-	-	
 
 //Find venues in selected area
 function loadVenues(lat,lng){
@@ -121,6 +150,9 @@ function loadVenues(lat,lng){
 				    case "Park":
 				        icon = parkIcon;
 				        break;
+				    case "Scenic Lookout":
+				        icon = parkIcon;
+				        break;
 				    case "Hotel":
 				        icon = hotelIcon;
 				        break;
@@ -128,17 +160,52 @@ function loadVenues(lat,lng){
 				        icon = gymIcon;
 				        break;
 				    case "Bar":
+				    case "Cocktail Bar": 
 				        icon = barIcon;
 				        break;
-				    case "Coffee Shop", "Café":
+				    case "Coffee Shop":
+				    case "Café":
+				    case "Coffee":
 				        icon = cafeIcon;
 				        break;
+				    case "Sandwich Place":
+				    case "Muffin Break":
+				    case "Koren Restaurant":
+				    case "Restaurant":
+				    case "Pub":
+				    case "Thai Restaurant":
+				    case "Pizza":
+				    case "Burger Joint":
+				    case "Pizza Place":
+				    case "Restaurant":
+				    case "Asian Restaurant":
+				    case "Seafood Restaurant":
+				    case "Dessert Shop":
+				    case "Snack Place":
+				    case "Portuguese Restaurant":
+				    case "Chinese Restaurant":
+				    	icon = foodIcon;
+				    	break;
+				   	case "Harbor / Marina":
+				   		icon = harbourIcon
+				   		break;
 				    default:
 				        icon = locationIcon
 				}
 
-				let marker = L.marker(venue.latlng,{icon:icon}).addTo(venueGroup);
+
+				var myIcon = L.divIcon({ 
+				    iconSize: new L.Point(35, 35), 
+				    html: '<div class="custom-icon"><img src="'+icon+'"></div>'
+				});
+
+				let marker = L.marker(venue.latlng,{icon:myIcon}).addTo(venueGroup);
 				marker.bindPopup('<div>'+venue.name+'</div>');
+
+
+
+				
+
 			});
 		}
 

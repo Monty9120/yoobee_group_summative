@@ -5,7 +5,15 @@
 	border: 1px red solid;
 }
 
+
+.leaflet-marker-icon{
+
+}
+
+
 #map_section{
+	height: 80vh;
+	border: 1px red solid;
 
 	.filter{
 		width: 100%;
@@ -32,9 +40,52 @@
 
 	#map{
 		margin: auto;
-		height: 70%;
+		height: 80%;
 		width: 100%;
 		border: 1px red solid;
+		position: relative;
+
+		.leaflet-control-zoom{
+			border: none;
+			position: absolute;
+			top: 10px;
+			left: 900px;
+			
+			a{
+				background-color: $mint;
+				border-radius: 150px;
+				margin: 5px;
+				box-shadow: 0 4px #ccc;
+				cursor: pointer;
+				transition-duration: 0.1s;
+				&:active{
+					box-shadow: 0 3px #666;
+					transform: translateY(3px);
+				}
+			}
+		}
+		
+		.leaflet-marker-icon{
+			background-color: rgba(0,0,0,0.0);
+			border: none;
+		
+
+			.custom-icon{
+				transform: scale(1);
+				fill:black;
+			}
+
+			.selected-icon{
+				transition: all ease 0.5s;
+				filter: none; 
+				transform: scale(1.2);
+			}
+		}
+		svg{
+			fill:red;
+			color: red;
+			stroke:red;
+		}
 
 		.circle{
 			transition: all ease 0.2s;
