@@ -28,6 +28,7 @@
 
 	.sect1 {
 		
+
 		i {
 			color: $mint;
 			font-size: 1.5em;
@@ -42,21 +43,81 @@
 
 	}
 
+	.sect2 {
+
+
+		ul li a{
+			font-size: .8em;
+			align-items: center;
+
+		}
+	}
+
 	.sect3 {
+		display:flex;
+		align-items:center;
 
 		ul {
+			margin:0 auto;
 			display: flex;
 			justify-content: space-around;
+
 			
 			li {
 				margin: .5em;
 
 				a {
 					padding: .5em;
+					font-size: 1.5em;
 				}
 			}
 		}
 	}
+
+}
+
+@media only screen and (min-width : 80em) {
+	.footer .container {
+		display: flex;
+
+		
+		.section {
+			padding: 1em;
+		}
+
+		.sect1 {
+			flex: 1 0 20%;
+		}
+
+		.sect2 {
+			flex: 1 0 50%;
+			text-align: left;
+			display: flex;
+
+
+			ul {
+				display: flex;
+				align-items: center;
+
+				li {
+					margin-left: 4em;
+
+					&::before {
+						content: "/";
+				    	padding-right: 8px;
+				    	color: $mint;
+
+					}
+				}
+			}
+		}
+
+		.sect3 {
+			flex: 1 0 20%;
+		}
+	}
+}
+@media only screen and (min-width : 80em) {
 
 }
 

@@ -32,6 +32,7 @@ nav {
 		
 		i {
 			display: block;
+			color: $mint;
 		}
 
 		h1 {
@@ -70,6 +71,8 @@ nav {
 			text-decoration: none;
 			font-family: $body-font;
 			color: $nav-links;
+			letter-spacing: .1em;
+
 		}
 	}
 
@@ -177,6 +180,15 @@ nav {
 					text-decoration: none;
 					color: $nav-links;
 					font-weight: 300;
+					letter-spacing: .1em;
+					font-size: .8em;
+
+					&::before {
+						content: "/";
+						color: $mint;
+				    	padding-right: 10px;
+					}
+
 				}
 			}
 
