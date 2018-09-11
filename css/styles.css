@@ -3,7 +3,7 @@
   --indigo: #6610f2;
   --purple: #6f42c1;
   --pink: #e83e8c;
-  --red: #dc3545;
+  --red: #FF4646;
   --orange: #fd7e14;
   --yellow: #ffc107;
   --green: #28a745;
@@ -17,7 +17,7 @@
   --success: #28a745;
   --info: #17a2b8;
   --warning: #ffc107;
-  --danger: #dc3545;
+  --danger: #FF4646;
   --light: #f8f9fa;
   --dark: #343a40;
   --breakpoint-xs: 0;
@@ -869,3 +869,73 @@ nav {
     padding-top: 2em; }
   .custom-login-form .form-check .form-check-label {
     font-size: .8em; }
+
+.leaflet-popup-content-wrapper {
+  padding: 1em 0;
+  border-radius: .5em; }
+
+.leaflet-popup-close-button {
+  font-size: 2em !important;
+  padding: .6em 1.5em 0 0 !important; }
+
+#mapPopup img {
+  display: block;
+  width: 3em;
+  margin: 1em auto; }
+
+#mapPopup h1 {
+  font-family: "Comfortaa", cursive;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #292929;
+  letter-spacing: 2px;
+  font-size: 1.5em; }
+  #mapPopup h1::after {
+    content: "";
+    display: block;
+    color: #292929;
+    width: 80%;
+    height: .1em;
+    margin: 1em auto;
+    background-color: #292929; }
+
+#mapPopup p {
+  text-align: left;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 900;
+  line-height: 2em;
+  font-size: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+  #mapPopup p::before {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 10%;
+    flex: 0 0 10%;
+    display: inline-block;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f3c5";
+    padding-right: 1em; }
+
+a.sqr-bttn {
+  display: block;
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  -webkit-appearance: none;
+  border: 2px solid #79E8CC;
+  padding: .5em 2em;
+  text-decoration: none;
+  background-color: transparent;
+  color: #79E8CC;
+  -webkit-transition: .8s ease all;
+  transition: .8s ease all;
+  margin: 1em auto;
+  text-align: center; }
+  a.sqr-bttn:hover {
+    color: #fff;
+    background-color: #79E8CC; }
