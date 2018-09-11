@@ -443,36 +443,67 @@ template {
   .modal-lg {
     max-width: 800px; } }
 
-.header {
-  height: 100px;
-  width: 100%; }
-
-#map_section .filter {
-  width: 100%;
-  margin: auto;
-  height: 200px;
-  border: 1px red solid;
-  text-align: center; }
-  #map_section .filter h2 {
-    padding-top: 5%; }
-
-#map_section .slidecontainer {
-  margin: auto;
-  text-align: center; }
-
-#map_section h1 {
-  text-align: center; }
-
-#map_section #map {
-  margin: auto;
-  height: 70%;
-  width: 100%;
+#map_section {
+  height: 80vh;
   border: 1px red solid; }
-  #map_section #map .circle {
-    -webkit-transition: all ease 0.2s;
-    transition: all ease 0.2s;
-    color: #000064;
-    fill: rgba(0, 0, 200, 0.3); }
+  #map_section .filter {
+    width: 100%;
+    margin: auto;
+    height: 200px;
+    border: 1px red solid;
+    text-align: center; }
+    #map_section .filter h2 {
+      padding-top: 5%; }
+  #map_section .slidecontainer {
+    margin: auto;
+    text-align: center; }
+  #map_section h1 {
+    text-align: center; }
+  #map_section #map {
+    margin: auto;
+    height: 80%;
+    width: 100%;
+    border: 1px red solid;
+    position: relative; }
+    #map_section #map .leaflet-control-zoom {
+      border: none; }
+      #map_section #map .leaflet-control-zoom a {
+        background-color: #79E8CC;
+        border-radius: 150px;
+        margin: 5px;
+        -webkit-box-shadow: 0 4px #ccc;
+        box-shadow: 0 4px #ccc;
+        cursor: pointer;
+        -webkit-transition-duration: 0.1s;
+        transition-duration: 0.1s; }
+        #map_section #map .leaflet-control-zoom a:active {
+          -webkit-box-shadow: 0 3px #666;
+          box-shadow: 0 3px #666;
+          -webkit-transform: translateY(3px);
+          transform: translateY(3px); }
+    #map_section #map .leaflet-marker-icon {
+      background-color: rgba(0, 0, 0, 0);
+      border: none; }
+      #map_section #map .leaflet-marker-icon .custom-icon {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        fill: black; }
+      #map_section #map .leaflet-marker-icon .selected-icon {
+        -webkit-transition: all ease 0.5s;
+        transition: all ease 0.5s;
+        -webkit-filter: none;
+        filter: none;
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2); }
+    #map_section #map svg {
+      fill: red;
+      color: red;
+      stroke: red; }
+    #map_section #map .circle {
+      -webkit-transition: all ease 0.2s;
+      transition: all ease 0.2s;
+      color: #000064;
+      fill: rgba(0, 0, 200, 0.3); }
 
 @media only screen and (min-width: 50em) {
   #map_section .filter {
