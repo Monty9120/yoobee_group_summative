@@ -1,5 +1,25 @@
-//Colors
+//C O L O U R S
 $primary: rgba(100,220,100,0.7);
 $secondary:#eee;
+$dark-grey:#292929;
+$mint: #79E8CC;
+$nav-links: #fff;
 
 $text:#eee;
+
+$pale-grey: #999;
+
+// F O N T S 
+// Font choices
+
+$display-font: 'Comfortaa', cursive;
+$body-font: 'Open Sans', sans-serif;
+
+// Font letterspacing
+
+$l-space: 0.3em;
+
+body{
+	margin:0;
+	padding: 0;
+}

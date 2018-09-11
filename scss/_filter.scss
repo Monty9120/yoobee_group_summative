@@ -1,95 +1,153 @@
-.filter{
-	
+
+#filters{
 
 	.container{
-		margin:0;
-		padding:0;
-	}
-	border:1px green solid;
-	// font-family: ;
-	// background-color: #79E8CC;
-
-	display:flex; 
-	flex-direction:column;
-	margin:0;
-	padding:0.5em 1em;
-	height: 5em;
-
-	.filter-area{
 		// border:1px green solid;
-		
-		width: 100%;
-				
-		#area-label{
-			display: none;
-		}
-		
-		.nice-select{
+		font-family: $body-font;
+		background-color: $mint;		
+		margin:0;
+		height: 4em;
+		padding: 0.3em 1em;
+
+		.filter-block{
+			margin:auto;
 			width:100%;
-			height: 30px;
-			padding:0;
-			display:flex;
-			border:1px red solid;			
-			border-radius: 0;			
-			line-height: 3em;
-			background-color: white;
-			text-transform: uppercase;
-			text-align: center;
-			// font-size: 0.5em;
+			height:3.4em;
+			display:flex; 
+			flex-direction:column;
+			justify-content: space-between;
+			// border:1px green solid;
 
+		// SELECT THE AREA FIELD	
 
-	
+			.filter-area{
+					
+				#area-label{
+					display: none;
+				}
+								
+				.nice-select{
+					border:none !important;
+					width:100%;
+					height: 25px;
+					padding:0;
+					display:flex;							
+					border-radius: 0;
+					background-color: white !important;
+					text-transform: uppercase;
+					text-align: center;
+				}
+				.current{
+					width: 100%;
+					text-align: center;
+					font-size: .8em;
+					height: 10px;
+					line-height: 2.5em;
+					background-color: white !important;
+					color: #495057 !important; // the same colour as Enter Address plugin
+				}			
+			}
+
+		// ENTER ADDRESS FIELD
+
+			.filter-search{
+				// border:1px blue solid;
+				background-color: white;
+				height: 25px;
+				overflow: hidden;
+			}
+
+			input.form-control{
+				font-size: 0.7em;
+				text-transform: uppercase;
+				margin-top: 0.25em !important;
+				margin-left: 2.9em !important;
+				
+			}  
+			::placeholder{
+				// color:$pale-grey !important;
+			}
+			
+			input:focus { 
+			    box-shadow: none !important;
+
+			    // &::-webkit-input-placeholder {
+			    //    color: transparent;
+			    //    -webkit-transition: color 0.2s ease;
+			    //    transition: color 0.2s ease;
+			    // }
+
+			    
+			    // &::-moz-placeholder {  /* Firefox 19+ */
+			    //    color: transparent;
+			    //    -webkit-transition: color 0.2s ease;
+			    //    transition: color 0.2s ease;
+			    // }
+
+			    // &:-ms-input-placeholder {  
+			    //    color: transparent;
+			    //    -webkit-transition: color 0.2s ease;
+			    //    transition: color 0.2s ease;
+			    // }
+				
+			}
+			
+			.input-group.md-form.form-sm.form-2 input.amber-border  {
+		    	border-radius: 0;
+		    	border: none;
+		    	height: 1.8em;
+		    	text-align: center;				
+			}
+			.input-group-text{
+				padding-right: 0.3em;
+				overflow: hidden;
+			}
+			.input-group-append, .input-group-text{
+				border-radius: 0;
+				background-color: inherit;
+				border: none;
+				height: 1.9em;
+
+				.fa-search{
+					color:$pale-grey;
+					// padding-left: 1em !important;
+				}
+			}
 		}
-		.current{
-			width: 100%;
-			text-align: center;
-			font-size: .8em;
-			height: 10px;
-			line-height: 2.5em;
-			// border:1px red solid;
-
-		}
-		
 	}
-
-	.filter-search{
-		border:1px #79E8CC solid;
-		margin-top: 1em;
-		height: 2em;
-	}
-
-	input.form-control{
-		font-size: 0.9em;
-		text-transform: uppercase;
-	}  
-	.input-group.md-form.form-sm.form-2 input.amber-border  {
-    	border-radius: 0;
-    	border: none;
-    	height: 1.8em;
-	}
-
-	.input-group-append, .input-group-text{
-		border-radius: 0;
-		background-color: inherit;
-		border: none;
-		height: 2em;
-
-		.fa-search{
-
-		}
-	}
-
-	// .filter-search{
-	// 	border:1px red solid;
-	// 	margin-top: 0.5em;
-	// 	width: 100%;
-	// 	height: 2em;
-
-	// 	input{
-	// 		width: 100%;
-	// 		height: 1.8em;
-	// 	}
-	// }
-	
-
 }
+
+@media only screen and (min-width : 40em){
+	#filters{
+		.filter-block{			
+			flex-direction:row !important;
+			justify-content: space-between;
+			
+			.filter-area{
+				flex:0 0 50%;
+				display:flex !important;
+				// justify-content: flex-start;
+				margin-right: 1em;
+
+				#area-label{
+					flex:0 0 30%;
+					display: inline !important;
+					font-size: 0.8em;
+					text-transform: uppercase;
+				}
+			}
+
+			.filter-search{
+				margin-left: 1em;
+			}
+			
+		}
+	}
+}
+
+
+
+
+
+
+

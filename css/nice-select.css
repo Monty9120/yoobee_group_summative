@@ -1,4 +1,5 @@
 .nice-select {
+
   -webkit-tap-highlight-color: transparent;
   background-color: #fff;
   border-radius: 5px;
@@ -44,9 +45,9 @@
     -webkit-transform-origin: 66% 66%;
         -ms-transform-origin: 66% 66%;
             transform-origin: 66% 66%;
-    -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
+    -webkit-transform: rotate(45deg) scale(1.5);
+        -ms-transform: rotate(45deg) scale(1.5);
+            transform: rotate(45deg) scale(1.5);
     -webkit-transition: all 0.15s ease-in-out;
     transition: all 0.15s ease-in-out;
     width: 5px; }
