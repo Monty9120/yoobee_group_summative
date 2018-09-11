@@ -37,20 +37,24 @@
 
 			a{
 				background-color: $mint;
+				color: $dark-grey;
 				border-radius: 150px;
-				margin: 5px;
-				box-shadow: 0 4px #ccc;
+				margin-right: 0.2em;
+				margin-bottom: 0.5em;
+				box-shadow: 2px 4px 0px 0px #999;
 				cursor: pointer;
 				transition-duration: 0.1s;
 				&:active{
-					box-shadow: 0 3px #666;
-					transform: translateY(3px);
+					box-shadow: 1px 3px 0px 0px #ccc;
+					transform: translateY(3px) translateX(2px);
+					opacity: 0.8;
 				}
 			}
 		}
 		
 		.leaflet-marker-icon{
 			background-color: rgba(0,0,0,0.0);
+			border-radius: 50px;
 			border: none;
 		
 
@@ -73,8 +77,8 @@
 
 		.circle{
 			transition: all ease 0.2s;
-			color: rgba(0,0,100,1);
-			fill: rgba(0,0,200,0.3);
+			stroke: grey;
+			fill: $mint;
 		}
 	}
 }

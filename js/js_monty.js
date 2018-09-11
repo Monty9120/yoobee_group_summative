@@ -21,6 +21,7 @@ var cafeIcon = 'custom_images/icon_coffee.svg';
 var harbourIcon = 'custom_images/icon_boat.svg';
 var trailIcon = 'custom_images/icon_trail.svg';
 var busIcon = 'custom_images/icon_bus.svg';
+var gasIcon = 'custom_images/icon_gas.svg';
 
 $(function(){
 
@@ -45,7 +46,6 @@ $(function(){
 	customRadius = circle._mRadius
 	
 
-
 	$('#map').on('click','.custom-icon',function(){
 		$('.custom-icon').removeClass('selected-icon')
 		$(this).addClass('selected-icon')
@@ -64,13 +64,16 @@ $(function(){
 	//End of Leaflet Map
 
 	//Circle slider
-	$('.slider').on('change',function(){
+	$('.slider').on('input',function(){
 			customRadius = circle.setRadius($('.slider').val());;
 			
 			customRadius = customRadius._mRadius
 
+			$('.slider-number').html(customRadius + ' meters')
+
 
 	});
+
 
 
 
@@ -121,6 +124,7 @@ function loadVenues(lat,lng){
 				    case "Coffee Shop":
 				    case "Café":
 				    case "Coffee":
+				    case "Bistro":
 				        icon = cafeIcon;
 				        break;
 				    case "Sandwich Place":
@@ -138,11 +142,19 @@ function loadVenues(lat,lng){
 				    case "Korean Restaurant":
 				    case "Thai Restaurant":
 				    case "Portuguese Restaurant":
+				    case "Japanese Restaurant":
 				    case "Chinese Restaurant":
+				    case "Indian Restaurant":
+				    case "Italian Restaurant":
 				    case "Fast Food Restaurant":
+				    case "Sushi Restaurant":
 				    case "Bakery":
 				    case "Grocery Store":
 				    case "Supermarket":
+				    case "Noodle House":
+				    case "Ice Cream Shop":
+				    case "BBQ Joint":
+				    case "Fish & Chips Shop":
 				    	icon = foodIcon;
 				    	break;
 				   	case "Harbor / Marina":
@@ -153,6 +165,9 @@ function loadVenues(lat,lng){
 				   		break;
 				   	case "Bus Station":
 				   		icon = busIcon
+				   		break;
+				   	case "Gas Station":
+				   		icon = gasIcon
 				   		break;
 				    default:
 				        icon = locationIcon
@@ -176,6 +191,7 @@ function loadVenues(lat,lng){
 
 	});
 }
+
 
 
 
