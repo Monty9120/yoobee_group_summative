@@ -1,16 +1,3 @@
-
-.header{
-	height: 100px;
-	width: 100%;
-	border: 1px red solid;
-}
-
-
-.leaflet-marker-icon{
-
-}
-
-
 #map_section{
 	height: 80vh;
 	border: 1px red solid;
@@ -47,10 +34,7 @@
 
 		.leaflet-control-zoom{
 			border: none;
-			position: absolute;
-			top: 10px;
-			left: 900px;
-			
+
 			a{
 				background-color: $mint;
 				border-radius: 150px;

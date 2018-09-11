@@ -7297,11 +7297,6 @@ a.text-dark:hover, a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6; } }
 
-.header {
-  height: 100px;
-  width: 100%;
-  border: 1px red solid; }
-
 #map_section {
   height: 80vh;
   border: 1px red solid; }
@@ -7325,10 +7320,7 @@ a.text-dark:hover, a.text-dark:focus {
     border: 1px red solid;
     position: relative; }
     #map_section #map .leaflet-control-zoom {
-      border: none;
-      position: absolute;
-      top: 10px;
-      left: 900px; }
+      border: none; }
       #map_section #map .leaflet-control-zoom a {
         background-color: #79E8CC;
         border-radius: 150px;
