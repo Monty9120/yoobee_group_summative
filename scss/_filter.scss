@@ -8,8 +8,6 @@
 		margin:0;
 		height: 4em;
 		padding: 0.5em 1em 0 1em;
-		// display:flex;
-		// align-items:center;
 
 		.filter-block{
 			margin:auto;
@@ -38,6 +36,10 @@
 					background-color: white !important;
 					text-transform: uppercase;
 					text-align: center;
+
+					.list{
+						z-index: 10;
+					}
 				}
 				.current{
 					width: 100%;
@@ -71,26 +73,6 @@
 			
 			input:focus { 
 			    box-shadow: none !important;
-
-			    // &::-webkit-input-placeholder {
-			    //    color: transparent;
-			    //    -webkit-transition: color 0.2s ease;
-			    //    transition: color 0.2s ease;
-			    // }
-
-			    
-			    // &::-moz-placeholder {  /* Firefox 19+ */
-			    //    color: transparent;
-			    //    -webkit-transition: color 0.2s ease;
-			    //    transition: color 0.2s ease;
-			    // }
-
-			    // &:-ms-input-placeholder {  
-			    //    color: transparent;
-			    //    -webkit-transition: color 0.2s ease;
-			    //    transition: color 0.2s ease;
-			    // }
-				
 			}
 			
 			.input-group.md-form.form-sm.form-2 input.amber-border  {

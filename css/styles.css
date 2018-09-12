@@ -2393,6 +2393,8 @@ button.close {
       background-color: white !important;
       text-transform: uppercase;
       text-align: center; }
+      #filters .container .filter-block .filter-area .nice-select .list {
+        z-index: 10; }
     #filters .container .filter-block .filter-area .current {
       width: 100%;
       text-align: center;
@@ -2814,8 +2816,9 @@ nav {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-line-pack: center;
-    align-content: center;
+    -webkit-box-align: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
     color: #fff;
     margin: 0 auto; }
     .logo a img {
@@ -3066,13 +3069,13 @@ nav {
     font-size: .8em; }
 
 body {
-  background-color: grey; }
+  background-color: gray; }
 
 .food_wrap {
   border: 1px red solid;
   font-family: "Comfortaa", cursive;
   font-size: .6em;
-  display: none; }
+  /*display:none;*/ }
 
 .restaurant_circle {
   stroke-dashArray: 300;
