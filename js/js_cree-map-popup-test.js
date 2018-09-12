@@ -1,10 +1,12 @@
+
+
 const version = '?v=20170901';
-const clientId = '&client_id=YTFJT5GDKQ5LUZQJEZSMUK40N4AY3Y3W3GYD2X5YUODIUNH3';
-const clientSecret = '&client_secret=GVRXH1OUJGKNMQBNXSZ5BWZBVPR0EIRPZF1BHRSOL0MZRLGN';
+const clientId = '&client_id=NRDFRIMIWO5QY4H3HTPITKL3JKOJLBJTWUHBUYJE5JHB5XCB';
+const clientSecret = '&client_secret=GIFUXB102BZZ0KXFTOCZ5XGWN1T5LLZG1NU0G5JKFRVP55DN';
 
 const key = version + clientId + clientSecret;
 
-// console.log(key)
+console.log(key)
 var map;
 var venueGroup;
 var customRadius;
@@ -43,10 +45,10 @@ $(function(){
 		className:'circle'
 	}).addTo(map);
 	customRadius = circle._mRadius
-	
 
 
 	$('#map').on('click','.custom-icon',function(){
+
 		$('.custom-icon').removeClass('selected-icon')
 		$(this).addClass('selected-icon')
 	});
@@ -66,11 +68,10 @@ $(function(){
 	//Circle slider
 	$('.slider').on('change',function(){
 			customRadius = circle.setRadius($('.slider').val());;
-			
 			customRadius = customRadius._mRadius
-
-
 	});
+
+
 
 
 
@@ -84,20 +85,26 @@ function loadVenues(lat,lng){
 
 	let exploreUrl = 'https://api.foursquare.com/v2/venues/explore'+key+'&limit=50&radius='+customRadius+'&ll='+lat+','+lng;
 
-	$.ajax({
+	$.ajax({ 
 		url:exploreUrl,
 		dataType:'jsonp',
 		success:function(res){
 			console.log(res.response.groups["0"].items);
 			var data = res.response.groups["0"].items;
+
+			console.log(data);
 			var venues = _(data).map(function(item){
 				return {
 					latlng:{lat:item.venue.location.lat,lng:item.venue.location.lng},
 					name:item.venue.name,
 					venueid:item.venue.id,
-					category:item.venue.categories["0"].name
+					category:item.venue.categories["0"].name,
+					address:item.venue.location.formattedAddress,
+					photo:item.venue.photos
 				};
 			});
+
+			// console.log(venues);
 			venueGroup.clearLayers();
 			_(venues).each(function(venue){
 
@@ -164,12 +171,10 @@ function loadVenues(lat,lng){
 				    html: '<div class="custom-icon"><img src="'+icon+'"></div>'
 				});
 
+
 				let marker = L.marker(venue.latlng,{icon:myIcon}).addTo(venueGroup);
-				marker.bindPopup('<div><h1>'+venue.name+'</h1></div>');
+				marker.bindPopup('<div id="mapPopup"><img src="'+icon+'"><h1>'+venue.name+'</h1><p>"'+venue.address+'"</p><a href="#" class="sqr-bttn">More info</a></div>');
 
-
-
-				
 
 			});
 		}
