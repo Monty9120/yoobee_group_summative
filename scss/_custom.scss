@@ -1,4 +1,3 @@
-
 //C O L O U R S
 
 $primary: rgba(100,220,100,0.7);
@@ -9,6 +8,8 @@ $light-mint:FCFEFD;
 $nav-links: #fff;
 $text:#eee;
 $red: #FF4646;
+$pale-grey: #999;
+
 // F O N T S 
 // Font choices
 
@@ -19,7 +20,7 @@ $body-font: 'Open Sans', sans-serif;
 
 $l-space: 0.3em;
 $text:#eee;
-$main-green:#79E8CC;
+
 
 // ---------fonts---------------
 
@@ -29,5 +30,12 @@ $main-font:'Comfortaa', cursive;
 // ---------mixin---------------
 
 @mixin shadow(){
-	box-shadow:-1px -1px 10px -2px rgba(0, 0, 0,0.9);
+	box-shadow:-1px -1px 10px -2px rgba(255, 0, 0,0.9);
 }
+
+
+body{
+	margin:0;
+	padding: 0;
+}
+

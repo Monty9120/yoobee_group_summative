@@ -1,3 +1,165 @@
-.filter{
-	
+
+#filters{
+
+	.container{
+		// border:1px red solid;
+		font-family: $body-font;
+		background-color: $mint;		
+		margin:0;
+		height: 4em;
+		padding: 0.5em 1em 0 1em;
+		// display:flex;
+		// align-items:center;
+
+		.filter-block{
+			margin:auto;
+			width:100%;
+			height:3.4em;
+			display:flex; 
+			flex-direction:column;
+			justify-content: space-between;
+			// border:1px blue solid;
+
+		// SELECT THE AREA FIELD	
+
+			.filter-area{
+					
+				#area-label{
+					display: none;
+				}
+								
+				.nice-select{
+					border:none !important;
+					width:100%;
+					height: 25px;
+					padding:0;
+					display:flex;							
+					border-radius: 0;
+					background-color: white !important;
+					text-transform: uppercase;
+					text-align: center;
+				}
+				.current{
+					width: 100%;
+					text-align: center;
+					font-size: .8em;
+					height: 10px;
+					line-height: 2.5em;
+					background-color: white !important;
+					color: #495057 !important; // the same colour as Enter Address plugin
+				}			
+			}
+
+		// ENTER ADDRESS FIELD
+
+			.filter-search{
+				// border:1px blue solid;
+				background-color: white;
+				height: 25px;
+				overflow: hidden;
+				display:flex;
+				align-items:center;
+			}
+
+			input.form-control{
+				font-size: 0.7em;
+				text-transform: uppercase;
+				margin-top: 0.25em !important;
+				margin-left: 2.9em !important;
+				
+			}  
+			
+			input:focus { 
+			    box-shadow: none !important;
+
+			    // &::-webkit-input-placeholder {
+			    //    color: transparent;
+			    //    -webkit-transition: color 0.2s ease;
+			    //    transition: color 0.2s ease;
+			    // }
+
+			    
+			    // &::-moz-placeholder {  /* Firefox 19+ */
+			    //    color: transparent;
+			    //    -webkit-transition: color 0.2s ease;
+			    //    transition: color 0.2s ease;
+			    // }
+
+			    // &:-ms-input-placeholder {  
+			    //    color: transparent;
+			    //    -webkit-transition: color 0.2s ease;
+			    //    transition: color 0.2s ease;
+			    // }
+				
+			}
+			
+			.input-group.md-form.form-sm.form-2 input.amber-border  {
+		    	border-radius: 0;
+		    	border: none;
+		    	height: 1.8em;
+		    	text-align: center;				
+			}
+			.input-group-text{
+				padding-right: 0.3em;
+				padding-top:0;
+				overflow: hidden;
+			}
+			.input-group-append, .input-group-text{
+				border-radius: 0;
+				background-color: inherit;
+				border: none;
+				height: 1.9em;
+
+				.fa-search{
+					color:$pale-grey;
+				}
+			}
+		}
+	}
 }
+
+@media only screen and (min-width : 40em){
+	#filters{
+		.container{
+			background-color: $dark-grey;
+			.filter-block{			
+				flex-direction:row !important;
+				justify-content: space-between;
+				align-items:center;
+				
+				.filter-area{
+					flex:0 0 50%;
+					display:flex !important;
+					margin-right: 1em;
+					border:2px $mint solid;
+				}
+
+				.filter-search{
+					margin-left: 1em;
+					box-sizing: content-box !important;
+					border:2px $mint solid !important;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (min-width : 80em){
+	#filters{
+		.container{
+			padding-left:0;
+			padding-right: 0; 
+			.filter-block{
+				width:80% !important;
+			}
+		}
+		
+	}
+}
+
+
+
+
+
+
+
