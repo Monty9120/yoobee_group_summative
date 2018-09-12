@@ -1,5 +1,17 @@
-//Colors
+// ---------colors---------------
 $primary: rgba(100,220,100,0.7);
 $secondary:#eee;
 
 $text:#eee;
+$main-green:#79E8CC;
+
+// ---------fonts---------------
+
+$main-font:'Comfortaa', cursive;
+
+
+// ---------mixin---------------
+
+@mixin shadow(){
+	box-shadow:-1px -1px 10px -2px rgba(0, 0, 0,0.9);
+}
