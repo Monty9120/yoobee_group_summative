@@ -4,7 +4,7 @@ const clientSecret = '&client_secret=GVRXH1OUJGKNMQBNXSZ5BWZBVPR0EIRPZF1BHRSOL0M
 
 const key = version + clientId + clientSecret;
 
-console.log(key)
+// console.log(key)
 var map;
 var venueGroup;
 var customRadius;

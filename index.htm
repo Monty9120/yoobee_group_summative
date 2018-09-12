@@ -2,22 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Group Summative</title>
+  <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
    crossorigin=""/>
-   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    
+  <!-- Responsive meta tag -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
    <!-- Fonts -->
-   <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="css/nice-select.css">
+
 </head>
-<body>
+<body class="index">
 
-<!-- + + + + + +  HEADER SECTION + + + + + + + + + + + + + + + + + + + + + + + + -->
-
-
+<!-- + + + + + +  HEADER  + + + + + + + + + + + + + + + + + + -->
   <div class="header">
     <div class="container">
       <nav>
@@ -36,16 +43,16 @@
 
         <ul class="navigation mobile-nav" data-nav="close">
           <li><a href="/" class="active">Home</a></li>
-          <li><a href="#">Login</a></li>
-          <li><a href="#">Sign up</a></li>
+          <li><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Login</a></li>
+          <li><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Sign up</a></li>
           <li><a href="#">Find a location</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
 
         <ul class="navigation desktop-nav" data-nav="close">
           <li><a href="/" class="active">Home</a></li>
-          <li><a href="#">Login</a></li>
-          <li><a href="#">Sign up</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#exampleModalCenter">Login</a></li>
+          <li><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Sign up</a></li>
           <li><a href="#">Find a location</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
@@ -53,24 +60,105 @@
       </nav>
     </div>
   </div>
-  <div class="filter">
-    <h2>FILTER</h2>
-  </div>  
 
 
+  <section id="filters">
+    <div class="container">
 
-<section id="map_section">
-  <div class="slidecontainer">
-  <input type="range" min="50" max="800" value="400" class="slider" id="sliderRange"> <p class="slider-number">400 meters</p>
-   </div>
-  <div id="map">
-  
+      <form action="">
+
+
+        <div class="filter-block">
+          <div class="filter-area">
+            <label id="area-label">Select the area</label>
+            <select id="area-dropdown" name="area-dropdown" class="wide">
+              <option value="area-placeholder" class="area-placeholder" data-display="Select the area"></option>
+              <option value="central">All Auckland</option>
+              <option value="central">Central Auckland</option>
+              <option value="north">North Shore</option>
+              <option value="east">East Auckland</option>
+              <option value="south">South Auckland</option>
+              <option value="pukekohe">Pukekohe</option>            
+              <option value="west">Waitakere</option>
+              <option value="rodney">Rodney</option>
+            </select>
+            
+          </div>
+
+          <div class="filter-search input-group md-form form-sm form-2 pl-0">
+            <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Enter address" aria-label="Search">
+            <div class="input-group-append">
+              <span class="input-group-text amber lighten-3" id="basic-text1"><i class="fa fa-search text-grey" aria-hidden="true"></i></span>
+            </div>
+          </div>
+
+        </div>
+      </form>
+
+    </div>  
+  </section>
+
+  <section id="categories">
+    <div class="container">
+
+      <div class="ctg-content">
+        <div class="ctg-food"><span class="mint">F</span>ood & Drinks</div>
+        <div class="ctg-accomm"><span class="mint">A</span>ccommodation</div>
+        <div class="ctg-sights"><span class="mint">S</span>ightseeing</div>
+        <div class="ctg-transp"><span class="mint">T</span>ransport</div>
+      </div>      
+
+
+      <div class="divider"></div>
+      
+    </div>
+    
+  </section>
+
+  <section id="map_section">
+    <div class="slidecontainer">
+        <input type="range" min="50" max="750" value="450" class="slider" id="sliderRange">
+     </div>
+    <div id="map">
+    
+    </div>
+  </section>
+
+
+  <div class="button_wrap">
+      <div class="food_wrap">
+        <svg viewBox="0 0 333 416.25" x="0px" y="0px" fill-rule="evenodd" clip-rule="evenodd">
+          <g class="cafe_wrap">
+            <circle class="cafe_circle" stroke-width="3px" stroke="#79E8CC" fill="white" cx="60" cy="60" r="45"/>
+            <circle class="inner_cafe_circle"  stroke="#79E8CC" fill="white" cx="60" cy="60" r="37"/>
+            <text class="cafe" x="18%" y="15%" text-anchor="middle">CAFE</text>
+          </g>
+
+          <g class="bar_wrap">
+            <circle class="bar_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="60" cy="160" r="45"/>
+            <circle class="inner_bar_circle"  stroke="#79E8CC" fill="white" cx="60" cy="160" r="37"/>
+            <text class="bar" x="18%" y="40%" text-anchor="middle">BAR</text>
+          </g>
+         
+          <g class="restaurant_wrap">
+            <circle class="restaurant_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="60" cy="260" r="45"/>
+            <circle class="inner_restaurant_circle"  stroke="#79E8CC" fill="white" cx="60" cy="260" r="37"/>
+            <text class="restaurant" x="18%" y="64%" text-anchor="middle">RESTAURANT</text>
+          </g>
+
+            <g class="all_wrap">
+            <circle class="all_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="60" cy="360" r="45"/>
+            <circle class="inner_all_circle"  stroke="#79E8CC" fill="white" cx="60" cy="360" r="37"/>
+            <text class="all" x="18%" y="88%" text-anchor="middle">ALL OPTIONS</text>
+          </g>
+   
+
+        </svg>  
+      </div>
   </div>
-</section>
 
 
-<!-- + + + + + +  FOOTER SECTION + + + + + + + + + + + + + + + + + + + + + + + + -->
-
+<!-- + + + + + +  FOOTER  + + + + + + + + + + + + + + + + + + -->
   <footer class="footer">
     <div class="container">
       <div class="section sect1">
@@ -99,11 +187,113 @@
     </div>
   </footer>
 
+
+
+
+<!-- + + + + + +  SIGN-UP  + + + + + + + + + + + + + + + + + + -->
+<!-- + + Bootstrap Vertically Centered Modal + + -->
+<div class="custom-login-modal modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> <!-- modal-header end -->
+
+      <div class="modal-body">
+
+        <!-- + + Bootstrap Form for Login + + -->
+        <form class="custom-login-form">
+            
+          <div class="form-group">
+            <h5 class="modal-title" id="exampleModalLongTitle">Sign-up</h5>
+            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Username">
+          </div> <!-- form-group end -->
+
+          <div class="form-group">
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+          </div> <!-- form-group end -->
+
+        
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password">
+          </div> <!-- form-group end -->
+
+           <div class="form-group">
+            <input type="password" class="form-control" placeholder="Confirm Password">
+          </div> <!-- form-group end -->
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input">
+            <label class="form-check-label" for="exampleCheck1">I agree to the T's & C's</label>
+          </div> <!-- form-check end -->
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input">
+            <label class="form-check-label" for="exampleCheck1">Get updates from us via e-mail!</label>
+          </div> <!-- form-check end -->
+
+          <button type="submit" class="submit btn btn-primary">Create Account</button>
+        </form> <!-- form end -->
+      </div> <!-- modal-body end -->
+    </div> <!-- modal-content end -->
+  </div> <!-- modal-dialog end -->
+</div> <!-- exampleModalCenter end -->
+
+
+<!-- + + + + + +  LOGIN  + + + + + + + + + + + + + + + + + + -->
+<!-- + + Bootstrap Vertically Centered Modal + + -->
+<div class="custom-login-modal modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> <!-- modal-header end -->
+
+      <div class="modal-body">
+
+        <!-- + + Bootstrap Form for Login + + -->
+        <form class="custom-login-form">
+          <div class="form-group">
+            <!-- <label for="exampleInputEmail1">Email address</label> -->
+            <h5 class="modal-title" id="exampleModalLongTitle">Login</h5>
+
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div> <!-- form-group end -->
+          <div class="form-group">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <a href="" class="forgot-password">Forgot Password?</a>
+          </div> <!-- form-group end -->
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+          </div> <!-- form-check end -->
+
+          <button type="submit" class="submit btn btn-primary">Login</button>
+        </form> <!-- form end -->
+      </div> <!-- modal-body end -->
+    </div> <!-- modal-content end -->
+  </div> <!-- modal-dialog end -->
+</div> <!-- exampleModalCenter end -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"></script>
 <script src="js/js_monty.js"></script>
 <script src="js/js_cree.js"></script>
+<script src="js/js_stan.js"></script>
 <script src="js/plugins/anime.js"></script>
 <script src="js/plugins/underscore-min.js"></script>
+
+<script src="js/plugins/jquery.nice-select.js"></script>
+<script src="js/js_tat.js"></script>
+
+<!-- bootstrap javascript -->
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+
 </body>
 </html>
