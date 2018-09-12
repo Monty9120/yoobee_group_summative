@@ -869,3 +869,80 @@ nav {
     padding-top: 2em; }
   .custom-login-form .form-check .form-check-label {
     font-size: .8em; }
+
+body {
+  background-color: grey; }
+
+.food_wrap {
+  border: 1px red solid;
+  font-family: "Comfortaa", cursive;
+  font-size: .6em;
+  display: none; }
+
+.restaurant_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0; }
+
+.inner_restaurant_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0; }
+
+.cafe_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0; }
+
+.inner_cafe_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0; }
+
+.bar_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0; }
+
+.inner_bar_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0; }
+
+.all_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0; }
+
+.inner_all_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0; }
+
+@-webkit-keyframes draw {
+  0% {
+    stroke-dashOffset: 300; }
+  100% {
+    stroke-dashOffset: 0; } }
+
+@keyframes draw {
+  0% {
+    stroke-dashOffset: 300; }
+  100% {
+    stroke-dashOffset: 0; } }
+
+@-webkit-keyframes reverse_draw {
+  0% {
+    stroke-dashOffset: -300; }
+  100% {
+    stroke-dashOffset: 0; } }
+
+@keyframes reverse_draw {
+  0% {
+    stroke-dashOffset: -300; }
+  100% {
+    stroke-dashOffset: 0; } }
+
+.inner_restuarant_circle:hover {
+  fill: #79E8CC; }
+
+.inner_cafe_circle:hover {
+  fill: #79E8CC; }
+
+.inner_bar_circle:hover {
+  fill: #79E8CC; }
+
+.inner_all_circle:hover {
+  fill: #79E8CC; }
