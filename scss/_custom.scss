@@ -1,4 +1,3 @@
-
 //C O L O U R S
 
 $primary: rgba(100,220,100,0.7);
@@ -7,6 +6,7 @@ $dark-grey:#292929;
 $mint: #79E8CC;
 $nav-links: #fff;
 $text:#eee;
+$pale-grey: #999;
 
 // F O N T S 
 // Font choices
@@ -30,3 +30,10 @@ $main-font:'Comfortaa', cursive;
 @mixin shadow(){
 	box-shadow:-1px -1px 10px -2px rgba(0, 0, 0,0.9);
 }
+
+
+body{
+	margin:0;
+	padding: 0;
+}
+
