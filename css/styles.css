@@ -2652,11 +2652,19 @@ button.close {
       transition: opacity .2s; }
   #map_section h1 {
     text-align: center; }
+  #map_section .map_wrap {
+    position: relative; }
+    #map_section .map_wrap .button_wrap {
+      position: absolute;
+      width: 30em;
+      top: 4em;
+      left: 0;
+      z-index: 1000; }
   #map_section #map {
     margin: auto;
-    height: 80%;
+    height: 50vh;
     width: 100%;
-    border: 1px red solid;
+    border: 1px green solid;
     position: relative; }
     #map_section #map .leaflet-control-zoom {
       border: none; }
@@ -3071,76 +3079,145 @@ nav {
 body {
   background-color: gray; }
 
+.button_wrap {
+  /*border:1px red solid;*/
+  font-family: "Comfortaa", cursive;
+  font-size: .7em;
+  position: relative;
+  /*display:none;*/ }
+
 .food_wrap {
-  border: 1px red solid;
+  /*border:1px red solid;*/
+  font-family: "Comfortaa", cursive;
+  font-size: .8em;
+  display: none; }
+
+.accommodation_wrap {
+  /*border:1px red solid;*/
   font-family: "Comfortaa", cursive;
   font-size: .6em;
   /*display:none;*/ }
 
-.restaurant_circle {
-  stroke-dashArray: 300;
-  stroke-dashOffset: 0; }
+.sightseeing_wrap {
+  /*border:1px red solid;*/
+  font-family: "Comfortaa", cursive;
+  font-size: .8em;
+  /*display:none;*/ }
 
-.inner_restaurant_circle {
+.restaurant_wrap .restaurant_circle {
   stroke-dashArray: 300;
-  stroke-dashOffset: 0; }
+  stroke-dashOffset: 0;
+  stroke: white; }
 
-.cafe_circle {
+.restaurant_wrap .inner_restaurant_circle {
   stroke-dashArray: 300;
-  stroke-dashOffset: 0; }
+  stroke-dashOffset: 0;
+  stroke: white; }
 
-.inner_cafe_circle {
+.cafe_wrap .cafe_circle {
   stroke-dashArray: 300;
-  stroke-dashOffset: 0; }
+  stroke-dashOffset: 0;
+  stroke: white; }
 
-.bar_circle {
+.cafe_wrap .inner_cafe_circle {
   stroke-dashArray: 300;
-  stroke-dashOffset: 0; }
+  stroke-dashOffset: 0;
+  stroke: white; }
 
-.inner_bar_circle {
+.bar_wrap .bar_circle {
   stroke-dashArray: 300;
-  stroke-dashOffset: 0; }
+  stroke-dashOffset: 0;
+  stroke: white; }
 
-.all_circle {
+.bar_wrap .inner_bar_circle {
   stroke-dashArray: 300;
-  stroke-dashOffset: 0; }
+  stroke-dashOffset: 0;
+  stroke: white; }
 
-.inner_all_circle {
+.food_all_wrap .food_all_circle {
   stroke-dashArray: 300;
-  stroke-dashOffset: 0; }
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.food_all_wrap .inner_food_all_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.hotel_wrap .hotel_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.hotel_wrap .inner_hotel_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.motel_wrap .motel_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.motel_wrap .inner_motel_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.backpack_wrap .backpack_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.backpack_wrap .inner_backpack_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.backpack_wrap .inner_backpack_circle:hover {
+  fill: #79E8CC; }
+
+.accom_all_wrap .accom_all_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.accom_all_wrap .inner_accom_all_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.accom_all_wrap .inner_accom_all_circle:hover {
+  fill: #79E8CC; }
 
 @-webkit-keyframes draw {
   0% {
-    stroke-dashOffset: 300; }
+    stroke-dashOffset: 300;
+    stroke: #79E8CC; }
   100% {
-    stroke-dashOffset: 0; } }
+    stroke-dashOffset: 0;
+    stroke: #79E8CC; } }
 
 @keyframes draw {
   0% {
-    stroke-dashOffset: 300; }
+    stroke-dashOffset: 300;
+    stroke: #79E8CC; }
   100% {
-    stroke-dashOffset: 0; } }
+    stroke-dashOffset: 0;
+    stroke: #79E8CC; } }
 
 @-webkit-keyframes reverse_draw {
   0% {
-    stroke-dashOffset: -300; }
+    stroke-dashOffset: -300;
+    stroke: #79E8CC; }
   100% {
-    stroke-dashOffset: 0; } }
+    stroke-dashOffset: 0;
+    stroke: #79E8CC; } }
 
 @keyframes reverse_draw {
   0% {
-    stroke-dashOffset: -300; }
+    stroke-dashOffset: -300;
+    stroke: #79E8CC; }
   100% {
-    stroke-dashOffset: 0; } }
-
-.inner_restuarant_circle:hover {
-  fill: #79E8CC; }
-
-.inner_cafe_circle:hover {
-  fill: #79E8CC; }
-
-.inner_bar_circle:hover {
-  fill: #79E8CC; }
-
-.inner_all_circle:hover {
-  fill: #79E8CC; }
+    stroke-dashOffset: 0;
+    stroke: #79E8CC; } }
