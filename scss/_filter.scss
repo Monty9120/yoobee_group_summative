@@ -2,7 +2,7 @@
 #filters{
 
 	.container{
-		// border:1px green solid;
+		// border:1px red solid;
 		font-family: $body-font;
 		background-color: $mint;		
 		margin:0;
@@ -16,7 +16,7 @@
 			display:flex; 
 			flex-direction:column;
 			justify-content: space-between;
-			// border:1px green solid;
+			// border:1px blue solid;
 
 		// SELECT THE AREA FIELD	
 
@@ -64,9 +64,6 @@
 				margin-left: 2.9em !important;
 				
 			}  
-			::placeholder{
-				// color:$pale-grey !important;
-			}
 			
 			input:focus { 
 			    box-shadow: none !important;
@@ -110,7 +107,6 @@
 
 				.fa-search{
 					color:$pale-grey;
-					// padding-left: 1em !important;
 				}
 			}
 		}
@@ -119,28 +115,34 @@
 
 @media only screen and (min-width : 40em){
 	#filters{
-		.filter-block{			
-			flex-direction:row !important;
-			justify-content: space-between;
-			
-			.filter-area{
-				flex:0 0 50%;
-				display:flex !important;
-				// justify-content: flex-start;
-				margin-right: 1em;
+		.container{
+			background-color: $dark-grey;
+			.filter-block{			
+				flex-direction:row !important;
+				justify-content: space-between;
+				align-items:center;
+				
+				.filter-area{
+					flex:0 0 50%;
+					display:flex !important;
+					margin-right: 1em;
+					border:2px $mint solid;
+				}
 
-				#area-label{
-					flex:0 0 30%;
-					display: inline !important;
-					font-size: 0.8em;
-					text-transform: uppercase;
+				.filter-search{
+					margin-left: 1em;
+					box-sizing: content-box !important;
+					border:2px $mint solid !important;
 				}
 			}
+		}
+	}
+}
 
-			.filter-search{
-				margin-left: 1em;
-			}
-			
+@media only screen and (min-width : 80em){
+	#filters{
+		.filter-block{
+			width:70% !important;
 		}
 	}
 }
