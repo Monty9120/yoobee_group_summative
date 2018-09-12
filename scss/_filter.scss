@@ -7,7 +7,9 @@
 		background-color: $mint;		
 		margin:0;
 		height: 4em;
-		padding: 0.3em 1em;
+		padding: 0.5em 1em 0 1em;
+		// display:flex;
+		// align-items:center;
 
 		.filter-block{
 			margin:auto;
@@ -55,6 +57,8 @@
 				background-color: white;
 				height: 25px;
 				overflow: hidden;
+				display:flex;
+				align-items:center;
 			}
 
 			input.form-control{
@@ -97,6 +101,7 @@
 			}
 			.input-group-text{
 				padding-right: 0.3em;
+				padding-top:0;
 				overflow: hidden;
 			}
 			.input-group-append, .input-group-text{
@@ -141,9 +146,14 @@
 
 @media only screen and (min-width : 80em){
 	#filters{
-		.filter-block{
-			width:70% !important;
+		.container{
+			padding-left:0;
+			padding-right: 0; 
+			.filter-block{
+				width:80% !important;
+			}
 		}
+		
 	}
 }
 

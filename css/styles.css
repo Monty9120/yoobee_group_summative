@@ -2364,7 +2364,7 @@ button.close {
   background-color: #79E8CC;
   margin: 0;
   height: 4em;
-  padding: 0.3em 1em; }
+  padding: 0.5em 1em 0 1em; }
   #filters .container .filter-block {
     margin: auto;
     width: 100%;
@@ -2404,7 +2404,13 @@ button.close {
     #filters .container .filter-block .filter-search {
       background-color: white;
       height: 25px;
-      overflow: hidden; }
+      overflow: hidden;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center; }
     #filters .container .filter-block input.form-control {
       font-size: 0.7em;
       text-transform: uppercase;
@@ -2420,6 +2426,7 @@ button.close {
       text-align: center; }
     #filters .container .filter-block .input-group-text {
       padding-right: 0.3em;
+      padding-top: 0;
       overflow: hidden; }
     #filters .container .filter-block .input-group-append, #filters .container .filter-block .input-group-text {
       border-radius: 0;
@@ -2459,8 +2466,11 @@ button.close {
         border: 2px #79E8CC solid !important; } }
 
 @media only screen and (min-width: 80em) {
-  #filters .filter-block {
-    width: 70% !important; } }
+  #filters .container {
+    padding-left: 0;
+    padding-right: 0; }
+    #filters .container .filter-block {
+      width: 80% !important; } }
 
 #categories .container {
   position: relative;
@@ -2499,7 +2509,7 @@ button.close {
       color: white; }
   #categories .container .divider {
     position: absolute;
-    top: 2em;
+    top: 2.35em;
     left: 15%;
     margin: auto;
     width: 70%;
@@ -2524,7 +2534,7 @@ button.close {
 @media only screen and (min-width: 80em) {
   #categories .container .ctg-content {
     margin: auto;
-    width: 70% !important; }
+    width: 80% !important; }
     #categories .container .ctg-content > div {
       letter-spacing: 0.3em;
       font-size: 1em; }
