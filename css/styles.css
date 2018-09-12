@@ -2560,6 +2560,9 @@ button.close {
     margin: auto;
     text-align: center;
     width: 50%; }
+    #map_section .slidecontainer .slider-number {
+      color: #eee;
+      font-family: "Comfortaa", cursive; }
     #map_section .slidecontainer input[type=range] {
       -webkit-appearance: none;
       margin: 10px 0;

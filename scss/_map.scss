@@ -1,7 +1,6 @@
 #map_section{
 	height: 80vh;
 	border: 1px red solid;
-
 	.filter{
 		width: 100%;
 		margin: auto;
@@ -19,6 +18,12 @@
 		margin: auto;
 		text-align: center;
 		width: 50%;
+
+		.slider-number{
+			color: $text;
+			font-family: $display-font;
+		}
+
 		input[type=range] {
 		  -webkit-appearance: none;
 		  margin: 10px 0;
