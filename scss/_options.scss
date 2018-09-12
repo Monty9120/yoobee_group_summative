@@ -3,64 +3,168 @@ body{
 	background-color: grey;
 }
 
-.food_wrap{
-	border:1px red solid;
+
+.button_wrap{
+	/*border:1px red solid;*/
 	font-family: $main-font;
-	font-size: .6em;
-	// display:none;
+	font-size: .7em;
+	position: relative;
+	/*display:none;*/
 }
 
 
-.restaurant_circle{
-	stroke-dashArray: 300;
-	stroke-dashOffset: 0;
+.food_wrap{
+	/*border:1px red solid;*/
+	font-family: $main-font;
+	font-size: .8em;
+	display:none;
+}
 
+.accommodation_wrap{
+	/*border:1px red solid;*/
+	font-family: $main-font;
+	font-size: .8em;
+	display:none;
+
+.sightseeing_wrap{
+	/*border:1px red solid;*/
+	font-family: $main-font;
+	font-size: .8em;
+	/*display:none;*/
 }
 
 
-.inner_restaurant_circle{
-	stroke-dashArray: 300;
-	stroke-dashOffset: 0;
-		
-}
 
-.cafe_circle{
-	stroke-dashArray: 300;
-	stroke-dashOffset: 0;
-}
+.restaurant_wrap{
 
-.inner_cafe_circle{
-	stroke-dashArray: 300;
-	stroke-dashOffset: 0;
-}
+	.restaurant_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
 
-
-.bar_circle{
-	stroke-dashArray: 300;
-	stroke-dashOffset: 0;
-	// animation: draw 2s linear;
-
-}
-
-.inner_bar_circle{
-	stroke-dashArray: 300;
-	stroke-dashOffset: 0;
-	// animation: reverse_draw 2s linear;
+	.inner_restaurant_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
 }
 
 
-.all_circle{
-	stroke-dashArray: 300;
-	stroke-dashOffset: 0;
-	// animation: draw 2s linear;
+.cafe_wrap{
 
+	.cafe_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_cafe_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
 }
 
-.inner_all_circle{
-	stroke-dashArray: 300;
-	stroke-dashOffset: 0;
-	// animation: reverse_draw 2s linear;
+.bar_wrap{
+
+	.bar_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_bar_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
 }
+
+.food_all_wrap{
+
+	.food_all_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_food_all_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+}
+
+
+.hotel_wrap{
+
+	.hotel_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_hotel_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+}
+
+.motel_wrap{
+
+	.motel_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_motel_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+}
+
+.backpack_wrap{
+
+	.backpack_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_backpack_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_backpack_circle:hover{
+		fill: $mint;
+	}
+}
+
+.accom_all_wrap{
+
+	.accom_all_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_accom_all_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_accom_all_circle:hover{
+		fill: $mint;
+	}
+}
+
 
 
 
@@ -68,11 +172,13 @@ body{
 @keyframes draw{
 	0%{
 		stroke-dashOffset:300;
+		stroke:$mint;
 		
 	}
 
 	100%{
 		stroke-dashOffset:0;
+		stroke:$mint;
 		
 	}
 }
@@ -80,28 +186,12 @@ body{
 @keyframes reverse_draw{
 	0%{
 		stroke-dashOffset:-300;
+		stroke:$mint;
 	}
 
 	100%{
 		stroke-dashOffset:0;
+		stroke:$mint;
 	}
 }
-
-// ---------Hover---------
-.inner_restuarant_circle:hover{
-	fill: $main_green;
-}
-
-.inner_cafe_circle:hover{
-	fill: $main_green;
-}
-
-.inner_bar_circle:hover{
-	fill: $main_green;
-}
-
-.inner_all_circle:hover{
-	fill: $main_green;
-}
-
 
