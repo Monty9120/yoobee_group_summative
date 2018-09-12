@@ -21,15 +21,26 @@
 		text-align: center;
 	}
 
+
 	h1{
 		text-align: center;
 	}
 
+	.map_wrap{
+		position:relative;
+		.button_wrap{
+			position:absolute;
+			width:30em;
+			top:4em;
+			left:0;
+			z-index:1000;
+		}
+	}
 	#map{
 		margin: auto;
-		height: 80%;
+		height: 50vh;
 		width: 100%;
-		border: 1px red solid;
+		border:1px green solid;
 		position: relative;
 
 		.leaflet-control-zoom{
