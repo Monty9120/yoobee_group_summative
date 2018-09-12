@@ -22,6 +22,7 @@ var harbourIcon = 'custom_images/icon_boat.svg';
 var trailIcon = 'custom_images/icon_trail.svg';
 var busIcon = 'custom_images/icon_bus.svg';
 var gasIcon = 'custom_images/icon_gas.svg';
+var liquorIcon = 'custom_images/icon_liquor.svg';
 
 $(function(){
 
@@ -45,11 +46,11 @@ $(function(){
 	}).addTo(map);
 	customRadius = circle._mRadius
 	
-
 	$('#map').on('click','.custom-icon',function(){
 		$('.custom-icon').removeClass('selected-icon')
 		$(this).addClass('selected-icon')
 	});
+
 
 
 	$('#map').dblclick(function(e) {
@@ -70,7 +71,10 @@ $(function(){
 			customRadius = customRadius._mRadius
 
 			$('.slider-number').html(customRadius + ' meters')
-
+			if (customRadius >= 1000) {
+				var units = customRadius/1000;
+				$('.slider-number').html(units.toFixed(2) + ' km')
+			}
 
 	});
 
@@ -115,6 +119,7 @@ function loadVenues(lat,lng){
 				        icon = hotelIcon;
 				        break;
 				    case "Gym":
+				    case "Gym / Fitness Center":
 				        icon = gymIcon;
 				        break;
 				    case "Bar":
@@ -148,6 +153,10 @@ function loadVenues(lat,lng){
 				    case "Italian Restaurant":
 				    case "Fast Food Restaurant":
 				    case "Sushi Restaurant":
+				    case "Turkish Restaurant":
+				    case "Mediterranean Restaurant":
+				    case "Falafel Restaurant":
+				    case "Mexican Restaurant":
 				    case "Bakery":
 				    case "Grocery Store":
 				    case "Supermarket":
@@ -155,6 +164,8 @@ function loadVenues(lat,lng){
 				    case "Ice Cream Shop":
 				    case "BBQ Joint":
 				    case "Fish & Chips Shop":
+				    case "Steakhouse":
+				    case "Liquor Store":
 				    	icon = foodIcon;
 				    	break;
 				   	case "Harbor / Marina":
@@ -168,6 +179,9 @@ function loadVenues(lat,lng){
 				   		break;
 				   	case "Gas Station":
 				   		icon = gasIcon
+				   		break;
+				   	case "Liquor Store":
+				   		icon = parkIcon
 				   		break;
 				    default:
 				        icon = locationIcon
