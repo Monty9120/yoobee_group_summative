@@ -2378,7 +2378,8 @@ button.close {
     flex-direction: column;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
-    justify-content: space-between; }
+    justify-content: space-between;
+    border: 1px blue solid; }
     #filters .container .filter-block .filter-area #area-label {
       display: none; }
     #filters .container .filter-block .filter-area .nice-select {
@@ -2546,8 +2547,7 @@ button.close {
         color: #79E8CC; } }
 
 #map_section {
-  height: 80vh;
-  border: 1px red solid; }
+  height: 80vh; }
   #map_section .filter {
     width: 100%;
     margin: auto;
@@ -2651,18 +2651,20 @@ button.close {
   #map_section h1 {
     text-align: center; }
   #map_section .map_wrap {
+    height: 90%;
+    border: 1px green solid;
     position: relative; }
     #map_section .map_wrap .button_wrap {
       position: absolute;
-      width: 30em;
+      width: 30%;
+      max-width: 8em;
       top: 4em;
       left: 0;
       z-index: 1000; }
   #map_section #map {
     margin: auto;
-    height: 50vh;
+    height: 60vh;
     width: 100%;
-    border: 1px green solid;
     position: relative; }
     #map_section #map .leaflet-control-zoom {
       border: none; }
@@ -2708,11 +2710,19 @@ button.close {
       stroke: #79E8CC;
       fill: #79E8CC; }
 
-@media only screen and (min-width: 50em) {
+@media only screen and (min-width: 40em) {
   #map_section .filter {
     width: 80%; }
   #map_section #map {
-    width: 80%; } }
+    width: 80%; }
+  .map_wrap .button_wrap {
+    border: 1px blue solid;
+    max-width: 8em; } }
+
+@media only screen and (min-width: 80em) {
+  .button_wrap {
+    width: 25%;
+    max-width: 9em; } }
 
 .footer .container {
   width: 100%;
@@ -3076,30 +3086,31 @@ nav {
 body {
   background-color: grey; }
 
-.button_wrap {
-  /*border:1px red solid;*/
-  font-family: "Comfortaa", cursive;
-  font-size: .7em;
-  position: relative;
-  /*display:none;*/ }
+svg {
+  height: 100%;
+  width: 90%; }
 
 .food_wrap {
-  /*border:1px red solid;*/
   font-family: "Comfortaa", cursive;
-  font-size: .8em;
+  font-size: .6em;
   display: none; }
 
 .accommodation_wrap {
   /*border:1px red solid;*/
   font-family: "Comfortaa", cursive;
-  font-size: .8em;
+  font-size: .6em;
   display: none; }
 
 .sightseeing_wrap {
   /*border:1px red solid;*/
   font-family: "Comfortaa", cursive;
-  font-size: .8em;
-  /*display:none;*/ }
+  font-size: .6em;
+  display: none; }
+
+.transport_wrap {
+  /*border:1px red solid;*/
+  font-family: "Comfortaa", cursive;
+  font-size: .6em; }
 
 .restaurant_wrap .restaurant_circle {
   stroke-dashArray: 300;
@@ -3111,6 +3122,9 @@ body {
   stroke-dashOffset: 0;
   stroke: white; }
 
+.restaurant_wrap .inner_restaurant_circle:hover {
+  fill: #79E8CC; }
+
 .cafe_wrap .cafe_circle {
   stroke-dashArray: 300;
   stroke-dashOffset: 0;
@@ -3120,6 +3134,9 @@ body {
   stroke-dashArray: 300;
   stroke-dashOffset: 0;
   stroke: white; }
+
+.cafe_wrap .inner_cafe_circle:hover {
+  fill: #79E8CC; }
 
 .bar_wrap .bar_circle {
   stroke-dashArray: 300;
@@ -3131,6 +3148,9 @@ body {
   stroke-dashOffset: 0;
   stroke: white; }
 
+.bar_wrap .inner_bar_circle:hover {
+  fill: #79E8CC; }
+
 .food_all_wrap .food_all_circle {
   stroke-dashArray: 300;
   stroke-dashOffset: 0;
@@ -3140,6 +3160,9 @@ body {
   stroke-dashArray: 300;
   stroke-dashOffset: 0;
   stroke: white; }
+
+.food_all_wrap .inner_food_all_circle:hover {
+  fill: #79E8CC; }
 
 .hotel_wrap .hotel_circle {
   stroke-dashArray: 300;
@@ -3151,6 +3174,9 @@ body {
   stroke-dashOffset: 0;
   stroke: white; }
 
+.hotel_wrap .inner_hotel_circle:hover {
+  fill: #79E8CC; }
+
 .motel_wrap .motel_circle {
   stroke-dashArray: 300;
   stroke-dashOffset: 0;
@@ -3160,6 +3186,9 @@ body {
   stroke-dashArray: 300;
   stroke-dashOffset: 0;
   stroke: white; }
+
+.motel_wrap .inner_motel_circle:hover {
+  fill: #79E8CC; }
 
 .backpack_wrap .backpack_circle {
   stroke-dashArray: 300;
@@ -3185,6 +3214,110 @@ body {
   stroke: white; }
 
 .accom_all_wrap .inner_accom_all_circle:hover {
+  fill: #79E8CC; }
+
+.park_wrap .park_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.park_wrap .inner_park_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.park_wrap .inner_park_circle:hover {
+  fill: #79E8CC; }
+
+.museum_wrap .museum_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.museum_wrap .inner_museum_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.museum_wrap .inner_museum_circle:hover {
+  fill: #79E8CC; }
+
+.shop_wrap .shop_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.shop_wrap .inner_shop_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.shop_wrap .inner_shop_circle:hover {
+  fill: #79E8CC; }
+
+.sight_all_wrap .sight_all_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.sight_all_wrap .inner_sight_all_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.sight_all_wrap .inner_sight_all_circle:hover {
+  fill: #79E8CC; }
+
+.bus_wrap .bus_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.bus_wrap .inner_bus_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.bus_wrap .inner_bus_circle:hover {
+  fill: #79E8CC; }
+
+.train_wrap .train_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.train_wrap .inner_train_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.train_wrap .inner_train_circle:hover {
+  fill: #79E8CC; }
+
+.bike_wrap .bike_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.bike_wrap .inner_bike_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.bike_wrap .inner_bike_circle:hover {
+  fill: #79E8CC; }
+
+.transport_wrap .transport_all_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.transport_wrap .inner_transport_all_circle {
+  stroke-dashArray: 300;
+  stroke-dashOffset: 0;
+  stroke: white; }
+
+.transport_wrap .inner_transport_all_circle:hover {
   fill: #79E8CC; }
 
 @-webkit-keyframes draw {
@@ -3218,3 +3351,13 @@ body {
   100% {
     stroke-dashOffset: 0;
     stroke: #79E8CC; } }
+
+@media only screen and (min-width: 40em) {
+  svg {
+    width: 70%;
+    max-width: 13em; } }
+
+@media only screen and (min-width: 80em) {
+  svg {
+    width: 80%;
+    max-width: 13em; } }

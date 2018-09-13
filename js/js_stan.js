@@ -127,5 +127,132 @@ $(function(){
 		}
 	});
 
+	// SIGHTSEEING
+	// -------------------------------------------
+
+	var oParkAnime= anime({
+		targets:'.park_wrap',
+		translateX:[-100,0],
+		opacity:[0,1],
+		easing:'linear',
+		duration:900,
+		autoplay:true,
+	
+	});
+
+	var oMuseumAnime= anime({
+		targets:'.museum_wrap',
+		translateX:[-100,0],
+		opacity:[0,1],
+		easing:'linear',
+		duration:1100,
+		autoplay:true,
+		
+	});
+
+	var oShopAnime= anime({
+		targets:'.shop_wrap',
+		translateX:[-100,0],
+		opacity:[0,1],
+		easing:'linear',
+		duration:1300,
+		autoplay:true,
+		
+	});
+
+	var oSightAllAnime= anime({
+		targets:'.sight_all_wrap',
+		translateX:[-100,0],
+		opacity:[0,1],
+		easing:'linear',
+		duration:1500,
+		autoplay:true,
+		complete:function(){
+			$('.sight_all_circle').css('animation','draw 2s linear');
+			$('.inner_sight_all_circle').css('animation','reverse_draw 2s linear');
+			$('.sight_all_circle').css('stroke','#79E8CC');
+			$('.inner_sight_all_circle').css('stroke','#79E8CC');
+
+			$('.park_circle').css('animation','draw 2s linear');
+			$('.inner_park_circle').css('animation','reverse_draw 2s linear');
+			$('.park_circle').css('stroke','#79E8CC');
+			$('.inner_park_circle').css('stroke','#79E8CC');
+
+			$('.shop_circle').css('animation','draw 2s linear');
+			$('.inner_shop_circle').css('animation','reverse_draw 2s linear');
+			$('.shop_circle').css('stroke','#79E8CC');
+			$('.inner_shop_circle').css('stroke','#79E8CC');
+
+			$('.museum_circle').css('animation','draw 2s linear');
+			$('.inner_museum_circle').css('animation','reverse_draw 2s linear');
+			$('.museum_circle').css('stroke','#79E8CC');
+			$('.inner_museum_circle').css('stroke','#79E8CC');
+		}
+	});
+
+	// TRANSPORT
+	// -------------------------------------------
+
+	var oBusAnime= anime({
+		targets:'.bus_wrap',
+		translateX:[-100,0],
+		opacity:[0,1],
+		easing:'linear',
+		duration:900,
+		autoplay:true,
+	
+	});
+
+	var oTrainAnime= anime({
+		targets:'.train_wrap',
+		translateX:[-100,0],
+		opacity:[0,1],
+		easing:'linear',
+		duration:1100,
+		autoplay:true,
+		
+	});
+
+	var oBikeAnime= anime({
+		targets:'.bike_wrap',
+		translateX:[-100,0],
+		opacity:[0,1],
+		easing:'linear',
+		duration:1300,
+		autoplay:true,
+		
+	});
+
+	var oTransportAllAnime= anime({
+		targets:'.transport_all_wrap',
+		translateX:[-100,0],
+		opacity:[0,1],
+		easing:'linear',
+		duration:1500,
+		autoplay:true,
+		complete:function(){
+			$('.transport_all_circle').css('animation','draw 2s linear');
+			$('.inner_transport_all_circle').css('animation','reverse_draw 2s linear');
+			$('.transport_all_circle').css('stroke','#79E8CC');
+			$('.inner_transport_all_circle').css('stroke','#79E8CC');
+
+			$('.bus_circle').css('animation','draw 2s linear');
+			$('.inner_bus_circle').css('animation','reverse_draw 2s linear');
+			$('.bus_circle').css('stroke','#79E8CC');
+			$('.inner_bus_circle').css('stroke','#79E8CC');
+
+			$('.train_circle').css('animation','draw 2s linear');
+			$('.inner_train_circle').css('animation','reverse_draw 2s linear');
+			$('.train_circle').css('stroke','#79E8CC');
+			$('.inner_train_circle').css('stroke','#79E8CC');
+
+			$('.bike_circle').css('animation','draw 2s linear');
+			$('.inner_bike_circle').css('animation','reverse_draw 2s linear');
+			$('.bike_circle').css('stroke','#79E8CC');
+			$('.inner_bike_circle').css('stroke','#79E8CC');
+		}
+	});
+
+
 
 });
