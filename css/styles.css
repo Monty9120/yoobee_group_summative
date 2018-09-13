@@ -3288,3 +3288,16 @@ a.sqr-bttn {
   a.sqr-bttn:hover {
     color: #fff;
     background-color: #79E8CC; }
+
+.more-details .modal-dialog {
+  background-color: blue; }
+  .more-details .modal-dialog .modal-content {
+    background-color: red;
+    border: 0; }
+    .more-details .modal-dialog .modal-content .modal-header {
+      background-color: green;
+      border-bottom: border 2px pink; }
+      .more-details .modal-dialog .modal-content .modal-header h5 {
+        display: block; }
+    .more-details .modal-dialog .modal-content .modal-body {
+      border: 1px orange solid; }

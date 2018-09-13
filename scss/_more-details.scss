@@ -1,0 +1,22 @@
+.more-details .modal-dialog {
+	background-color:blue;
+	.modal-content {
+		background-color:red;
+		border: 0;
+
+		.modal-header{
+			background-color:green;
+			border-bottom: border 2px pink;
+			
+			h5 {
+				display:block;
+			}
+		}
+
+		.modal-body {
+			border: 1px orange solid;
+		}
+
+
+	} 
+}
