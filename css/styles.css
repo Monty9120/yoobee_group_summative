@@ -3289,15 +3289,93 @@ a.sqr-bttn {
     color: #fff;
     background-color: #79E8CC; }
 
-.more-details .modal-dialog {
-  background-color: blue; }
-  .more-details .modal-dialog .modal-content {
-    background-color: red;
+.more-details .modal-dialog .modal-content .modal-header {
+  border: none;
+  background-color: #292929;
+  padding: 1em 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+  .more-details .modal-dialog .modal-content .modal-header h5 {
+    text-transform: uppercase;
+    font-family: "Comfortaa", cursive;
+    color: #fff;
+    letter-spacing: 0.3em;
+    margin: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 85%; }
+  .more-details .modal-dialog .modal-content .modal-header button.close {
+    color: #fff;
+    padding: 0;
+    margin: 0 0 .8em 0;
+    opacity: 1;
+    line-height: .5; }
+    .more-details .modal-dialog .modal-content .modal-header button.close span {
+      font-size: 3em;
+      display: block;
+      font-weight: 200;
+      color: #79E8CC; }
+
+.more-details .modal-dialog .modal-content .modal-body {
+  padding: 0; }
+  .more-details .modal-dialog .modal-content .modal-body .more-details-img {
+    background-image: url("../img/jacek-dylag-554058-unsplash.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 20vh;
+    max-height: 30vh; }
+  .more-details .modal-dialog .modal-content .modal-body p {
+    padding: 2em;
+    font-family: "Open Sans", sans-serif;
+    font-size: .8em;
+    display: block;
+    margin: 1em auto;
+    line-height: 1.5em; }
+  .more-details .modal-dialog .modal-content .modal-body ul {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0; }
+    .more-details .modal-dialog .modal-content .modal-body ul li {
+      line-height: 3em;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      font-family: "Open Sans", sans-serif;
+      font-wight: 100;
+      letter-spacing: .1em;
+      border-top: 1px #eee solid;
+      width: 80%;
+      margin-left: 5vw; }
+      .more-details .modal-dialog .modal-content .modal-body ul li:last-child {
+        border-bottom: 1px #eee solid; }
+      .more-details .modal-dialog .modal-content .modal-body ul li i {
+        font-size: 1em;
+        width: 2em;
+        text-align: center;
+        text-indent: 1em; }
+        .more-details .modal-dialog .modal-content .modal-body ul li i:not(.fa-sort-down) {
+          color: #FF4646; }
+      .more-details .modal-dialog .modal-content .modal-body ul li span {
+        padding-left: 3em;
+        font-size: .7em; }
+
+.more-details .modal-dialog .modal-content .modal-footer {
+  border: none; }
+  .more-details .modal-dialog .modal-content .modal-footer .sqr-bttn {
     border: 0; }
-    .more-details .modal-dialog .modal-content .modal-header {
-      background-color: green;
-      border-bottom: border 2px pink; }
-      .more-details .modal-dialog .modal-content .modal-header h5 {
-        display: block; }
-    .more-details .modal-dialog .modal-content .modal-body {
-      border: 1px orange solid; }

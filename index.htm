@@ -248,26 +248,36 @@
 
 
 <!-- + + + + + + + + + + MORE DETAILS MODAL + + + + + + + + + + + + + + + + + + + +  -->
-<!-- Bootstrap Modal -->
+<!-- Bootstrap Modal Long-->
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
   Launch demo modal
 </button>
 
-<div class="modal fade more-details" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal more-details fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Venue Title</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div> <!-- modal-header end -->
       <div class="modal-body">
-      </div> <!-- modal-body end -->
+        <div class="more-details-img">
+        </div>
+
+        <p class="venue-description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo amet aut dignissimos debitis earum dolores labore consectetur impedit, cupiditate eveniet necessitatibus fugit itaque odit officiis similique reiciendis beatae minima nisi! </p>
+        <ul class="venue-details">
+          <li class="venue-location"><i class="fas fa-map-marker-alt"></i><span>123 Something Address, Auckland</span></li>
+          <li class="venue-website"><i class="fas fa-globe-americas"></i><span>www.website.com</span></li>
+          <li class="venue-phone-number"><i class="fas fa-mobile-alt"></i><span>021 666 666</span></li>
+          <li class="venue-price-range"><i class="fas fa-tag"></i><span>$$ - $$$</span></li>
+          <li class="venue-open-hours"><i class="far fa-clock"></i><span>Open now: 24 Hours </span><i class="fas fa-sort-down"></i></li>
+        </ul>
+      </div> <!-- modal-body-1 end -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <a href="" class="sqr-bttn">Reviews <i class="fas fa-angle-down"></i></a>
       </div> <!-- modal-footer end -->
     </div>  <!-- modal-content end -->
   </div> <!-- modal-dialog end -->
