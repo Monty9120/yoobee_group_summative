@@ -2393,6 +2393,8 @@ button.close {
       background-color: white !important;
       text-transform: uppercase;
       text-align: center; }
+      #filters .container .filter-block .filter-area .nice-select .list {
+        z-index: 1050; }
     #filters .container .filter-block .filter-area .current {
       width: 100%;
       text-align: center;
@@ -2529,7 +2531,11 @@ button.close {
     -ms-flex-align: center;
     align-items: center; }
     #categories .ctg-content > div {
-      height: 85% !important; } }
+      height: 85% !important; }
+      #categories .ctg-content > div:hover {
+        -webkit-transition: all ease 1s;
+        transition: all ease 1s;
+        color: #79E8CC; } }
 
 @media only screen and (min-width: 80em) {
   #categories .container .ctg-content {
@@ -2542,8 +2548,7 @@ button.close {
         -webkit-transition: all ease 1s;
         transition: all ease 1s;
         -webkit-transform: scale(1.5);
-        transform: scale(1.5);
-        color: #79E8CC; } }
+        transform: scale(1.5); } }
 
 #map_section {
   height: 80vh;
@@ -2834,8 +2839,9 @@ nav {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-line-pack: center;
-    align-content: center;
+    -webkit-box-align: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
     color: #fff;
     margin: 0 auto; }
     .logo a img {
@@ -3086,7 +3092,7 @@ nav {
     font-size: .8em; }
 
 body {
-  background-color: grey; }
+  background-color: gray; }
 
 .button_wrap {
   /*border:1px red solid;*/
@@ -3098,20 +3104,17 @@ body {
 .food_wrap {
   /*border:1px red solid;*/
   font-family: "Comfortaa", cursive;
-  font-size: .8em;
-  display: none; }
+  font-size: .8em; }
 
 .accommodation_wrap {
   /*border:1px red solid;*/
   font-family: "Comfortaa", cursive;
-  font-size: .8em;
-  display: none; }
+  font-size: .6em; }
 
 .sightseeing_wrap {
   /*border:1px red solid;*/
   font-family: "Comfortaa", cursive;
-  font-size: .8em;
-  /*display:none;*/ }
+  font-size: .8em; }
 
 .restaurant_wrap .restaurant_circle {
   stroke-dashArray: 300;
