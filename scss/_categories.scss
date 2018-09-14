@@ -57,6 +57,11 @@
 			
 			>div{
 				height: 85% !important;
+				&:hover{
+					transition: all ease 1s;
+					color: $mint;
+				}
+					
 			}		
 		}
 	}
@@ -71,12 +76,13 @@
 				>div{
 					letter-spacing: 0.3em;
 					font-size: 1em;
-					
+
 					&:hover{
 						transition: all ease 1s;
 						transform: scale(1.5);
-						color: $mint;
 					}
+					
+					
 				}
 			}
 		}
