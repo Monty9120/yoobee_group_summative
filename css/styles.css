@@ -2559,37 +2559,77 @@ button.close {
   #map_section .slidecontainer {
     margin: auto;
     text-align: center;
-    width: 50%; }
+    width: 50%;
+    /*		input[type=range]::-ms-track {
+		  width: 100%;
+		  height: 12.8px;
+		  cursor: pointer;
+		  animate: 0.2s;
+		  background: transparent;
+		  border-color: transparent;
+		  border-width: 39px 0;
+		  color: transparent;
+		}
+		input[type=range]::-ms-fill-lower {
+		  background: #ac51b5;
+		  border: 0px solid #000101;
+		  border-radius: 50px;
+		  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+		}
+		input[type=range]::-ms-fill-upper {
+		  background: #ac51b5;
+		  border: 0px solid #000101;
+		  border-radius: 50px;
+		  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+		}
+		input[type=range]::-ms-thumb {
+		  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+		  border: 0px solid #000000;
+		  height: 20px;
+		  width: 39px;
+		  border-radius: 7px;
+		  background: #65001c;
+		  cursor: pointer;
+		}*/
+    /*	input[type=range]:focus::-ms-fill-lower {
+		  background: #ac51b5;
+		}
+		input[type=range]:focus::-ms-fill-upper {
+		  background: #ac51b5;
+		}*/ }
     #map_section .slidecontainer .slider-number {
       color: #eee;
       font-family: "Comfortaa", cursive; }
     #map_section .slidecontainer input[type=range] {
       -webkit-appearance: none;
       margin: 10px 0;
-      width: 100%; }
+      width: 100%;
+      -webkit-transition: all ease 0.5s;
+      transition: all ease 0.5s; }
+      #map_section .slidecontainer input[type=range]:active {
+        opacity: 4; }
     #map_section .slidecontainer input[type=range]:focus {
       outline: none; }
     #map_section .slidecontainer input[type=range]::-webkit-slider-runnable-track {
       width: 100%;
-      height: 7px;
+      height: 12px;
       cursor: pointer;
       animate: 0.2s;
       -webkit-box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
       box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
       background: #79E8CC;
-      border-radius: 0;
       border: 0px solid #000101; }
     #map_section .slidecontainer input[type=range]::-webkit-slider-thumb {
       -webkit-box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
       box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
       border: 0px solid #000000;
       height: 20px;
-      width: 10px;
-      border-radius: 0px;
+      width: 15px;
+      border-radius: 5px;
       background: black;
       cursor: pointer;
       -webkit-appearance: none;
-      margin-top: -6px; }
+      margin-top: -3px; }
     #map_section .slidecontainer input[type=range]:focus::-webkit-slider-runnable-track {
       background: #79E8CC; }
     #map_section .slidecontainer input[type=range]::-moz-range-track {
@@ -2607,39 +2647,8 @@ button.close {
       height: 20px;
       width: 39px;
       border-radius: 7px;
-      background: #65001c;
+      background: black;
       cursor: pointer; }
-    #map_section .slidecontainer input[type=range]::-ms-track {
-      width: 100%;
-      height: 12.8px;
-      cursor: pointer;
-      animate: 0.2s;
-      background: transparent;
-      border-color: transparent;
-      border-width: 39px 0;
-      color: transparent; }
-    #map_section .slidecontainer input[type=range]::-ms-fill-lower {
-      background: #ac51b5;
-      border: 0px solid #000101;
-      border-radius: 50px;
-      box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d; }
-    #map_section .slidecontainer input[type=range]::-ms-fill-upper {
-      background: #ac51b5;
-      border: 0px solid #000101;
-      border-radius: 50px;
-      box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d; }
-    #map_section .slidecontainer input[type=range]::-ms-thumb {
-      box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-      border: 0px solid #000000;
-      height: 20px;
-      width: 39px;
-      border-radius: 7px;
-      background: #65001c;
-      cursor: pointer; }
-    #map_section .slidecontainer input[type=range]:focus::-ms-fill-lower {
-      background: #ac51b5; }
-    #map_section .slidecontainer input[type=range]:focus::-ms-fill-upper {
-      background: #ac51b5; }
     #map_section .slidecontainer body {
       padding: 30px; }
     #map_section .slidecontainer p {
@@ -2663,7 +2672,7 @@ button.close {
       z-index: 1000; }
   #map_section #map {
     margin: auto;
-    height: 50vh;
+    height: 70vh;
     width: 100%;
     border: 1px green solid;
     position: relative; }
@@ -2711,7 +2720,7 @@ button.close {
       stroke: #79E8CC;
       fill: #79E8CC; }
 
-@media only screen and (min-width: 50em) {
+@media only screen and (min-width: 40em) {
   #map_section .filter {
     width: 80%; }
   #map_section #map {

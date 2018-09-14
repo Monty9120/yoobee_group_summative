@@ -1,6 +1,6 @@
 const version = '?v=20170901';
-const clientId = '&client_id=YTFJT5GDKQ5LUZQJEZSMUK40N4AY3Y3W3GYD2X5YUODIUNH3';
-const clientSecret = '&client_secret=GVRXH1OUJGKNMQBNXSZ5BWZBVPR0EIRPZF1BHRSOL0MZRLGN';
+const clientId = '&client_id=TEOMTULWIDZGIMDRL31PQEQAHFI550SUFDSK3S42ZUTLU0PS';
+const clientSecret = '&client_secret=JDNFWZICWDDLBE43XDPEA4BWG3F0GNXIVCWVDQQF534UN5DL';
 
 const key = version + clientId + clientSecret;
 
@@ -38,6 +38,7 @@ $(function(){
 
 	L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoidGhhbHl4OTAiLCJhIjoiY2o2YjdrZHRlMWJmYjJybDd2cW1rYnVnNSJ9.j_DQLfixHfhioVjH6qmqkw').addTo(map);
 
+	//Circle
 	defaultRadius = $('.slider').val();
 	var circle = L.circle(center,{
 		radius:defaultRadius,
@@ -46,19 +47,35 @@ $(function(){
 	}).addTo(map);
 	customRadius = circle._mRadius
 	
-	$('#map').on('click','.custom-icon',function(){
+
+	//Map icons on click event
+	$('#map').on('click','.custom-icon',function(e){
+
 		$('.custom-icon').removeClass('selected-icon')
 		$(this).addClass('selected-icon')
+
 	});
 
 
 
-	$('#map').dblclick(function(e) {
-	  	var center = map.mouseEventToLatLng(e.originalEvent);
-
-  		circle.setLatLng(center)
-  		loadVenues(center.lat,center.lng)
+	//Move center circle to mouse pos
+	$('#map').on('click',function(e) {
+		if($(this).hasClass('no-click')){
+			$(this).removeClass('no-click')
+		}else{
+			//if icon is clicked
+			if($(e.target).hasClass('the-icon') == false){
+				var center = map.mouseEventToLatLng(e.originalEvent);
+		  		circle.setLatLng(center)
+		  		loadVenues(center.lat,center.lng)
+			}
+			
+		}
 	});
+	map.on('movestart',function(){
+		$('#map').addClass('no-click')
+	});
+
 
 
 
@@ -89,7 +106,7 @@ $(function(){
 //Find venues in selected area
 function loadVenues(lat,lng){
 
-	let exploreUrl = 'https://api.foursquare.com/v2/venues/explore'+key+'&limit=50&radius='+customRadius+'&ll='+lat+','+lng;
+	let exploreUrl = 'https://api.foursquare.com/v2/venues/explore'+key+'&limit=75&radius='+customRadius+'&ll='+lat+','+lng;
 
 	$.ajax({
 		url:exploreUrl,
@@ -190,7 +207,7 @@ function loadVenues(lat,lng){
 
 				var myIcon = L.divIcon({ 
 				    iconSize: new L.Point(35, 35), 
-				    html: '<div class="custom-icon"><img src="'+icon+'"></div>'
+				    html: '<div class="custom-icon"><img class="the-icon" src="'+icon+'"></div>'
 				});
 
 				let marker = L.marker(venue.latlng,{icon:myIcon}).addTo(venueGroup);
