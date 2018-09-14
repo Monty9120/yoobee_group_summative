@@ -22,3 +22,5 @@
             $('.heading,.sub-heading').removeClass('text-hide');
         }
     });
+
+    

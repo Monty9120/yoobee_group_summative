@@ -3360,19 +3360,19 @@ body {
   font-size: 2em !important;
   padding: .6em 1.5em 0 0 !important; }
 
-#mapPopup img {
+#custom-map-popup img {
   display: block;
   width: 3em;
   margin: 1em auto; }
 
-#mapPopup h1 {
+#custom-map-popup h1 {
   font-family: "Comfortaa", cursive;
   font-weight: 900;
   text-transform: uppercase;
   color: #292929;
   letter-spacing: 2px;
   font-size: 1.5em; }
-  #mapPopup h1::after {
+  #custom-map-popup h1::after {
     content: "";
     display: block;
     color: #292929;
@@ -3381,7 +3381,7 @@ body {
     margin: 1em auto;
     background-color: #292929; }
 
-#mapPopup p {
+#custom-map-popup p {
   text-align: left;
   font-family: "Open Sans", sans-serif;
   font-weight: 900;
@@ -3393,7 +3393,7 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center; }
-  #mapPopup p::before {
+  #custom-map-popup p::before {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 10%;
     flex: 0 0 10%;
