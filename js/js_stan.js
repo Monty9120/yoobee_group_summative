@@ -2,7 +2,7 @@ $(function(){
 // HIDE OPTION BUTTONS---------------------------
 	$('.accommodation_wrap').hide();
     $('.sightseeing_wrap').hide();
-    // $('.transport_wrap').hide();	    
+    $('.transport_wrap').hide();	    
     $('.food_wrap').hide();
 
 	// button animation
@@ -258,7 +258,79 @@ $(function(){
 	});
 
 
+
+
+
+
+
+//-----TATIANA----CATEGORY SELECT - OPTION BUTTONS SHOW--------------
+
+	$('.ctg-food').on('click',function(){
+		$('.ctg-food').css('color','#79E8CC');
+		$('.ctg-accomm').css('color','white');
+		$('.ctg-sights').css('color','white');
+		$('.ctg-transp').css('color','white');
+	    $('.accommodation_wrap').hide();
+	    $('.sightseeing_wrap').hide();
+	    $('.transport_wrap').hide();	    
+	    $('.food_wrap').show();
+	    oCafeAnime.play(2000);
+	    oBarAnime.play();
+	    oRestaurantAnime.play();
+	   	oFoodAllAnime.play();
+
+  	});
+
+  	$('.ctg-accomm').on('click',function(){
+  		$('.ctg-accomm').css('color','#79E8CC');
+		$('.ctg-food').css('color','white');
+		$('.ctg-sights').css('color','white');
+		$('.ctg-transp').css('color','white');	    
+	    $('.sightseeing_wrap').hide();
+	    $('.transport_wrap').hide();	    
+	    $('.food_wrap').hide();
+	    $('.accommodation_wrap').show();
+	    oHotelAnime.play();
+	    oMotelAnime.play();
+	    oBackpackAnime.play();
+	    oAccomAllAnime.play();
+
+  	});
+
+  	$('.ctg-sights').on('click',function(){
+  		$('.ctg-sights').css('color','#79E8CC');
+		$('.ctg-accomm').css('color','white');
+		$('.ctg-food').css('color','white');
+		$('.ctg-transp').css('color','white');
+	    $('.accommodation_wrap').hide();	    
+	    $('.transport_wrap').hide();	    
+	    $('.food_wrap').hide();
+	    $('.sightseeing_wrap').show();
+	    oSightAllAnime.play();
+	    oShopAnime.play();
+	    oBackpackAnime.play();
+	    oParkAnime.play();
+  	});
+
+  	$('.ctg-transp').on('click',function(){
+  		$('.ctg-transp').css('color','#79E8CC');
+		$('.ctg-accomm').css('color','white');
+		$('.ctg-sights').css('color','white');
+		$('.ctg-food').css('color','white');
+	    $('.accommodation_wrap').hide();
+	    $('.sightseeing_wrap').hide();
+	    $('.food_wrap').hide();
+	    $('.transport_wrap').show();
+	    oTransportAllAnime.play();
+	    oTrainAnime.play();
+	    oBikeAnime.play();
+	    oBusAnime.play();
+  	});
+//----TATIANA's FINISHED HERE
+
+
 });
+
 
 // ----------REVIEW GRAPH--------------------
 var width = 600;
@@ -385,59 +457,4 @@ filter.append("feOffset")
 .attr("dx", 5)
 .attr("dy", 5)
 .attr("result", "offsetBlur");
-
-
-
-//-----TATIANA----CATEGORY SELECT - OPTION BUTTONS SHOW--------------
-
-	$('.ctg-food').on('click',function(){
-		$('.ctg-food').css('color','#79E8CC');
-		$('.ctg-accomm').css('color','white');
-		$('.ctg-sights').css('color','white');
-		$('.ctg-transp').css('color','white');
-	    $('.accommodation_wrap').hide();
-	    $('.sightseeing_wrap').hide();
-	    // $('.transport_wrap').hide();	    
-	    $('.food_wrap').show();
-	    oCafeAnime.play();
-
-  	});
-
-  	$('.ctg-accomm').on('click',function(){
-  		$('.ctg-accomm').css('color','#79E8CC');
-		$('.ctg-food').css('color','white');
-		$('.ctg-sights').css('color','white');
-		$('.ctg-transp').css('color','white');	    
-	    $('.sightseeing_wrap').hide();
-	    // $('.transport_wrap').hide();	    
-	    $('.food_wrap').hide();
-	    $('.accommodation_wrap').show();
-	    oHotelAnime.play();
-  	});
-
-  	$('.ctg-sights').on('click',function(){
-  		$('.ctg-sights').css('color','#79E8CC');
-		$('.ctg-accomm').css('color','white');
-		$('.ctg-food').css('color','white');
-		$('.ctg-transp').css('color','white');
-	    $('.accommodation_wrap').hide();	    
-	    // $('.transport_wrap').hide();	    
-	    $('.food_wrap').hide();
-	    $('.sightseeing_wrap').show();
-	    // ???.play();
-  	});
-
-  	$('.ctg-transp').on('click',function(){
-  		$('.ctg-transp').css('color','#79E8CC');
-		$('.ctg-accomm').css('color','white');
-		$('.ctg-sights').css('color','white');
-		$('.ctg-food').css('color','white');
-	    $('.accommodation_wrap').hide();
-	    $('.sightseeing_wrap').hide();
-	    $('.food_wrap').hide();
-	  //   $('.transport_wrap').show();
-	  //   ???.play();
-  	});
-//----TATIANA's FINISHED HERE
-
 

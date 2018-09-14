@@ -9,10 +9,10 @@
 	display: flex;
 	// flex-wrap:wrap;
 	justify-content: center;
-	border:1px red solid;
+	// border:1px red solid;
 	.review-box{
 		width:40%;
-		border:1px blue solid;
+		// border:1px blue solid;
 		.review{
 			font-weight:300 !important;
 			font-family: $display-font;
@@ -70,7 +70,7 @@
 	}
 
 	.graph{
-		border:1px yellow solid;
+		// border:1px yellow solid;
 		width: 60%;
 		svg{
 			width:100%;
