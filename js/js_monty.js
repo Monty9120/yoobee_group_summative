@@ -95,10 +95,12 @@ $(function(){
 
 	});
 
-//------TATIANA - LandMarks
-	var landmarks = [
+//------TATIANA - FILTERS SECTION
+
+	//-----Landmarks-------
+	var landmarks =
 		{
-			latlngs:[
+			rodney:[
 	            {lng:174.33380126953122,lat:-36.69264861993993},
 	            {lng:174.45739746093747,lat:-36.6816360656152},
 	            {lng:174.605712890625,lat:-36.71466899719827},
@@ -117,12 +119,9 @@ $(function(){
 	            {lng:174.15802001953125,lat:-36.46547188679815},
 	            {lng:174.1717529296875,lat:-36.49638952000397},
 	            {lng:174.33380126953122,lat:-36.69264861993993}
-		    ],
-			description:'Rodney',
-			className:'region-landmark'
-		},
-		{
-			latlngs:[
+	        ],
+		   
+			north:[
 	            {lng:174.33380126953122,lat:-36.69264861993993},
 	            {lng:174.42718505859372,lat:-36.83566824724438},
 	            {lng:174.43267822265625,lat:-36.87962060502676},
@@ -143,15 +142,10 @@ $(function(){
 	            {lng:174.66888427734375,lat:-36.69264861993993},
 	            {lng:174.62493896484375,lat:-36.69705320010032},
 	            {lng:174.605712890625,lat:-36.71466899719827},
-	            {lng:174.45739746093747,lat:-36.6816360656152},
-	            {lng:174.33380126953122,lat:-36.69264861993993}
-	        ],
-			description:'North Shore',
-			className:'region-landmark'
-		},
-		{
-			latlngs:[
-				 {lng:174.43267822265625,lat:-36.87962060502676},
+	            {lng:174.45739746093747,lat:-36.6816360656152}
+	     	],
+			west:[
+				{lng:174.43267822265625,lat:-36.87962060502676},
 	            {lng:174.46014404296875,lat:-36.96525497589677},
 	            {lng:174.47387695312497,lat:-37.03544721652363},
 	            {lng:174.49859619140625,lat:-37.05298514989097},
@@ -171,13 +165,8 @@ $(function(){
 	            {lng:174.5068359375,lat:-36.86643755175846},
 	            {lng:174.45465087890625,lat:-36.86424015502006},
 	            {lng:174.43267822265625,lat:-36.87962060502676}	
-
 	        ],
-			description:'West Auckland',
-			className:'region-landmark'
-		},
-		{
-			latlngs:[	            
+			central:[	            
 				{lng:174.7107696533203,lat:-36.852153343396665},
 	            {lng:174.71420288085938,lat:-36.85874638670162},
 	            {lng:174.7162628173828,lat:-36.899390918542906},
@@ -194,13 +183,8 @@ $(function(){
 	            {lng:174.78561401367185,lat:-36.83896555078596},
 	            {lng:174.74510192871094,lat:-36.831821213456145},
 	            {lng:174.7107696533203,lat:-36.852153343396665}
-		    ],
-			description:'Central Auckland',
-			idName:'central-auckland',
-			className:'region-landmark'
-		},
-		{
-			latlngs:[ 
+		 	],
+			east:[ 
 	            {lng:174.7107696533203,lat:-36.852153343396665},
 	            {lng:174.70184326171875,lat:-36.84775766525784},
 	            {lng:174.69017028808594,lat:-36.877423587484586},
@@ -231,12 +215,8 @@ $(function(){
 	            {lng:174.715576171875,lat:-36.899390918542906},
 	            {lng:174.71351623535156,lat:-36.85874638670162},
 	            {lng:174.7107696533203,lat:-36.852153343396665}
-	        ],
-			description:'East Auckland',
-			className:'region-landmark'
-		},
-		{
-			latlngs:[
+	 		],
+			south:[
 				{lng:174.54116821289062,lat:-37.04312056092881},
 	            {lng:174.52880859375,lat:-37.058464923097716},
 	            {lng:174.65377807617188,lat:-37.289350362163546},
@@ -279,57 +259,57 @@ $(function(){
 				{lng:174.6599578857422,lat:-37.08421455590844},
 				{lng:174.68399047851562,lat:-37.0551771066608},
 				{lng:174.66339111328125,lat:-37.04038016980841},
-            	{lng:174.63043212890622,lat:-37.032706548443514},
-	            {lng:174.54116821289062,lat:-37.04312056092881}
-	        ],
-			description:'South Auckland',
-			className:'region-landmark'
-		}
+            	{lng:174.63043212890622,lat:-37.032706548443514}
+	   		],
 
-	];
+		};
 
 
-
-	_(landmarks).each(function(landmark){
-
-		let polygon = L.polygon(landmark.latlngs,{
-			color:'coral',
-			weight:1
-		}).addTo(map);
-
-	});
-
-	//----Zooming in the selected area
+	//----Zooming-in and Hightlighting the selected area
+	var areaPolygon = L.polygon([], {color: 'coral'}).addTo(map);
+	
 	$('#area-dropdown').on('change',function(){
 		var area = $(this).val();
 		console.log(area);
 		var center = {lat:-36.842744,lng:174.766994};
+		var suburb;
 		if(area == 'allauckland'){
 			center = {lat:-36.768684,lng:174.707236};
 			map.setView(center,9);
 		}else{
 			if(area == 'central'){
-				center = {lat:-36.8563,lng:	174.7619};
+				center = {lat:-36.8567,lng:174.8018};
 				map.setView(center,13);
+				suburb = landmarks.central;
+
 			}else{
 				if(area == 'north'){
-					center = {lat:-36.7455,lng:174.7128};
-					map.setView(center,10);
+					center = {lat:-36.7510,lng:174.5831};
+					map.setView(center,11);
+					suburb = landmarks.north;
 				}else{
 					if(area == 'east'){
-						center = {lat:-36.9214,lng:174.8309};
-						map.setView(center,11);
+						center = {lat:-36.9203,lng:174.7993};
+						map.setView(center,12);
+						suburb = landmarks.east;
+
 					}else{
 						if(area == 'south'){
-							center = {lat:-36.972508,lng:174.885779};
-							map.setView(center,9);
+							center = {lat:-37.1050,lng:174.9607};
+							map.setView(center,10);
+							suburb = landmarks.south;
+
 						}else{
 							if(area == 'west'){
 								center = {lat:-36.8994,lng:	174.6222};
 								map.setView(center,11);
+								suburb = landmarks.west;
+
 							}else{
 								center = {lat:-36.4765,lng:174.5233};
-								map.setView(center,9);
+								map.setView(center,10);
+								suburb = landmarks.rodney;
+
 							}
 						}
 					}
@@ -337,9 +317,16 @@ $(function(){
 			}
 		}
 
-		// map.setView(center,12);
+		areaPolygon.setLatLngs(suburb)
+		areaPolygon.setStyle({fillOpacity:0.1, stroke:1})
+		// console.log(areaPolygon);
 
 	});
+
+	areaPolygon.on('click',function(){
+		this.setStyle({fillOpacity:0, stroke:0});
+	});
+
 
 
 
