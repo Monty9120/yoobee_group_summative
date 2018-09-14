@@ -53,8 +53,6 @@ $(function(){
 
 		$('.custom-icon').removeClass('selected-icon')
 		$(this).addClass('selected-icon')
-		console.log(e);
-
 
 	});
 
@@ -108,7 +106,7 @@ $(function(){
 //Find venues in selected area
 function loadVenues(lat,lng){
 
-	let exploreUrl = 'https://api.foursquare.com/v2/venues/explore'+key+'&limit=100&radius='+customRadius+'&ll='+lat+','+lng;
+	let exploreUrl = 'https://api.foursquare.com/v2/venues/explore'+key+'&limit=75&radius='+customRadius+'&ll='+lat+','+lng;
 
 	$.ajax({
 		url:exploreUrl,
