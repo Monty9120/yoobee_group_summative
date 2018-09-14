@@ -6,7 +6,6 @@
 
   <title>Group Summative</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
@@ -18,8 +17,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
   <link rel="stylesheet" href="css/nice-select.css">
 
 </head>
@@ -73,13 +73,12 @@
             <label id="area-label">Select the area</label>
             <select id="area-dropdown" name="area-dropdown" class="wide">
               <option value="area-placeholder" class="area-placeholder" data-display="Select the area"></option>
-              <option value="central">All Auckland</option>
+              <option value="allauckland">All Auckland</option>
               <option value="central">Central Auckland</option>
               <option value="north">North Shore</option>
               <option value="east">East Auckland</option>
               <option value="south">South Auckland</option>
-              <option value="pukekohe">Pukekohe</option>            
-              <option value="west">Waitakere</option>
+              <option value="west">West Auckland</option>
               <option value="rodney">Rodney</option>
             </select>
             
@@ -127,94 +126,155 @@
 
       <div class="button_wrap">
           <div class="food_wrap">
-            <svg viewBox="0 0 333 416.25" x="0px" y="0px" fill-rule="evenodd" clip-rule="evenodd">
+            <svg viewBox="0 0 100 416.25" x="0px" y="0px" fill-rule="evenodd" clip-rule="evenodd">
               <g class="cafe_wrap">
-                <circle class="cafe_circle" stroke-width="3px" stroke="#79E8CC" fill="white" cx="60" cy="60" r="45"/>
-                <circle class="inner_cafe_circle"  stroke="#79E8CC" fill="white" cx="60" cy="60" r="37"/>
-                <text class="cafe" x="18%" y="15%" text-anchor="middle">CAFE</text>
+                <circle class="cafe_circle" stroke-width="3px" stroke="#79E8CC" fill="white" cx="50" cy="60" r="45"/>
+                <circle class="inner_cafe_circle"  stroke="#79E8CC" fill="white" cx="50" cy="60" r="37"/>
+                <text class="cafe" x="50%" y="15%" text-anchor="middle">CAFE</text>
               </g>
 
               <g class="bar_wrap">
-                <circle class="bar_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="60" cy="160" r="45"/>
-                <circle class="inner_bar_circle"  stroke="#79E8CC" fill="white" cx="60" cy="160" r="37"/>
-                <text class="bar" x="18%" y="40%" text-anchor="middle">BAR</text>
+                <circle class="bar_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="50" cy="160" r="45"/>
+                <circle class="inner_bar_circle"  stroke="#79E8CC" fill="white" cx="50" cy="160" r="37"/>
+                <text class="bar" x="50%" y="40%" text-anchor="middle">BAR</text>
               </g>
              
               <g class="restaurant_wrap">
-                <circle class="restaurant_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="60" cy="260" r="45"/>
-                <circle class="inner_restaurant_circle"  stroke="#79E8CC" fill="white" cx="60" cy="260" r="37"/>
-                <text class="restaurant" x="18%" y="64%" text-anchor="middle">RESTAURANT</text>
+                <circle class="restaurant_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="50" cy="260" r="45"/>
+                <circle class="inner_restaurant_circle"  stroke="#79E8CC" fill="white" cx="50" cy="260" r="37"/>
+                <text class="restaurant" x="50%" y="64%" text-anchor="middle">RESTAURANT</text>
               </g>
 
                 <g class="food_all_wrap">
-                <circle class="food_all_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="60" cy="360" r="45"/>
-                <circle class="inner_food_all_circle"  stroke="#79E8CC" fill="white" cx="60" cy="360" r="37"/>
-                <text class="food_all" x="18%" y="88%" text-anchor="middle">ALL OPTIONS</text>
+                <circle class="food_all_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="50" cy="360" r="45"/>
+                <circle class="inner_food_all_circle"  stroke="#79E8CC" fill="white" cx="50" cy="360" r="37"/>
+                <text class="food_all" x="50%" y="88%" text-anchor="middle">ALL OPTIONS</text>
               </g>          
             </svg>  
           </div>
 
           <div class="accommodation_wrap">
-            <svg viewBox="0 0 333 416.25" x="0px" y="0px" fill-rule="evenodd" clip-rule="evenodd">
+            <svg viewBox="0 0 100 416.25" x="0px" y="0px" fill-rule="evenodd" clip-rule="evenodd">
               <g class="hotel_wrap">
-                <circle class="hotel_circle" stroke-width="3px" stroke="#79E8CC" fill="white" cx="60" cy="60" r="45"/>
-                <circle class="inner_hotel_circle"  stroke="#79E8CC" fill="white" cx="60" cy="60" r="37"/>
-                <text class="hotel" x="18%" y="15%" text-anchor="middle">HOTEL</text>
+                <circle class="hotel_circle" stroke-width="3px" stroke="#79E8CC" fill="white" cx="50" cy="60" r="45"/>
+                <circle class="inner_hotel_circle"  stroke="#79E8CC" fill="white" cx="50" cy="60" r="37"/>
+                <text class="hotel" x="50%" y="15%" text-anchor="middle">HOTEL</text>
               </g>
 
               <g class="motel_wrap">
-                <circle class="motel_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="60" cy="160" r="45"/>
-                <circle class="inner_motel_circle"  stroke="#79E8CC" fill="white" cx="60" cy="160" r="37"/>
-                <text class="motel" x="18%" y="40%" text-anchor="middle">MOTEL</text>
+                <circle class="motel_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="50" cy="160" r="45"/>
+                <circle class="inner_motel_circle"  stroke="#79E8CC" fill="white" cx="50" cy="160" r="37"/>
+                <text class="motel" x="50%" y="40%" text-anchor="middle">MOTEL</text>
               </g>
 
               <g class="backpack_wrap">
-                <circle class="backpack_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="60" cy="260" r="45"/>
-                <circle class="inner_backpack_circle"  stroke="#79E8CC" fill="white" cx="60" cy="260" r="37"/>
-                <text class="backpack" x="18%" y="64%" text-anchor="middle">BACKPACK</text>
+                <circle class="backpack_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="50" cy="260" r="45"/>
+                <circle class="inner_backpack_circle"  stroke="#79E8CC" fill="white" cx="50" cy="260" r="37"/>
+                <text class="backpack" x="50%" y="64%" text-anchor="middle">BACKPACK</text>
               </g>
 
               <g class="accom_all_wrap">
-                <circle class="accom_all_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="60" cy="360" r="45"/>
-                <circle class="inner_accom_all_circle"  stroke="#79E8CC" fill="white" cx="60" cy="360" r="37"/>
-                <text class="accom_all" x="18%" y="88%" text-anchor="middle">ALL OPTIONS</text>
+                <circle class="accom_all_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="50" cy="360" r="45"/>
+                <circle class="inner_accom_all_circle"  stroke="#79E8CC" fill="white" cx="50" cy="360" r="37"/>
+                <text class="accom_all" x="50%" y="88%" text-anchor="middle">ALL OPTIONS</text>
               </g>          
             </svg>  
           </div>
 
           <div class="sightseeing_wrap">
-            <svg viewBox="0 0 333 416.25" x="0px" y="0px" fill-rule="evenodd" clip-rule="evenodd">
+            <svg viewBox="0 0 100 416.25" x="0px" y="0px" fill-rule="evenodd" clip-rule="evenodd">
               <g class="park_wrap">
-                <circle class="park_circle" stroke-width="3px" stroke="#79E8CC" fill="white" cx="60" cy="60" r="45"/>
-                <circle class="inner_park_circle"  stroke="#79E8CC" fill="white" cx="60" cy="60" r="37"/>
-                <text class="park" x="18%" y="15%" text-anchor="middle">PARK</text>
+                <circle class="park_circle" stroke-width="3px" stroke="#79E8CC" fill="white" cx="50" cy="60" r="45"/>
+                <circle class="inner_park_circle"  stroke="#79E8CC" fill="white" cx="50" cy="60" r="37"/>
+                <text class="park" x="50%" y="15%" text-anchor="middle">PARK</text>
               </g>
 
               <g class="museum_wrap">
-                <circle class="museum_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="60" cy="160" r="45"/>
-                <circle class="inner_museum_circle"  stroke="#79E8CC" fill="white" cx="60" cy="160" r="37"/>
-                <text class="museum" x="18%" y="40%" text-anchor="middle">MUSEUM</text>
+                <circle class="museum_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="50" cy="160" r="45"/>
+                <circle class="inner_museum_circle"  stroke="#79E8CC" fill="white" cx="50" cy="160" r="37"/>
+                <text class="museum" x="50%" y="40%" text-anchor="middle">MUSEUM</text>
               </g>
               
               <g class="shop_wrap">
-                <circle class="shop_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="60" cy="260" r="45"/>
-                <circle class="inner_shop_circle"  stroke="#79E8CC" fill="white" cx="60" cy="260" r="37"/>
-                <text class="shop" x="18%" y="64%" text-anchor="middle">SHOP</text>
+                <circle class="shop_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="50" cy="260" r="45"/>
+                <circle class="inner_shop_circle"  stroke="#79E8CC" fill="white" cx="50" cy="260" r="37"/>
+                <text class="shop" x="50%" y="64%" text-anchor="middle">SHOP</text>
               </g>
 
               <g class="sight_all_wrap">
-                <circle class="sight_all_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="60" cy="360" r="45"/>
-                <circle class="inner_sight_all_circle"  stroke="#79E8CC" fill="white" cx="60" cy="360" r="37"/>
-                <text class="sight_all" x="18%" y="88%" text-anchor="middle">ALL OPTIONS</text>
+                <circle class="sight_all_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="50" cy="360" r="45"/>
+                <circle class="inner_sight_all_circle"  stroke="#79E8CC" fill="white" cx="50" cy="360" r="37"/>
+                <text class="sight_all" x="50%" y="88%" text-anchor="middle">ALL OPTIONS</text>
+              </g>          
+            </svg>  
+          </div>
+
+          <div class="transport_wrap">
+            <svg viewBox="0 0 100 416.25" x="0px" y="0px" fill-rule="evenodd" clip-rule="evenodd">
+              <g class="bus_wrap">
+                <circle class="bus_circle" stroke-width="3px" stroke="#79E8CC" fill="white" cx="50" cy="60" r="45"/>
+                <circle class="inner_bus_circle"  stroke="#79E8CC" fill="white" cx="50" cy="60" r="37"/>
+                <text class="bus" x="50%" y="15%" text-anchor="middle">BUS</text>
+              </g>
+
+              <g class="train_wrap">
+                <circle class="train_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="50" cy="160" r="45"/>
+                <circle class="inner_train_circle"  stroke="#79E8CC" fill="white" cx="50" cy="160" r="37"/>
+                <text class="train" x="50%" y="40%" text-anchor="middle">TRAIN</text>
+              </g>
+              
+              <g class="bike_wrap">
+                <circle class="bike_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="50" cy="260" r="45"/>
+                <circle class="inner_bike_circle"  stroke="#79E8CC" fill="white" cx="50" cy="260" r="37"/>
+                <text class="bike" x="50%" y="64%" text-anchor="middle">BIKE</text>
+              </g>
+
+              <g class="transport_all_wrap">
+                <circle class="transport_all_circle"  stroke="#79E8CC" stroke-width="3px" fill="white" cx="50" cy="360" r="45"/>
+                <circle class="inner_transport_all_circle"  stroke="#79E8CC" fill="white" cx="50" cy="360" r="37"/>
+                <text class="transport_all" x="50%" y="88%" text-anchor="middle">ALL OPTIONS</text>
               </g>          
             </svg>  
           </div>
       </div> 
-
-
   
   </section>
 
+  <!-- REVIEW -->
+  <div class="review-container">
+
+    <div class="review-box">
+      <h1 class="review">Review</h1>
+      <div class="rating_wrap">
+        <span class="rate">4.5</span>
+        <div class="img_wrap">
+          <img class="star" src="./custom_images/star.png">
+          <img class="star" src="./custom_images/star.png">
+          <img class="star" src="./custom_images/star.png">
+          <img class="star" src="./custom_images/star.png">
+          <img class="star" src="./custom_images/star.png">
+        </div>
+        
+      </div>
+
+      <div class="people_wrap">
+        <img class="user" src="./custom_images/user.png">
+        <span class="user-numbers">26</span>
+      </div>
+
+    </div>
+    <div class="graph">
+      <svg class="chart">
+      </svg>  
+
+      <svg class="icons" viewBox="0 0 100 416.25" x="0px" y="0px">
+        <g class="star">
+          <path class="fil0" d="M515 335l299 -1 -242 176 93 284 -242 -176 -241 176 93 -284 -243 -176 299 1 92 -285 92 285zm-92 -257l-85 265 -279 0 226 163 -87 266 225 -165 226 165 -87 -266 226 -163 -279 0 -86 -265z"/>
+        </g>
+      </svg>
+    </div>
+
+  </div>
 
 
 <!-- + + + + + +  FOOTER  + + + + + + + + + + + + + + + + + + -->
@@ -385,7 +445,10 @@
 
 <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"></script>
 
+
 <!-- OUR JAVASCRIPT -->
+
+ <script src="http://d3js.org/d3.v4.js"></script>
 <script src="js/js_monty.js"></script>
 <!-- <script src="js/js_cree-map-popup-test.js"></script> -->
 <script src="js/js_cree.js"></script>

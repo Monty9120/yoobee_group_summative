@@ -1,6 +1,7 @@
 #map_section{
-	height: 80vh;
-	border: 1px red solid;
+	height: 70vh;
+	// border: 1px red solid;
+	background-color:$dark-grey;
 
 	.filter{
 		width: 100%;
@@ -134,20 +135,27 @@
 	}
 
 	.map_wrap{
+		// height:90%;
+		// border:1px green solid;
 		position:relative;
 		.button_wrap{
+			// border:1px blue solid;
 			position:absolute;
-			width:30em;
-			top:4em;
+			width:25%;
+			height:70%;
+			max-width:7em;
+			top:3em;
 			left:0;
 			z-index:1000;
 		}
+
 	}
+
 	#map{
 		margin: auto;
-		height: 50vh;
+		height: 60vh;
 		width: 100%;
-		border:1px green solid;
+	
 		position: relative;
 
 		.leaflet-control-zoom{
@@ -202,8 +210,8 @@
 }
 
 
-@media only screen and (min-width: 50em){
-#map_section{
+@media only screen and (min-width: 40em){
+	#map_section{
 		.filter{
 			width: 80%;
 		}
@@ -211,5 +219,21 @@
 			width: 80%;
 
 		}
+		
 	}
+
+
 }
+
+@media only screen and (min-width: 80em){
+
+	.button_wrap{
+		width:25%;
+		max-width:9em;
+		margin-left:.9em;
+		// border:1px red solid;
+	}
+	
+}
+
+
