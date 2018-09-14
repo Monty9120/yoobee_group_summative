@@ -1,6 +1,7 @@
 #map_section{
-	height: 80vh;
+	height: 70vh;
 	// border: 1px red solid;
+	background-color:$dark-grey;
 
 	.filter{
 		width: 100%;
@@ -134,18 +135,20 @@
 	}
 
 	.map_wrap{
-		height:90%;
-		border:1px green solid;
+		// height:90%;
+		// border:1px green solid;
 		position:relative;
 		.button_wrap{
 			// border:1px blue solid;
 			position:absolute;
-			width:30%;
-			max-width:8em;
-			top:4em;
+			width:25%;
+			height:70%;
+			max-width:7em;
+			top:3em;
 			left:0;
 			z-index:1000;
 		}
+
 	}
 
 	#map{
@@ -218,29 +221,16 @@
 		}
 		
 	}
-	.map_wrap{
-
-		.button_wrap{
-			border:1px blue solid;
-			// position:absolute;
-			// width:1%;
-			max-width:8em;
-			
-		}
-
-	}
 
 
 }
 
 @media only screen and (min-width: 80em){
-	
-
 
 	.button_wrap{
 		width:25%;
 		max-width:9em;
-		// margin-left:2em;
+		margin-left:.9em;
 		// border:1px red solid;
 	}
 	
