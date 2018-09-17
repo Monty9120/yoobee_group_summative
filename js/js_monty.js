@@ -23,6 +23,10 @@ var trailIcon = 'custom_images/icon_trail.svg';
 var busIcon = 'custom_images/icon_bus.svg';
 var gasIcon = 'custom_images/icon_gas.svg';
 var liquorIcon = 'custom_images/icon_liquor.svg';
+var beachIcon = 'custom_images/icon_beach.svg';
+var hostelIcon = 'custom_images/icon_backpack.svg';
+
+
 
 $(function(){
 
@@ -56,14 +60,12 @@ $(function(){
 
 	});
 
-
-
 	//Move center circle to mouse pos
 	$('#map').on('click',function(e) {
 		if($(this).hasClass('no-click')){
 			$(this).removeClass('no-click')
 		}else{
-			//if icon is clicked
+			//if icon is clicked DONT move
 			if($(e.target).hasClass('the-icon') == false){
 				var center = map.mouseEventToLatLng(e.originalEvent);
 		  		circle.setLatLng(center)
@@ -380,9 +382,13 @@ function loadVenues(lat,lng){
 				        icon = parkIcon;
 				        break;
 				    case "Scenic Lookout":
+				    case "Campground":
 				        icon = parkIcon;
 				        break;
-				    case "Hotel":
+				    case "Hostel":
+				        icon = hostelIcon;
+				        break;
+				     case "Hotel":
 				        icon = hotelIcon;
 				        break;
 				    case "Gym":
@@ -418,6 +424,7 @@ function loadVenues(lat,lng){
 				    case "Chinese Restaurant":
 				    case "Indian Restaurant":
 				    case "Italian Restaurant":
+				    case "French Restaurant":
 				    case "Fast Food Restaurant":
 				    case "Sushi Restaurant":
 				    case "Turkish Restaurant":
@@ -432,8 +439,10 @@ function loadVenues(lat,lng){
 				    case "BBQ Joint":
 				    case "Fish & Chips Shop":
 				    case "Steakhouse":
-				    case "Liquor Store":
 				    	icon = foodIcon;
+				    	break;
+				    case "Liquor Store":
+				    	icon = liquorIcon
 				    	break;
 				   	case "Harbor / Marina":
 				   		icon = harbourIcon
@@ -450,6 +459,11 @@ function loadVenues(lat,lng){
 				   	case "Liquor Store":
 				   		icon = parkIcon
 				   		break;
+				   	case "Beach":
+				   	case "Bay":
+				   		icon = beachIcon
+				   		break;
+
 				    default:
 				        icon = locationIcon
 				}
