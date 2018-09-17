@@ -1,4 +1,12 @@
 
+
+
+
+
+.leaflet-marker-pane{
+	background-image: url(custom_images/icon_bar.svg);
+}
+
 #filters{
 
 	.container{
@@ -53,6 +61,7 @@
 			}
 
 		// ENTER ADDRESS FIELD
+
 
 			.filter-search{
 				// border:1px blue solid;

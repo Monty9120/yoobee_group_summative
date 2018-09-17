@@ -9,6 +9,7 @@ var map;
 var venueGroup;
 var customRadius;
 var marker;
+var addressLayer;
 
 
 var locationIcon = 'custom_images/icon_location.svg';
@@ -38,6 +39,7 @@ $(function(){
 
 	L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoidGhhbHl4OTAiLCJhIjoiY2o2YjdrZHRlMWJmYjJybDd2cW1rYnVnNSJ9.j_DQLfixHfhioVjH6qmqkw').addTo(map);
 
+	addressLayer = L.layerGroup().addTo(map);
 	//Circle
 	defaultRadius = $('.slider').val();
 	var circle = L.circle(center,{
@@ -97,9 +99,47 @@ $(function(){
 
 //------TATIANA - FILTERS SECTION
 
-	//-----Landmarks-------
+	//- - - - - -  -LANDMARKS- - - - - - -
 	var landmarks =
 		{
+			allauckland:[
+	            {lng:174.8199462890625,lat:-36.27970720524016},
+	            {lng:174.78973388671875,lat:-36.26420679934512},
+	            {lng:174.759521484375,lat:-36.25756282630297},
+	            {lng:174.67987060546875,lat:-36.206606928590105},
+	            {lng:174.61669921875,lat:-36.19774164407362},
+	            {lng:174.52056884765622,lat:-36.226550147470896},
+	            {lng:174.37225341796875,lat:-36.301845303684324},
+	            {lng:174.3145751953125,lat:-36.31291199724547},
+	            {lng:174.27337646484375,lat:-36.295204533693536},
+	            {lng:174.13330078125,lat:-36.46105407505432},
+	            {lng:174.4189453125,lat:-36.8224776116662},
+	            {lng:174.47113037109375,lat:-37.05736900011469},
+	            {lng:174.52880859375,lat:-37.06175259706909},
+	            {lng:174.65240478515625,lat:-37.28497995025375},
+	            {lng:174.72930908203125,lat:-37.258752148656086},
+	            {lng:174.82818603515625,lat:-37.24563482182139},
+	            {lng:174.95727539062497,lat:-37.26312408340918},
+	            {lng:175.10833740234375,lat:-37.26312408340918},
+	            {lng:175.23193359375,lat:-37.23251521134917},
+	            {lng:175.24566650390625,lat:-37.21064411993447},
+	            {lng:175.32257080078125,lat:-37.18220222107978},
+	            {lng:175.308837890625,lat:-37.0551771066608},
+	            {lng:175.29510498046875,lat:-36.985003092855955},
+	            {lng:175.18798828125,lat:-36.925743371044966},
+	            {lng:175.1275634765625,lat:-36.92354768108929},
+	            {lng:175.05615234375,lat:-36.87302936279295},
+	            {lng:174.9188232421875,lat:-36.86424015502006},
+	            {lng:174.89410400390622,lat:-36.824676208856175},
+	            {lng:174.81719970703122,lat:-36.8224776116662},
+	            {lng:174.75677490234375,lat:-36.701457527917896},
+	            {lng:174.77050781249997,lat:-36.6177321600059},
+	            {lng:174.70458984375,lat:-36.57362961247928},
+	            {lng:174.7869873046875,lat:-36.43896124085945},
+	            {lng:174.86663818359375,lat:-36.36379855415863},
+	            {lng:174.8199462890625,lat:-36.27970720524016}
+            ],
+
 			rodney:[
 	            {lng:174.33380126953122,lat:-36.69264861993993},
 	            {lng:174.45739746093747,lat:-36.6816360656152},
@@ -265,7 +305,7 @@ $(function(){
 		};
 
 
-	//----Zooming-in and Hightlighting the selected area
+	//- - - - - -ZOOMING IN AND HIGHTLIGHTING SELECTED AREA- - - - - -
 	var areaPolygon = L.polygon([], {color: 'coral'}).addTo(map);
 	
 	$('#area-dropdown').on('change',function(){
@@ -276,6 +316,7 @@ $(function(){
 		if(area == 'allauckland'){
 			center = {lat:-36.768684,lng:174.707236};
 			map.setView(center,9);
+			suburb = landmarks.allauckland;
 		}else{
 			if(area == 'central'){
 				center = {lat:-36.8567,lng:174.8018};
@@ -327,17 +368,74 @@ $(function(){
 		this.setStyle({fillOpacity:0, stroke:0});
 	});
 
+});
 
+// - - - - - -AUTOCOMPLETE ADDRESS IN SEARCH FILTER - - - - - -
 
+//Taken from Google Map - different way of naming cass etc
+var placeSearch, autocomplete;
+var componentForm = {
+	street_number: 'short_name',
+	route: 'long_name',
+	locality: 'long_name',
+	administrative_area_level_1: 'short_name',
+	country: 'long_name',
+	postal_code: 'short_name'
+};
 
+function initAutocomplete() {
+	// Create the autocomplete object, restricting the search to geographical
+	// location types.
+	autocomplete = new google.maps.places.Autocomplete(
+	    /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+	    {types: ['geocode']});
 
+	// When the user selects an address from the dropdown, populate the address
+	// fields in the form.
+	autocomplete.addListener('place_changed', fillInAddress);
+}
+
+function fillInAddress() {
+	// Get the place details from the autocomplete object.
+
+	addressLayer.clearLayers();
+	var place = autocomplete.getPlace();
+	console.log(place);
+
+	//Here is requested address
+	var newCenter = {lat:place.geometry.location.lat(),lng:place.geometry.location.lng()};
+
+	map.setView(newCenter,14);
+
+	var greenIcon = L.icon({
+	    iconUrl: 'custom_images/green_icon_v2.png',
+	    iconSize:[42,42]
+	});
+
+	let marker = L.marker(newCenter,{icon:greenIcon}).addTo(addressLayer);
+
+}
+
+// Bias the autocomplete object to the user's geographical location,
+// as supplied by the browser's 'navigator.geolocation' object.
+function geolocate() {
+	if (navigator.geolocation) {
+	  	navigator.geolocation.getCurrentPosition(function(position) {
+	    var geolocation = {
+	      lat: position.coords.latitude,
+	      lng: position.coords.longitude
+	    };
+	    var circle = new google.maps.Circle({
+	      center: geolocation,
+	      radius: position.coords.accuracy
+	    });
+	    autocomplete.setBounds(circle.getBounds());
+	  });
+	}
+}
 
 //------TATIANA's code finished here
 
-
-	
-
-});
 // -	-	-	-	-	jQuery end 	-	-	-	-	
 
 //Find venues in selected area

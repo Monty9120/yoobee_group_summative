@@ -2359,6 +2359,9 @@ button.close {
   .modal-lg {
     max-width: 800px; } }
 
+.leaflet-marker-pane {
+  background-image: url(custom_images/icon_bar.svg); }
+
 #filters .container {
   font-family: "Open Sans", sans-serif;
   background-color: #79E8CC;
