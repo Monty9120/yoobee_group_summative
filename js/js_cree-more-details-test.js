@@ -1,6 +1,6 @@
 const version = '?v=20170901';
-const clientId = '&client_id=NRDFRIMIWO5QY4H3HTPITKL3JKOJLBJTWUHBUYJE5JHB5XCB';
-const clientSecret = '&client_secret=GIFUXB102BZZ0KXFTOCZ5XGWN1T5LLZG1NU0G5JKFRVP55DN';
+const clientId = '&client_id=TEOMTULWIDZGIMDRL31PQEQAHFI550SUFDSK3S42ZUTLU0PS';
+const clientSecret = '&client_secret=JDNFWZICWDDLBE43XDPEA4BWG3F0GNXIVCWVDQQF534UN5DL';
 
 const key = version + clientId + clientSecret;
 
@@ -348,6 +348,10 @@ $(function(){
 //------TATIANA's code finished here
 
 
+//------Cree's javascript - More details
+
+
+//------Cree's javascript - More details E N D
 	
 
 });
@@ -362,7 +366,7 @@ function loadVenues(lat,lng){
 		url:exploreUrl,
 		dataType:'jsonp',
 		success:function(res){
-			console.log(res.response.groups["0"].items);
+			// console.log(res.response.groups["0"].items);
 			var data = res.response.groups["0"].items;
 			var venues = _(data).map(function(item){
 
@@ -376,107 +380,170 @@ function loadVenues(lat,lng){
 					address:item.venue.location.formattedAddress,
 
 				};
+
+
 			});
+
+		
+
 
 			venueGroup.clearLayers();
 			_(venues).each(function(venue){
 
 				switch(venue.category) {
-				    case "Park":
-				        icon = parkIcon;
-				        break;
-				    case "Scenic Lookout":
-				        icon = parkIcon;
-				        break;
-				    case "Hotel":
-				        icon = hotelIcon;
-				        break;
-				    case "Gym":
-				    case "Gym / Fitness Center":
-				        icon = gymIcon;
-				        break;
-				    case "Bar":
-				    case "Cocktail Bar": 
-				        icon = barIcon;
-				        break;
-				    case "Coffee Shop":
-				    case "Café":
-				    case "Coffee":
-				    case "Bistro":
-				        icon = cafeIcon;
-				        break;
-				    case "Sandwich Place":
-				    case "Muffin Break":
-				    case "Dessert Shop":
-				    case "Snack Place":
-				    case "Restaurant":
-				    case "Pub":
-				    case "Pizza":
-				    case "Burger Joint":
-				    case "Pizza Place":
-				    case "Restaurant":
-				    case "Asian Restaurant":
-				    case "Seafood Restaurant":
-				    case "Korean Restaurant":
-				    case "Thai Restaurant":
-				    case "Portuguese Restaurant":
-				    case "Japanese Restaurant":
-				    case "Chinese Restaurant":
-				    case "Indian Restaurant":
-				    case "Italian Restaurant":
-				    case "Fast Food Restaurant":
-				    case "Sushi Restaurant":
-				    case "Turkish Restaurant":
-				    case "Mediterranean Restaurant":
-				    case "Falafel Restaurant":
-				    case "Mexican Restaurant":
-				    case "Bakery":
-				    case "Grocery Store":
-				    case "Supermarket":
-				    case "Noodle House":
-				    case "Ice Cream Shop":
-				    case "BBQ Joint":
-				    case "Fish & Chips Shop":
-				    case "Steakhouse":
-				    case "Liquor Store":
-				    	icon = foodIcon;
-				    	break;
-				   	case "Harbor / Marina":
-				   		icon = harbourIcon
-				   		break;
-				   	case "Trail":
-				   		icon = trailIcon
-				   		break;
-				   	case "Bus Station":
-				   		icon = busIcon
-				   		break;
-				   	case "Gas Station":
-				   		icon = gasIcon
-				   		break;
-				   	case "Liquor Store":
-				   		icon = parkIcon
-				   		break;
-				    default:
-				        icon = locationIcon
+					case "Park":
+					icon = parkIcon;
+					break;
+					case "Scenic Lookout":
+					icon = parkIcon;
+					break;
+					case "Hotel":
+					icon = hotelIcon;
+					break;
+					case "Gym":
+					case "Gym / Fitness Center":
+					icon = gymIcon;
+					break;
+					case "Bar":
+					case "Cocktail Bar": 
+					icon = barIcon;
+					break;
+					case "Coffee Shop":
+					case "Café":
+					case "Coffee":
+					case "Bistro":
+					icon = cafeIcon;
+					break;
+					case "Sandwich Place":
+					case "Muffin Break":
+					case "Dessert Shop":
+					case "Snack Place":
+					case "Restaurant":
+					case "Pub":
+					case "Pizza":
+					case "Burger Joint":
+					case "Pizza Place":
+					case "Restaurant":
+					case "Asian Restaurant":
+					case "Seafood Restaurant":
+					case "Korean Restaurant":
+					case "Thai Restaurant":
+					case "Portuguese Restaurant":
+					case "Japanese Restaurant":
+					case "Chinese Restaurant":
+					case "Indian Restaurant":
+					case "Italian Restaurant":
+					case "Fast Food Restaurant":
+					case "Sushi Restaurant":
+					case "Turkish Restaurant":
+					case "Mediterranean Restaurant":
+					case "Falafel Restaurant":
+					case "Mexican Restaurant":
+					case "Bakery":
+					case "Grocery Store":
+					case "Supermarket":
+					case "Noodle House":
+					case "Ice Cream Shop":
+					case "BBQ Joint":
+					case "Fish & Chips Shop":
+					case "Steakhouse":
+					case "Liquor Store":
+					icon = foodIcon;
+					break;
+					case "Harbor / Marina":
+					icon = harbourIcon
+					break;
+					case "Trail":
+					icon = trailIcon
+					break;
+					case "Bus Station":
+					icon = busIcon
+					break;
+					case "Gas Station":
+					icon = gasIcon
+					break;
+					case "Liquor Store":
+					icon = parkIcon
+					break;
+					default:
+					icon = locationIcon
 				}
 
 
 				var myIcon = L.divIcon({ 
-				    iconSize: new L.Point(35, 35), 
-				    html: '<div class="custom-icon"><img class="the-icon" src="'+icon+'"></div>'
+					iconSize: new L.Point(35, 35), 
+					html: '<div class="custom-icon"><img class="the-icon" src="'+icon+'"></div>'
 				});
 
 				let marker = L.marker(venue.latlng,{icon:myIcon}).addTo(venueGroup);
-				marker.bindPopup('<div id="custom-map-popup"><img src="'+icon+'"><h1>'+venue.name+'</h1><p>"'+venue.address+'"</p><a href="#" class="sqr-bttn btn btn-primary"  data-toggle="modal" data-target="#exampleModalLong">More info</a></div>');
+				marker.bindPopup('<div class="custom-map-popup"><img src="'+icon+'"><h1>'+venue.name+'</h1><p>"'+venue.address+'"</p><a href="#" class="more-info sqr-bttn btn btn-primary"  data-toggle="modal" data-target="#exampleModalLong">More info</a><a href="#" class="get-directions sqr-bttn btn btn-primary">Get directions</a></div>');
+
+				var venueInfo = $('.more-info');
+
+				marker.venueid = venue.venueid;
+
+				marker.on('click',function(){
+
+					var venueUrl = 	'https://api.foursquare.com/v2/venues/'+
+					this.venueid+key;
+
+					console.log(venueUrl);
+
+					$.ajax({
+						url:venueUrl,
+						dataType:'jsonp',
+						success:function(res){ 
+							console.log(res);
+							var venue = res.response.venue;
+							$('.modal-title').text(venue.name);
+							// $('.venue-description').text(venue.page.pageInfo.description);
+							$('.venue-location span').text(venue.location.formattedAddress);
+							$('.venue-phone-number span').text(venue.contact.formattedPhone);
+							$('.venue-open-hours span.open-now').text(venue.contact.richStatus.status);
+							$('.venue-open-hours ul.weekly-hours li').text(venue.contact.richStatus.status);
+
+							
+						}
+					});
+
+					// Venue opening hours
+
+					var openHours = $('.venue-open-hours');
+
+					openHours.on('click', function(){
 
 
+						var weeklyHours = $('.venue-open-hours').data('reveal');
+
+						// Open and close opening hours
+
+						if (weeklyHours == 'close'){
+							console.log(weeklyHours);
+
+							$('.venue-open-hours ul.weekly-hours').addClass('open-hours')
+							$('.venue-open-hours').data('reveal', 'open');
+
+						} else {
+							console.log(weeklyHours);
+							$('.venue-open-hours ul.weekly-hours').removeClass('open-hours').data('reveal', 'close');
+							$('.venue-open-hours').data('reveal', 'close');
+
+						}
 
 
+       					// Get Venue Hours 
 
-					
+       					marker.venueid = venue.venueid;
 
-			});
-		}
+       					let hoursUrl = 'https://api.foursquare.com/v2/venues/'+venueid+'/hours'+key;
+
+       					console.log(hoursUrl);
+
+
+       				});
+ 
+				});
+			}
 
 	});
 }

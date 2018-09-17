@@ -31,9 +31,9 @@
       <nav>
         <div class="logo">
           <a href="index.htm">
-            <!-- <img src="" alt=""> -->
-            <i class="fas fa-map-marker-alt"></i>
-            <h1>FAST</h1>
+            <img src="custom_images/logo.png" alt="">
+     <!--        <i class="fas fa-map-marker-alt"></i>
+            <h1>FAST</h1> -->
           </a>
 
         </div>
@@ -333,11 +333,20 @@
           <li class="venue-website"><i class="fas fa-globe-americas"></i><span>www.website.com</span></li>
           <li class="venue-phone-number"><i class="fas fa-mobile-alt"></i><span>021 666 666</span></li>
           <li class="venue-price-range"><i class="fas fa-tag"></i><span>$$ - $$$</span></li>
-          <li class="venue-open-hours"><i class="far fa-clock"></i><span>Open now: 24 Hours </span><i class="fas fa-sort-down"></i></li>
+
+          <!-- Daily opening hours -->
+          <li class="venue-open-hours" data-reveal="close">
+            <i class="far fa-clock"></i><span class="open-now">Open now: 24 Hours </span> 
+            <i class="fas fa-sort-down"></i>
+            <ul class="weekly-hours">
+              <li>weekly hours</li>
+            </ul> <!-- weekly-hours end -->
+          </li> <!-- venue-open-hours end -->
         </ul>
+
       </div> <!-- modal-body-1 end -->
       <div class="modal-footer">
-        <a href="" class="sqr-bttn">Reviews <i class="fas fa-angle-down"></i></a>
+        <a href="" class="sqr-bttn">Get Directions</a>
       </div> <!-- modal-footer end -->
     </div>  <!-- modal-content end -->
   </div> <!-- modal-dialog end -->
@@ -449,8 +458,8 @@
 <!-- OUR JAVASCRIPT -->
 
  <script src="http://d3js.org/d3.v4.js"></script>
-<script src="js/js_monty.js"></script>
-<!-- <script src="js/js_cree-map-popup-test.js"></script> -->
+<!-- <script src="js/js_monty.js"></script> -->
+<script src="js/js_cree-more-details-test.js"></script>
 <script src="js/js_cree.js"></script>
 <script src="js/js_stan.js"></script>
 <script src="js/plugins/anime.js"></script>

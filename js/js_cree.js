@@ -1,3 +1,7 @@
+
+
+$(function(){
+
     // Open and close nav on mobile
     $('.bars').on('click', function(e) {
 
@@ -24,3 +28,5 @@
     });
 
     
+
+});
