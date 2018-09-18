@@ -15,10 +15,6 @@
 		}
 	
 
-		.or{
-			margin: 3em;
-		}
-
 		.contact-us{
 			display: flex;
 			flex-direction: column;
@@ -49,7 +45,7 @@
 
 			input{
 				background-color: rgba(0,0,0,0.0);
-				width: 25%;
+				width: 50%;
 				margin: auto;
 				color: $text;
 				border: none;
@@ -62,7 +58,7 @@
 				&:focus{
 					border-bottom: 1px $mint solid;
 					box-shadow: none;
-					width: 40%;
+					width: 80%;
 
 					/*width: 70%;*/
 
@@ -72,13 +68,14 @@
 			
 			textarea{
 				padding: 5px 0px 5px 5px;
-				width: 60%;
+				width: 80%;
 				margin: auto;
 				background-color: rgba(0,0,0,0.0);
 				border: none;
 				border-radius: 0;
 				border-bottom: 1px $mint solid;
 				color: $mint;
+				text-align: center;
 
 				&:focus{
 					border: thin $mint solid;
@@ -125,12 +122,46 @@
 	}
 
 }
-@media only screen and (min-width: 40em){
+@media only screen and (min-width: 60em){
 	.contact{
 		.contact-wrap{
 			margin: 0 25%;
+	
+		.form-wrap{
+			input{
+				width: 25%;
+				&:focus{
+					width: 40%;
+
+				}
+			
+			}
+			
+			textarea{
+				width: 40%;
+
+				&:focus{
+					border: thin $mint solid;
+					box-shadow: none;
+					/*width: 70%;*/
+
+				}
+			}
 		}
+		.form-center{
+		
+
+			.form-check-label{
+				margin: auto;
+			}
+			button{
+
+
+
+				}
+			}
+		}
+
+
 	}
-
-
 }

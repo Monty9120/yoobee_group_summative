@@ -3408,8 +3408,6 @@ body {
       font-family: "Comfortaa", cursive;
       color: #79E8CC;
       margin-bottom: 1em; }
-    .contact .contact-wrap .or {
-      margin: 3em; }
     .contact .contact-wrap .contact-us {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -3440,7 +3438,7 @@ body {
       justify-content: center; }
       .contact .contact-wrap .form-wrap input {
         background-color: rgba(0, 0, 0, 0);
-        width: 25%;
+        width: 50%;
         margin: auto;
         color: #eee;
         border: none;
@@ -3455,17 +3453,18 @@ body {
           border-bottom: 1px #79E8CC solid;
           -webkit-box-shadow: none;
           box-shadow: none;
-          width: 40%;
+          width: 80%;
           /*width: 70%;*/ }
       .contact .contact-wrap .form-wrap textarea {
         padding: 5px 0px 5px 5px;
-        width: 60%;
+        width: 80%;
         margin: auto;
         background-color: rgba(0, 0, 0, 0);
         border: none;
         border-radius: 0;
         border-bottom: 1px #79E8CC solid;
-        color: #79E8CC; }
+        color: #79E8CC;
+        text-align: center; }
         .contact .contact-wrap .form-wrap textarea:focus {
           border: thin #79E8CC solid;
           -webkit-box-shadow: none;
@@ -3497,6 +3496,19 @@ body {
       .contact .contact-wrap .form-center button:focus {
         outline: 0; }
 
-@media only screen and (min-width: 40em) {
+@media only screen and (min-width: 60em) {
   .contact .contact-wrap {
-    margin: 0 25%; } }
+    margin: 0 25%; }
+    .contact .contact-wrap .form-wrap input {
+      width: 25%; }
+      .contact .contact-wrap .form-wrap input:focus {
+        width: 40%; }
+    .contact .contact-wrap .form-wrap textarea {
+      width: 40%; }
+      .contact .contact-wrap .form-wrap textarea:focus {
+        border: thin #79E8CC solid;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        /*width: 70%;*/ }
+    .contact .contact-wrap .form-center .form-check-label {
+      margin: auto; } }

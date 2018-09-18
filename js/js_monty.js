@@ -25,6 +25,7 @@ var gasIcon = 'custom_images/icon_gas.svg';
 var liquorIcon = 'custom_images/icon_liquor.svg';
 var beachIcon = 'custom_images/icon_beach.svg';
 var hostelIcon = 'custom_images/icon_backpack.svg';
+var airportIcon = 'custom_images/icon_airport.svg';
 
 
 
@@ -463,7 +464,9 @@ function loadVenues(lat,lng){
 				   	case "Bay":
 				   		icon = beachIcon
 				   		break;
-
+				   	case "Airport":
+				   		icon = airportIcon
+				   		break;
 				    default:
 				        icon = locationIcon
 				}
