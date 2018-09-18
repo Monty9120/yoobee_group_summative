@@ -7,21 +7,55 @@
 	background-color: $dark-grey;
 	padding:0.5em;
 	display: flex;
-	// flex-wrap:wrap;
+	flex-direction:column;
 	justify-content: center;
 	// border:1px red solid;
+
 	.review-box{
 		width:40%;
 		// border:1px blue solid;
+	}
+
+	.dropdown-wrap{
+		// border:1px red solid;
+		text-align:center;
+		padding-right:15em;
+		// display:flex;
+		// flex-direction:column;
+		// justify-content:center;
 		.review{
 			font-weight:300 !important;
 			font-family: $display-font;
 			font-size: 1.2em;
 			color:white;
 			padding-right: 1em;
-			text-align: center;
+			// text-align:left;
+			}
+		.dropdown{
+			width:1.5em;
+			padding-right:1.5em;
+
+		}
+		.up{
+			width:1.5em;
+			padding-right:1.5em;
+			display:none;
+
 		}
 
+
+	}
+
+
+	.rating-graph{
+			display:flex;
+	}
+	.review-box{
+		width:40%;
+		// display:flex;
+		// border:1px blue solid;
+
+	
 		.rating_wrap{
 			display: flex;
 			flex-direction: column;
@@ -34,7 +68,7 @@
 				font-family: $display-font;
 				color:white;
 				text-align: center;
-				padding-right: .9em;
+				// padding-right: .9em;
 		 	}
 		 	.img_wrap{
 		 		// border:1px blue solid;
@@ -51,7 +85,7 @@
 
 		.people_wrap{
 		 	// border:1px blue solid;
-		 	padding-right:2em;
+		 	// padding-right:2em;
 		 	text-align:center;
 		 	margin-top:1em;
 		 	.user{
@@ -86,8 +120,22 @@
 
 @media only screen and (min-width: 40em){
 	
+	.rating-graph{
+		 	// border:1px blue solid;
+		width:50%;
+		margin:auto;
+	}
+
+
+
+}
+
+@media only screen and (min-width: 80em){
 	
-
-
+	.rating-graph{
+		 	// border:1px blue solid;
+		width:40%;
+		margin:auto;
+	}
 
 }
