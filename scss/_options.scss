@@ -1,41 +1,37 @@
 
-body{
-	background-color: gray;
-}
-
-
-.button_wrap{
-	/*border:1px red solid;*/
-	font-family: $main-font;
-	font-size: .7em;
-	position: relative;
-	/*display:none;*/
-}
-
+// body{
+// 	background-color: grey;
+// }
 
 .food_wrap{
-	/*border:1px red solid;*/
 	font-family: $main-font;
-	font-size: .8em;
-	
+	font-size: .6em;
+	display:none;
 }
 
 .accommodation_wrap{
 	/*border:1px red solid;*/
-	font-family: $main-font;
+	font-family: $display-font;
 	font-size: .6em;
-	// display:none;
+	display:none;
 }
+
 .sightseeing_wrap{
 	/*border:1px red solid;*/
 	font-family: $main-font;
-	font-size: .8em;
-	// display:none;
+	font-size: .6em;
+	display:none;
 }
 
-
+.transport_wrap{
+	/*border:1px red solid;*/
+	font-family: $main-font;
+	font-size: .6em;
+	display:none;
+}
 
 .restaurant_wrap{
+
 
 	.restaurant_circle{
 		stroke-dashArray: 300;
@@ -47,6 +43,10 @@ body{
 		stroke-dashArray: 300;
 		stroke-dashOffset: 0;
 		stroke:white;	
+	}
+
+	.inner_restaurant_circle:hover{
+		fill: $mint;
 	}
 }
 
@@ -64,6 +64,10 @@ body{
 		stroke-dashOffset: 0;
 		stroke:white;	
 	}
+
+	.inner_cafe_circle:hover{
+		fill: $mint;
+	}
 }
 
 .bar_wrap{
@@ -79,6 +83,10 @@ body{
 		stroke-dashOffset: 0;
 		stroke:white;	
 	}
+
+	.inner_bar_circle:hover{
+		fill: $mint;
+	}
 }
 
 .food_all_wrap{
@@ -93,6 +101,10 @@ body{
 		stroke-dashArray: 300;
 		stroke-dashOffset: 0;
 		stroke:white;	
+	}
+
+	.inner_food_all_circle:hover{
+		fill: $mint;
 	}
 }
 
@@ -110,6 +122,10 @@ body{
 		stroke-dashOffset: 0;
 		stroke:white;	
 	}
+
+	.inner_hotel_circle:hover{
+		fill: $mint;
+	}
 }
 
 .motel_wrap{
@@ -124,6 +140,10 @@ body{
 		stroke-dashArray: 300;
 		stroke-dashOffset: 0;
 		stroke:white;	
+	}
+
+	.inner_motel_circle:hover{
+		fill: $mint;
 	}
 }
 
@@ -164,10 +184,161 @@ body{
 		fill: $mint;
 	}
 }
+// -----SIGHTSEEING------------
+
+.park_wrap{
+
+	.park_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_park_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_park_circle:hover{
+		fill: $mint;
+	}
+}
+
+.museum_wrap{
+
+	.museum_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_museum_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_museum_circle:hover{
+		fill: $mint;
+	}
+}
+
+.shop_wrap{
+
+	.shop_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_shop_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_shop_circle:hover{
+		fill: $mint;
+	}
+}
+
+.sight_all_wrap{
+
+	.sight_all_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_sight_all_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_sight_all_circle:hover{
+		fill: $mint;
+	}
+}
+
+.bus_wrap{
+
+	.bus_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_bus_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_bus_circle:hover{
+		fill: $mint;
+	}
+}
 
 
+.train_wrap{
+
+	.train_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_train_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_train_circle:hover{
+		fill: $mint;
+	}
+}
 
 
+.bike_wrap{
+
+	.bike_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_bike_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_bike_circle:hover{
+		fill: $mint;
+	}
+}
+
+.transport_wrap{
+
+	.transport_all_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_transport_all_circle{
+		stroke-dashArray: 300;
+		stroke-dashOffset: 0;
+		stroke:white;	
+	}
+
+	.inner_transport_all_circle:hover{
+		fill: $mint;
+	}
+}
 
 @keyframes draw{
 	0%{
@@ -195,3 +366,18 @@ body{
 	}
 }
 
+
+@media only screen and (min-width: 40em){
+	
+
+
+
+
+}
+
+@media only screen and (min-width: 80em){
+	
+
+
+	
+}

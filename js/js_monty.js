@@ -25,6 +25,14 @@ var trailIcon = 'custom_images/icon_trail.svg';
 var busIcon = 'custom_images/icon_bus.svg';
 var gasIcon = 'custom_images/icon_gas.svg';
 var liquorIcon = 'custom_images/icon_liquor.svg';
+var beachIcon = 'custom_images/icon_beach.svg';
+var hostelIcon = 'custom_images/icon_backpack.svg';
+var airportIcon = 'custom_images/icon_airport.svg';
+
+
+
+
+
 
 var directionsService;
 
@@ -62,18 +70,17 @@ $(function(){
 
 	});
 
-
-
 	//Move center circle to mouse pos
 	$('#map').on('click',function(e) {
 		if($(this).hasClass('no-click')){
 			$(this).removeClass('no-click')
 		}else{
-			//if icon is clicked
+			//if icon is clicked DONT move
 			if($(e.target).hasClass('the-icon') == false){
 				var center = map.mouseEventToLatLng(e.originalEvent);
 		  		circle.setLatLng(center)
 		  		loadVenues(center.lat,center.lng)
+		  		loadBusStops(center.lat,center.lng)
 			}
 			
 		}
@@ -445,18 +452,21 @@ function geolocate() {
 
 //-------TATIANA's CODE PART 1 FINISHED----------
 
+
+
 // -	-	-	-	-	jQuery end 	-	-	-	-	
 
 //Find venues in selected area
 function loadVenues(lat,lng){
 
 	let exploreUrl = 'https://api.foursquare.com/v2/venues/explore'+key+'&limit=75&radius='+customRadius+'&ll='+lat+','+lng;
+	
 
 	$.ajax({
 		url:exploreUrl,
 		dataType:'jsonp',
 		success:function(res){
-			console.log(res.response.groups["0"].items);
+			// console.log(res.response.groups["0"].items);
 			var data = res.response.groups["0"].items;
 			var venues = _(data).map(function(item){
 				return {
@@ -469,28 +479,37 @@ function loadVenues(lat,lng){
 			venueGroup.clearLayers();
 			_(venues).each(function(venue){
 
+					var iconClass = '';
 				switch(venue.category) {
 				    case "Park":
 				        icon = parkIcon;
+				        iconClass = 'park';
 				        break;
 				    case "Scenic Lookout":
+				    case "Campground":
 				        icon = parkIcon;
 				        break;
-				    case "Hotel":
+				    case "Hostel":
+				        icon = hostelIcon;
+				        break;
+				     case "Hotel":
 				        icon = hotelIcon;
+				        iconClass = 'hotel';
 				        break;
 				    case "Gym":
 				    case "Gym / Fitness Center":
 				        icon = gymIcon;
 				        break;
 				    case "Bar":
-				    case "Cocktail Bar": 
+				    case "Cocktail Bar":
+				    	iconClass = 'bar'; 
 				        icon = barIcon;
 				        break;
 				    case "Coffee Shop":
 				    case "Café":
 				    case "Coffee":
 				    case "Bistro":
+				    	iconClass = 'cafe';
 				        icon = cafeIcon;
 				        break;
 				    case "Sandwich Place":
@@ -512,6 +531,7 @@ function loadVenues(lat,lng){
 				    case "Chinese Restaurant":
 				    case "Indian Restaurant":
 				    case "Italian Restaurant":
+				    case "French Restaurant":
 				    case "Fast Food Restaurant":
 				    case "Sushi Restaurant":
 				    case "Turkish Restaurant":
@@ -526,8 +546,11 @@ function loadVenues(lat,lng){
 				    case "BBQ Joint":
 				    case "Fish & Chips Shop":
 				    case "Steakhouse":
-				    case "Liquor Store":
 				    	icon = foodIcon;
+				    	iconClass = 'restaurant';
+				    	break;
+				    case "Liquor Store":
+				    	icon = liquorIcon
 				    	break;
 				   	case "Harbor / Marina":
 				   		icon = harbourIcon
@@ -544,6 +567,13 @@ function loadVenues(lat,lng){
 				   	case "Liquor Store":
 				   		icon = parkIcon
 				   		break;
+				   	case "Beach":
+				   	case "Bay":
+				   		icon = beachIcon
+				   		break;
+				   	case "Airport":
+				   		icon = airportIcon
+				   		break;
 				    default:
 				        icon = locationIcon
 				}
@@ -551,11 +581,12 @@ function loadVenues(lat,lng){
 
 				var myIcon = L.divIcon({ 
 				    iconSize: new L.Point(35, 35), 
-				    html: '<div class="custom-icon"><img class="the-icon" src="'+icon+'"></div>'
+				    html: '<div class="custom-icon  '+iconClass+'"><img class="the-icon" src="'+icon+'"></div>'
 				});
 
 				let marker = L.marker(venue.latlng,{icon:myIcon}).addTo(venueGroup);
 				marker.bindPopup('<div>'+venue.name+'</div>');
+				
 
 
 				//-------TATIANA's CODE PART 2----------
@@ -593,15 +624,245 @@ function loadVenues(lat,lng){
 					}					
 				})
 				//-------TATIANA's CODE PART 2 FINISHED----------
-				
+			
+			});
+		}
+	
+
+
+	});
+
+	$.ajax({
+		url:transportUrl,
+		dataType:'jsonp',
+		success:function(res){
+			// console.log(res.response.groups["0"].items);
+			var data = res.response.groups["0"].items;
+			var venues = _(data).map(function(item){
+				return {
+					latlng:{lat:item.venue.location.lat,lng:item.venue.location.lng},
+					name:item.venue.name,
+					venueid:item.venue.id,
+					category:item.venue.categories["0"].name
+				};
 
 			});
+		
 		}
 
 	});
 }
 
+// TO HERE
+// ===============FILTER BUTTONS FOR CATEGORY==================
 
+
+function loadBusStops(lat,lng){
+
+	       //  // $.ajax({
+        //  //    url: "https://api.at.govt.nz/v2/gtfs/stops/geosearch?lat='+lat+'&lng='+lng+'&distance=500",
+        //  //    beforeSend: function(xhrObj){
+        //  //        // Request headers
+        //  //        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","{subscription key}");
+        //  //    },
+        //  //    success:function(res){
+        //  //        console.log(res)
+        //  //    }
+
+        // });
+}
+$(function(){
+
+	// ===========FOOD FILTER=========================
+	$('.inner_cafe_circle').on('click',function(){
+		$('.inner_cafe_circle').css('fill','#79E8CC');
+		$('.inner_bar_circle').css('fill','white');
+		$('.inner_restaurant_circle').css('fill','white');
+		$('.inner_food_all_circle').css('fill','white');
+		$('.custom-icon').hide();
+		$('.custom-icon.cafe').show();
+
+	})
+
+	$('.inner_bar_circle').on('click',function(){
+		$('.inner_cafe_circle').css('fill','white');
+		$('.inner_bar_circle').css('fill','#79E8CC');
+		$('.inner_restaurant_circle').css('fill','white');
+		$('.inner_food_all_circle').css('fill','white');
+		$('.custom-icon').hide();
+		$('.custom-icon.bar').show();
+
+	})
+
+	$('.inner_restaurant_circle').on('click',function(){
+		$('.inner_cafe_circle').css('fill','white');
+		$('.inner_bar_circle').css('fill','white');
+		$('.inner_restaurant_circle').css('fill','#79E8CC');
+		$('.inner_food_all_circle').css('fill','white');
+		$('.custom-icon').hide();
+		$('.custom-icon.restaurant').show();
+
+	})
+
+	$('.inner_food_all_circle').on('click',function(){
+		$('.custom-icon').hide();
+		$('.custom-icon.restaurant').show();
+		$('.custom-icon.bar').show();
+		$('.custom-icon.cafe').show();
+		$('.inner_food_all_circle').css('fill','#79E8CC');
+		$('.inner_cafe_circle').css('fill','white');
+		$('.inner_bar_circle').css('fill','white');
+		$('.inner_restaurant_circle').css('fill','white');
+		
+
+	})
+
+	// ===========ACCOMMODATION FILTER=========================
+	$('.inner_hotel_circle').on('click',function(){
+		$('.inner_hotel_circle').css('fill','#79E8CC');
+		$('.inner_motel_circle').css('fill','white');
+		$('.inner_backpack_circle').css('fill','white');
+		$('.inner_accom_all_circle').css('fill','white');
+		$('.custom-icon').hide();
+		$('.custom-icon.hotel').show();
+
+	})
+
+	$('.inner_motel_circle').on('click',function(){
+		$('.inner_motel_circle').css('fill','#79E8CC');
+		$('.inner_hotel_circle').css('fill','white');
+		$('.inner_backpack_circle').css('fill','white');
+		$('.inner_accom_all_circle').css('fill','white');
+		$('.custom-icon').hide();
+		$('.custom-icon.motel').show();
+
+	})
+
+	$('.inner_backpack_circle').on('click',function(){
+		$('.inner_backpack_circle').css('fill','#79E8CC');
+		$('.inner_hotel_circle').css('fill','white');
+		$('.inner_motel_circle').css('fill','white');
+		$('.inner_accom_all_circle').css('fill','white');
+		$('.custom-icon').hide();
+		$('.custom-icon.backpack').show();
+
+	})
+
+	$('.inner_accom_all_circle').on('click',function(){
+		$('.inner_accom_all_circle').css('fill','#79E8CC');
+		$('.inner_hotel_circle').css('fill','white');
+		$('.inner_motel_circle').css('fill','white');
+		$('.inner_backpack_circle').css('fill','white');
+		$('.custom-icon').hide();
+		$('.custom-icon.hotel').show();
+		$('.custom-icon.motel').show();
+		$('.custom-icon.backpack').show();
+
+	})
+
+	// ===========SIGHTSEEING FILTER=========================
+	$('.inner_park_circle').on('click',function(){
+		$('.inner_park_circle').css('fill','#79E8CC');
+		$('.inner_museum_circle').css('fill','white');
+		$('.inner_shop_circle').css('fill','white');
+		$('.inner_sight_all_circle').css('fill','white');
+		$('.custom-icon').hide();
+		$('.custom-icon.park').show();
+
+	})
+
+	$('.inner_museum_circle').on('click',function(){
+		$('.inner_park_circle').css('fill','white');
+		$('.inner_museum_circle').css('fill','#79E8CC');
+		$('.inner_shop_circle').css('fill','white');
+		$('.inner_sight_all_circle').css('fill','white');
+		$('.custom-icon').hide();
+		$('.custom-icon.museum').show();
+
+	})
+
+	$('.inner_shop_circle').on('click',function(){
+		$('.inner_park_circle').css('fill','white');
+		$('.inner_shop_circle').css('fill','#79E8CC');
+		$('.inner_museum_circle').css('fill','white');
+		$('.inner_sight_all_circle').css('fill','white');
+		$('.custom-icon').hide();
+		$('.custom-icon.shop').show();
+
+
+	})
+
+
+	$('.inner_sight_all_circle').on('click',function(){
+		$('.inner_park_circle').css('fill','white');
+		$('.inner_sight_all_circle').css('fill','#79E8CC');
+		$('.inner_museum_circle').css('fill','white');
+		$('.inner_shop_circle').css('fill','white');
+		$('.custom-icon').hide();
+		$('.custom-icon.shop').show();
+		$('.custom-icon.museum').show();
+		$('.custom-icon.park').show();
+
+
+	})
+
+	// ===========TRANSPORT FILTER=========================
+	$('.inner_bus_circle').on('click',function(){
+		$('.inner_bus_circle').css('fill','#79E8CC');
+		$('.inner_train_circle').css('fill','white');
+		$('.inner_bike_circle').css('fill','white');
+		$('.inner_transport_all_circle').css('fill','white');
+		$('.custom-icon').hide();
+		$('.custom-icon.bus').show();
+
+	})
+
+	$('.inner_train_circle').on('click',function(){
+		$('.inner_bus_circle').css('fill','white');
+		$('.inner_train_circle').css('fill','#79E8CC');
+		$('.inner_bike_circle').css('fill','white');
+		$('.inner_transport_all_circle').css('fill','white');
+		$('.custom-icon').hide();
+		$('.custom-icon.train').show();
+
+	})
+
+	$('.inner_bike_circle').on('click',function(){
+		$('.inner_bus_circle').css('fill','white');
+		$('.inner_bike_circle').css('fill','#79E8CC');
+		$('.inner_train_circle').css('fill','white');
+		$('.inner_transport_all_circle').css('fill','white');
+		$('.custom-icon').hide();
+		$('.custom-icon.bike').show();
+
+	})
+
+	$('.inner_transport_all_circle').on('click',function(){
+		$('.inner_bus_circle').css('fill','white');
+		$('.inner_bike_circle').css('fill','white');
+		$('.inner_train_circle').css('fill','white');
+		$('.inner_transport_all_circle').css('fill','79E8CC');
+		$('.custom-icon').hide();
+		$('.custom-icon.bike').show();
+		$('.custom-icon.train').show();
+		$('.custom-icon.bus').show();
+
+	})
+
+	// ===========INITIAL CLICK ON CATEGORY MAP DISPLAY=========================
+
+	$('.ctg-food').on('click',function(){
+		$('.custom-icon').hide();
+		$('.custom-icon.bar').show();
+		$('.custom-icon.cafe').show();
+		$('.custom-icon.restaurant').show();
+
+	});
+
+	
+
+
+})
 
 
 
