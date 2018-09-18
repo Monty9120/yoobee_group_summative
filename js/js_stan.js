@@ -131,56 +131,6 @@ $(function(){
 		}
 	});
 
-//-----TATIANA----CATEGORY SELECT - OPTION BUTTONS SHOW--------------
 
-	$('.ctg-food').on('click',function(){
-		$('.ctg-food').css('color','#79E8CC');
-		$('.ctg-accomm').css('color','white');
-		$('.ctg-sights').css('color','white');
-		$('.ctg-transp').css('color','white');
-	    $('.accommodation_wrap').hide();
-	    $('.sightseeing_wrap').hide();
-	    // $('.transport_wrap').hide();	    
-	    $('.food_wrap').show();
-	    oCafeAnime.play();
-
-  	});
-
-  	$('.ctg-accomm').on('click',function(){
-  		$('.ctg-accomm').css('color','#79E8CC');
-		$('.ctg-food').css('color','white');
-		$('.ctg-sights').css('color','white');
-		$('.ctg-transp').css('color','white');	    
-	    $('.sightseeing_wrap').hide();
-	    // $('.transport_wrap').hide();	    
-	    $('.food_wrap').hide();
-	    $('.accommodation_wrap').show();
-	    oHotelAnime.play();
-  	});
-
-  	$('.ctg-sights').on('click',function(){
-  		$('.ctg-sights').css('color','#79E8CC');
-		$('.ctg-accomm').css('color','white');
-		$('.ctg-food').css('color','white');
-		$('.ctg-transp').css('color','white');
-	    $('.accommodation_wrap').hide();	    
-	    // $('.transport_wrap').hide();	    
-	    $('.food_wrap').hide();
-	    $('.sightseeing_wrap').show();
-	    // ???.play();
-  	});
-
-  	$('.ctg-transp').on('click',function(){
-  		$('.ctg-transp').css('color','#79E8CC');
-		$('.ctg-accomm').css('color','white');
-		$('.ctg-sights').css('color','white');
-		$('.ctg-food').css('color','white');
-	    $('.accommodation_wrap').hide();
-	    $('.sightseeing_wrap').hide();
-	    $('.food_wrap').hide();
-	  //   $('.transport_wrap').show();
-	  //   ???.play();
-  	});
-//----TATIANA's FINISHED HERE
 
 });

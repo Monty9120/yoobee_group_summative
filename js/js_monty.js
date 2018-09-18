@@ -10,6 +10,7 @@ var venueGroup;
 var customRadius;
 var marker;
 var addressLayer;
+var directionsLayer;
 
 
 var locationIcon = 'custom_images/icon_location.svg';
@@ -24,6 +25,8 @@ var trailIcon = 'custom_images/icon_trail.svg';
 var busIcon = 'custom_images/icon_bus.svg';
 var gasIcon = 'custom_images/icon_gas.svg';
 var liquorIcon = 'custom_images/icon_liquor.svg';
+
+var directionsService;
 
 $(function(){
 
@@ -40,6 +43,7 @@ $(function(){
 	L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoidGhhbHl4OTAiLCJhIjoiY2o2YjdrZHRlMWJmYjJybDd2cW1rYnVnNSJ9.j_DQLfixHfhioVjH6qmqkw').addTo(map);
 
 	addressLayer = L.layerGroup().addTo(map);
+	directionsLayer = L.layerGroup().addTo(map);
 	//Circle
 	defaultRadius = $('.slider').val();
 	var circle = L.circle(center,{
@@ -97,7 +101,7 @@ $(function(){
 
 	});
 
-//------TATIANA - FILTERS SECTION
+//------TATIANA's CODE PART 1 - FILTERS SECTION
 
 	//- - - - - -  -LANDMARKS- - - - - - -
 	var landmarks =
@@ -372,7 +376,7 @@ $(function(){
 
 // - - - - - -AUTOCOMPLETE ADDRESS IN SEARCH FILTER - - - - - -
 
-//Taken from Google Map - different way of naming cass etc
+//Taken from Google Map - different way of naming class etc
 var placeSearch, autocomplete;
 var componentForm = {
 	street_number: 'short_name',
@@ -383,6 +387,7 @@ var componentForm = {
 	postal_code: 'short_name'
 };
 
+var newCenter;
 function initAutocomplete() {
 	// Create the autocomplete object, restricting the search to geographical
 	// location types.
@@ -393,7 +398,11 @@ function initAutocomplete() {
 	// When the user selects an address from the dropdown, populate the address
 	// fields in the form.
 	autocomplete.addListener('place_changed', fillInAddress);
+
+	directionsService = new google.maps.DirectionsService;
 }
+
+
 
 function fillInAddress() {
 	// Get the place details from the autocomplete object.
@@ -403,7 +412,7 @@ function fillInAddress() {
 	console.log(place);
 
 	//Here is requested address
-	var newCenter = {lat:place.geometry.location.lat(),lng:place.geometry.location.lng()};
+	newCenter = {lat:place.geometry.location.lat(),lng:place.geometry.location.lng()};
 
 	map.setView(newCenter,14);
 
@@ -413,7 +422,6 @@ function fillInAddress() {
 	});
 
 	let marker = L.marker(newCenter,{icon:greenIcon}).addTo(addressLayer);
-
 }
 
 // Bias the autocomplete object to the user's geographical location,
@@ -434,7 +442,8 @@ function geolocate() {
 	}
 }
 
-//------TATIANA's code finished here
+
+//-------TATIANA's CODE PART 1 FINISHED----------
 
 // -	-	-	-	-	jQuery end 	-	-	-	-	
 
@@ -549,7 +558,41 @@ function loadVenues(lat,lng){
 				marker.bindPopup('<div>'+venue.name+'</div>');
 
 
+				//-------TATIANA's CODE PART 2----------
+				// - - - - - -GOOGLE MAP DIRECTIONS - - - - - -
 
+				marker.on('click',function(){
+					directionsLayer.clearLayers();
+					
+
+					if(newCenter){
+
+						var request = {
+				          origin: newCenter,
+				          destination: this.getLatLng(),
+				          travelMode: 'DRIVING'
+				        };
+						//ask directionsService to fulfill your request
+					
+						directionsService.route(request,function(response,status){
+
+							var path = response.routes["0"].overview_path;
+							console.log(path);
+
+							var polyline = _(path).map(function(item){
+								return {lat:item.lat(),lng:item.lng()};
+							});
+
+							L.polyline(polyline,{
+								color:'#79E8CC',
+								weight:3
+							}).addTo(directionsLayer);
+							console.log('hi');
+
+						});
+					}					
+				})
+				//-------TATIANA's CODE PART 2 FINISHED----------
 				
 
 			});

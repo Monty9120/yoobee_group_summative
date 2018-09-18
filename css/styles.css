@@ -2359,9 +2359,6 @@ button.close {
   .modal-lg {
     max-width: 800px; } }
 
-.leaflet-marker-pane {
-  background-image: url(custom_images/icon_bar.svg); }
-
 #filters .container {
   font-family: "Open Sans", sans-serif;
   background-color: #79E8CC;
@@ -2555,9 +2552,7 @@ button.close {
 
 #map_section {
   height: 80vh;
-  /*border: 1px red solid;*/
-  /*background-color: teal;*/
-  /*background-color: #40675D;*/ }
+  background-color: #4D4E52; }
   #map_section .filter {
     width: 100%;
     margin: auto;
