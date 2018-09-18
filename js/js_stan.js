@@ -2,12 +2,12 @@ $(function(){
 // HIDE OPTION BUTTONS---------------------------
 	$('.accommodation_wrap').hide();
     $('.sightseeing_wrap').hide();
-    // $('.transport_wrap').hide();	    
+    $('.transport_wrap').hide();	    
     $('.food_wrap').hide();
 
 	// button animation
 
-// FOOD-------------------------------------------
+// // FOOD-------------------------------------------
 
 	var oCafeAnime= anime({
 		targets:'.cafe_wrap',
@@ -197,6 +197,16 @@ $(function(){
 	// TRANSPORT
 	// -------------------------------------------
 
+	var oFoodAnime= anime({
+		targets:'.food_wrap',
+		translateX:[-100,0],
+		opacity:[0,1],
+		easing:'linear',
+		duration:900,
+		autoplay:true,
+	
+	});
+
 	var oBusAnime= anime({
 		targets:'.bus_wrap',
 		translateX:[-100,0],
@@ -258,7 +268,108 @@ $(function(){
 	});
 
 
+
+	//-----TATIANA----CATEGORY SELECT - OPTION BUTTONS SHOW--------------
+
+	$('.ctg-food').on('click',function(){
+		$('.ctg-food').css('color','#79E8CC');
+		$('.ctg-accomm').css('color','white');
+		$('.ctg-sights').css('color','white');
+		$('.ctg-transp').css('color','white');
+	    $('.accommodation_wrap').hide();
+	    $('.sightseeing_wrap').hide();
+	    $('.transport_wrap').hide();	    
+	    $('.food_wrap').show();
+	    oCafeAnime.play();
+	    oBarAnime.play();
+	    oRestaurantAnime.play();
+	    oFoodAllAnime.play();
+
+
+  	});
+
+  	$('.ctg-accomm').on('click',function(){
+  		$('.ctg-accomm').css('color','#79E8CC');
+		$('.ctg-food').css('color','white');
+		$('.ctg-sights').css('color','white');
+		$('.ctg-transp').css('color','white');	    
+	    $('.sightseeing_wrap').hide();
+	    $('.transport_wrap').hide();	    
+	    $('.food_wrap').hide();
+	    $('.accommodation_wrap').show();
+	    oHotelAnime.play();
+	    oMotelAnime.play();
+	    oBackpackAnime.play();
+	    oAccomAllAnime.play();
+  	});
+
+  	$('.ctg-sights').on('click',function(){
+  		$('.ctg-sights').css('color','#79E8CC');
+		$('.ctg-accomm').css('color','white');
+		$('.ctg-food').css('color','white');
+		$('.ctg-transp').css('color','white');
+	    $('.accommodation_wrap').hide();	    
+	    $('.transport_wrap').hide();	    
+	    $('.food_wrap').hide();
+	    $('.sightseeing_wrap').show();
+	    oParkAnime.play();
+	    oMuseumAnime.play();
+	    oSightAllAnime.play();
+	   	oShopAnime.play();
+	  
+  	});
+
+  	$('.ctg-transp').on('click',function(){
+  		$('.ctg-transp').css('color','#79E8CC');
+		$('.ctg-accomm').css('color','white');
+		$('.ctg-sights').css('color','white');
+		$('.ctg-food').css('color','white');
+	    $('.accommodation_wrap').hide();
+	    $('.sightseeing_wrap').hide();
+	    $('.food_wrap').hide();
+	    $('.transport_wrap').show();
+	  	oBusAnime.play();
+	   	oTrainAnime.play();
+	    oBikeAnime.play();
+	   	oTransportAllAnime.play();
+  	});
+	//----TATIANA's FINISHED HERE
+  	// REVIEW ANIMATION "Stan"
+
+  	var oRatingAnime = anime({
+  		targets:'.review-box',
+		translateX:[-100,0],
+		opacity:[0,1],
+		easing:'linear',
+		duration:1500,
+		autoplay:true,
+
+  	});
+
+  	  var oGraphAnime = anime({
+  		targets:'.graph',
+		translateX:[100,0],
+		opacity:[0,1],
+		easing:'linear',
+		duration:1500,
+		autoplay:true,
+
+  	});
+
+
+	$('.rating-graph').hide();
+	$('.dropdown').on('click',function(){
+		$('.rating-graph').show();
+		oRatingAnime.play();
+		oGraphAnime.play();
+
+	});
+
+
 });
+
+
+
 
 // ----------REVIEW GRAPH--------------------
 var width = 600;
@@ -290,7 +401,7 @@ var xAxisGen = d3.axisBottom(xScale).ticks(4);
 var chart = d3.select('.chart')
 .attr('viewBox','0 0 '+(width+margin*2)+' '+(height+margin))
 .append('g')
-.attr('transform','translate('+margin+',0)');
+.attr('transform','translate('+margin+',50)');
 
 
 
@@ -305,7 +416,7 @@ barsGroups.append('rect')
 .attr('height',100)
 .attr('fill',(d,i)=>colGen(i))
 .transition()
-.duration(2000)
+.duration(5000)
 .attr('width',(d)=>d.user)
 .attr('x',60)
 .attr('y',20)
@@ -315,7 +426,7 @@ barsGroups.append('g')
 .append(function(d){
 	return d3.select('.icons .'+ d.icon).node().cloneNode(true);
 })
-.attr('transform','translate('+-90+','+10+') scale('+spacing/900+')'),
+.attr('transform','translate('+-90+','+0+') scale('+spacing/900+')'),
 
 
 barsGroups.append('text')
@@ -386,58 +497,7 @@ filter.append("feOffset")
 .attr("dy", 5)
 .attr("result", "offsetBlur");
 
+// -------Button Filtering"Stan"----------------
 
-
-//-----TATIANA----CATEGORY SELECT - OPTION BUTTONS SHOW--------------
-
-	$('.ctg-food').on('click',function(){
-		$('.ctg-food').css('color','#79E8CC');
-		$('.ctg-accomm').css('color','white');
-		$('.ctg-sights').css('color','white');
-		$('.ctg-transp').css('color','white');
-	    $('.accommodation_wrap').hide();
-	    $('.sightseeing_wrap').hide();
-	    // $('.transport_wrap').hide();	    
-	    $('.food_wrap').show();
-	    oCafeAnime.play();
-
-  	});
-
-  	$('.ctg-accomm').on('click',function(){
-  		$('.ctg-accomm').css('color','#79E8CC');
-		$('.ctg-food').css('color','white');
-		$('.ctg-sights').css('color','white');
-		$('.ctg-transp').css('color','white');	    
-	    $('.sightseeing_wrap').hide();
-	    // $('.transport_wrap').hide();	    
-	    $('.food_wrap').hide();
-	    $('.accommodation_wrap').show();
-	    oHotelAnime.play();
-  	});
-
-  	$('.ctg-sights').on('click',function(){
-  		$('.ctg-sights').css('color','#79E8CC');
-		$('.ctg-accomm').css('color','white');
-		$('.ctg-food').css('color','white');
-		$('.ctg-transp').css('color','white');
-	    $('.accommodation_wrap').hide();	    
-	    // $('.transport_wrap').hide();	    
-	    $('.food_wrap').hide();
-	    $('.sightseeing_wrap').show();
-	    // ???.play();
-  	});
-
-  	$('.ctg-transp').on('click',function(){
-  		$('.ctg-transp').css('color','#79E8CC');
-		$('.ctg-accomm').css('color','white');
-		$('.ctg-sights').css('color','white');
-		$('.ctg-food').css('color','white');
-	    $('.accommodation_wrap').hide();
-	    $('.sightseeing_wrap').hide();
-	    $('.food_wrap').hide();
-	  //   $('.transport_wrap').show();
-	  //   ???.play();
-  	});
-//----TATIANA's FINISHED HERE
 
 

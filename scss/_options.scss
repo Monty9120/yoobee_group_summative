@@ -1,27 +1,35 @@
 
 body{
-	background-color: gray;
+	background-color: grey;
 }
+
+// .icon_bar{
+// 	display:none;
+// }
+
+
+// .the-icon{
+// 	display:none;
+// }
 
 .food_wrap{
 	font-family: $main-font;
 	font-size: .6em;
-	display:none;
-
+	// display:none;
+}
 
 .accommodation_wrap{
 	/*border:1px red solid;*/
 	font-family: $main-font;
 	font-size: .6em;
 	display:none;
-
 }
+
 .sightseeing_wrap{
 	/*border:1px red solid;*/
 	font-family: $main-font;
 	font-size: .6em;
 	display:none;
-
 }
 
 .transport_wrap{
@@ -378,10 +386,6 @@ body{
 
 @media only screen and (min-width: 80em){
 	
-	// svg{
-	// 	width:80%;
-	// 	max-width:13em;
-	// }
 
 
 	
