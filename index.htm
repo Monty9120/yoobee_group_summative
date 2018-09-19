@@ -83,7 +83,7 @@
           </div>
 
           <div class="filter-search input-group md-form form-sm form-2 pl-0">
-            <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Enter address" aria-label="Search">
+            <input id="autocomplete" onFocus="geolocate()" class="form-control my-0 py-1 amber-border" type="text" placeholder="Enter address" aria-label="Search">
             <div class="input-group-append">
               <span class="input-group-text amber lighten-3" id="basic-text1"><i class="fa fa-search text-grey" aria-hidden="true"></i></span>
             </div>
@@ -420,6 +420,11 @@
 <!-- bootstrap javascript -->
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDknEtmtQzCjjFGOAJiHVFKcBegAsUBUKc&libraries=places&callback=initAutocomplete"
+        async defer></script>
+
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDknEtmtQzCjjFGOAJiHVFKcBegAsUBUKc&callback=initMap"
+    async defer></script> -->
 
 </body>
 </html>
