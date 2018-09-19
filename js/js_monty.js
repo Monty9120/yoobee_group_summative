@@ -467,7 +467,7 @@ function loadVenues(lat,lng){
 				});
 
 				let marker = L.marker(venue.latlng,{icon:myIcon}).addTo(venueGroup);
-				marker.bindPopup('<div id="custom-map-popup"><img src="'+icon+'"><h1>'+venue.name+'</h1><p>"'+venue.address+'"</p><a href="#" class="sqr-bttn btn btn-primary"  data-toggle="modal" data-target="#exampleModalLong">More info</a></div>');
+				marker.bindPopup('<div class="custom-map-popup"><img src="'+icon+'"><h1>'+venue.name+'</h1><p>"'+venue.address+'"</p><a href="#" class="sqr-bttn btn btn-primary"  data-toggle="modal" data-target="#exampleModalLong">More info</a></div>');
 
 
 
