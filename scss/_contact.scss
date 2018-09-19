@@ -1,0 +1,167 @@
+.contact{
+	background-color:$dark-grey;
+
+	.contact-wrap{
+		padding: 1em;
+		margin: 1em;
+		font-family: $body-font;
+		text-align: center;
+		color: $text;
+		border: 1px white solid;
+		h1{
+			font-family: $display-font;
+			color: $mint;
+			margin-bottom: 1em;
+		}
+	
+
+		.contact-us{
+			display: flex;
+			flex-direction: column;
+			margin-bottom: 3em;
+			
+			i{
+				font-size: 3em;
+				color: $mint;
+			}
+			p{
+				padding: 5px 0 1em ;
+				font-size: 2em;
+
+
+				font-family: Open Sans Condensed;
+			}
+		}
+
+		.form-wrap{
+			font-family: $display-font;
+
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+
+
+
+
+			input{
+				background-color: rgba(0,0,0,0.0);
+				width: 50%;
+				margin: auto;
+				color: $text;
+				border: none;
+				padding: 5px 0px 5px 5px;
+				border-radius: 0;
+				color: $mint;
+				transition: all ease 0.7s;
+				text-overflow: ellipsis;
+				text-align: center;
+				&:focus{
+					border-bottom: 1px $mint solid;
+					box-shadow: none;
+					width: 80%;
+
+					/*width: 70%;*/
+
+				}
+			
+			}
+			
+			textarea{
+				padding: 5px 0px 5px 5px;
+				width: 80%;
+				margin: auto;
+				background-color: rgba(0,0,0,0.0);
+				border: none;
+				border-radius: 0;
+				border-bottom: 1px $mint solid;
+				color: $mint;
+				text-align: center;
+
+				&:focus{
+					border: thin $mint solid;
+					box-shadow: none;
+					/*width: 70%;*/
+
+				}
+			}
+			.text-muted{
+				font-size: 10px;
+				color: #ccc;
+			}
+		}
+		.form-center{
+		
+
+			.form-check-label{
+				margin: auto;
+			}
+			button{
+				padding: 1em;
+				width: 30%;
+				background-image: linear-gradient(50deg, $mint, #98edd7);
+				border: none;
+				margin: auto;
+				font-family: $display-font;
+				font-size: 1em;
+				cursor: pointer;
+				box-shadow: 0px 4px 0px 0px rgba(204,204,204,0.5);
+				transition: all ease 0.2s;
+				&:active{
+					
+					transform:translateY(3px);
+					box-shadow: 0px 1px 0px 0px rgba(204,204,204,0.5);
+				}
+				&:focus{
+					outline: 0;
+				}
+
+
+			}
+		}
+	
+	}
+
+}
+@media only screen and (min-width: 60em){
+	.contact{
+		.contact-wrap{
+			margin: 0 25%;
+	
+		.form-wrap{
+			input{
+				width: 25%;
+				&:focus{
+					width: 40%;
+
+				}
+			
+			}
+			
+			textarea{
+				width: 40%;
+
+				&:focus{
+					border: thin $mint solid;
+					box-shadow: none;
+					/*width: 70%;*/
+
+				}
+			}
+		}
+		.form-center{
+		
+
+			.form-check-label{
+				margin: auto;
+			}
+			button{
+
+
+
+				}
+			}
+		}
+
+
+	}
+}

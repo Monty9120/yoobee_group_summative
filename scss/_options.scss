@@ -1,7 +1,7 @@
 
-body{
-	background-color: gray;
-}
+// body{
+// 	background-color: grey;
+// }
 
 .food_wrap{
 	font-family: $main-font;
@@ -11,17 +11,16 @@ body{
 
 .accommodation_wrap{
 	/*border:1px red solid;*/
-	font-family: $main-font;
+	font-family: $display-font;
 	font-size: .6em;
 	display:none;
-
 }
+
 .sightseeing_wrap{
 	/*border:1px red solid;*/
 	font-family: $main-font;
 	font-size: .6em;
 	display:none;
-
 }
 
 .transport_wrap{
@@ -378,10 +377,6 @@ body{
 
 @media only screen and (min-width: 80em){
 	
-	// svg{
-	// 	width:80%;
-	// 	max-width:13em;
-	// }
 
 
 	
