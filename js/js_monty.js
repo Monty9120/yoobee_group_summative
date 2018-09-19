@@ -379,7 +379,8 @@ function loadVenues(lat,lng){
 					latlng:{lat:item.venue.location.lat,lng:item.venue.location.lng},
 					name:item.venue.name,
 					venueid:item.venue.id,
-					category:item.venue.categories["0"].name
+					category:item.venue.categories["0"].name,
+					address:item.venue.location.formattedAddress,
 				};
 			});
 			venueGroup.clearLayers();
@@ -491,8 +492,10 @@ function loadVenues(lat,lng){
 				});
 
 				let marker = L.marker(venue.latlng,{icon:myIcon}).addTo(venueGroup);
-				marker.bindPopup('<div>'+venue.name+'</div>');
 				
+
+				marker.bindPopup('<div id="mapPopup"><img src="'+icon+'"><h1>'+venue.name+'</h1><p>"'+venue.address+'"</p><a href="#" class="sqr-bttn">More info</a></div>');
+
 
 			});
 		}
