@@ -1,6 +1,6 @@
 const version = '?v=20170901';
-const clientId = '&client_id=NRDFRIMIWO5QY4H3HTPITKL3JKOJLBJTWUHBUYJE5JHB5XCB';
-const clientSecret = '&client_secret=GIFUXB102BZZ0KXFTOCZ5XGWN1T5LLZG1NU0G5JKFRVP55DN';
+const clientId = '&client_id=Q3WBTBDNADDA1WRO5D014CAYCZME0UUHFEDCCUB4KRTR45F0';
+const clientSecret = '&client_secret=2Z031BPG0CBUU4XXUH4Y0QECGOQKBENJPKLMMW3SKZ3GVJMA';
 
 const key = version + clientId + clientSecret;
 
@@ -379,75 +379,97 @@ $(function(){
 		this.setStyle({fillOpacity:0, stroke:0});
 	});
 
+
+	$('#autocomplete').on('change',function(){
+		var val = $(this).val();
+		if(val == ''){
+
+			if (navigator.geolocation) {
+			  	navigator.geolocation.getCurrentPosition(function(position) {
+				    var geolocation = {
+				      lat: position.coords.latitude,
+				      lng: position.coords.longitude
+				    };
+					newCenter = geolocation;
+			  });
+			}
+
+			directionsLayer.clearLayers();
+			addressLayer.clearLayers();
+
+		}
+	})
+
 });
 
 // - - - - - -AUTOCOMPLETE ADDRESS IN SEARCH FILTER - - - - - -
 
-//Taken from Google Map - different way of naming class etc
-var placeSearch, autocomplete;
-var componentForm = {
-	street_number: 'short_name',
-	route: 'long_name',
-	locality: 'long_name',
-	administrative_area_level_1: 'short_name',
-	country: 'long_name',
-	postal_code: 'short_name'
-};
+	//Taken from Google Map - different way of naming class etc
+	var placeSearch, autocomplete;
+	var componentForm = {
+		street_number: 'short_name',
+		route: 'long_name',
+		locality: 'long_name',
+		administrative_area_level_1: 'short_name',
+		country: 'long_name',
+		postal_code: 'short_name'
+	};
 
-var newCenter;
-function initAutocomplete() {
-	// Create the autocomplete object, restricting the search to geographical
-	// location types.
-	autocomplete = new google.maps.places.Autocomplete(
-	    /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-	    {types: ['geocode']});
+	var newCenter;
+	function initAutocomplete() {
+		// Create the autocomplete object, restricting the search to geographical
+		// location types.
+		autocomplete = new google.maps.places.Autocomplete(
+		    /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+		    {types: ['geocode']});
 
-	// When the user selects an address from the dropdown, populate the address
-	// fields in the form.
-	autocomplete.addListener('place_changed', fillInAddress);
+		// When the user selects an address from the dropdown, populate the address
+		// fields in the form.
+		autocomplete.addListener('place_changed', fillInAddress);
 
-	directionsService = new google.maps.DirectionsService;
-}
-
-
-
-function fillInAddress() {
-	// Get the place details from the autocomplete object.
-
-	addressLayer.clearLayers();
-	var place = autocomplete.getPlace();
-	console.log(place);
-
-	//Here is requested address
-	newCenter = {lat:place.geometry.location.lat(),lng:place.geometry.location.lng()};
-
-	map.setView(newCenter,14);
-
-	var greenIcon = L.icon({
-	    iconUrl: 'custom_images/green_icon_v2.png',
-	    iconSize:[42,42]
-	});
-
-	let marker = L.marker(newCenter,{icon:greenIcon}).addTo(addressLayer);
-}
-
-// Bias the autocomplete object to the user's geographical location,
-// as supplied by the browser's 'navigator.geolocation' object.
-function geolocate() {
-	if (navigator.geolocation) {
-	  	navigator.geolocation.getCurrentPosition(function(position) {
-	    var geolocation = {
-	      lat: position.coords.latitude,
-	      lng: position.coords.longitude
-	    };
-	    var circle = new google.maps.Circle({
-	      center: geolocation,
-	      radius: position.coords.accuracy
-	    });
-	    autocomplete.setBounds(circle.getBounds());
-	  });
+		directionsService = new google.maps.DirectionsService;
 	}
-}
+
+
+
+	function fillInAddress() {
+		// Get the place details from the autocomplete object.
+
+		addressLayer.clearLayers();
+		var place = autocomplete.getPlace();
+		console.log('Hi')
+		console.log(place);
+
+		//Here is requested address
+		newCenter = {lat:place.geometry.location.lat(),lng:place.geometry.location.lng()};
+
+		map.setView(newCenter,14);
+
+		var greenIcon = L.icon({
+		    iconUrl: 'custom_images/green_icon_v2.png',
+		    iconSize:[42,42]
+		});
+
+		let marker = L.marker(newCenter,{icon:greenIcon}).addTo(addressLayer);
+	}
+
+	// Bias the autocomplete object to the user's geographical location,
+	// as supplied by the browser's 'navigator.geolocation' object.
+	function geolocate() {
+		if (navigator.geolocation) {
+		  	navigator.geolocation.getCurrentPosition(function(position) {
+		    var geolocation = {
+		      lat: position.coords.latitude,
+		      lng: position.coords.longitude
+		    };
+		    var circle = new google.maps.Circle({
+		      center: geolocation,
+		      radius: position.coords.accuracy
+		    });
+		    autocomplete.setBounds(circle.getBounds());
+		  });
+		}
+	}
 
 
 //-------TATIANA's CODE PART 1 FINISHED----------
@@ -592,7 +614,7 @@ function loadVenues(lat,lng){
 
 				let marker = L.marker(venue.latlng,{icon:myIcon}).addTo(venueGroup);
 
-				marker.bindPopup('<div class="custom-map-popup"><img src="'+icon+'"><h1>'+venue.name+'</h1><p>"'+venue.address+'"</p><a href="#" class="sqr-bttn btn btn-primary"  data-toggle="modal" data-target="#exampleModalLong">More info</a></div>');
+				marker.bindPopup('<div class="custom-map-popup"><img src="'+icon+'"><h1>'+venue.name+'</h1><p>"'+venue.address+'"</p><a data-lat="'+venue.latlng.lat+'" data-lng="'+venue.latlng.lng+'" href="#" class="sqr-bttn btn btn-primary"  data-toggle="modal" data-target="#exampleModalLong">More info</a></div>');
 
 
 
@@ -618,11 +640,25 @@ function loadVenues(lat,lng){
 
 							var venue = res.response.venue;
 
-							$('.modal-title').text(venue.name);
-							$('.venue-description').text(venue.description);
-							$('.venue-location span').text(venue.location.formattedAddress);
-							$('.venue-phone-number span').text(venue.contact.formattedPhone);
-							$('.venue-price-range span').text(venue.price.message);
+							if(venue.name){
+								$('.modal-title').text(venue.name);
+							}
+							if(venue.description){
+								$('.venue-description').text(venue.description);
+							}
+							if(venue.location.formattedAddress){
+								$('.venue-location span').text(venue.location.formattedAddress);
+							}
+							if(venue.contact.formattedPhone){
+								$('.venue-phone-number span').text(venue.contact.formattedPhone);
+							}
+							if(venue.price){
+								$('.venue-price-range span').text(venue.price.message);
+							}
+
+							$('.get-direction').data('lat',venue.location.lat);
+							$('.get-direction').data('lng',venue.location.lng)
+							
 
 						}
 
@@ -631,8 +667,6 @@ function loadVenues(lat,lng){
 					var openHours = $('.venue-open-hours');
 					
 					openHours.on('click', function(){
-
-
 
 						var weeklyHours = $('.venue-open-hours').data('reveal');
 
@@ -677,18 +711,25 @@ function loadVenues(lat,lng){
 
 
 
-				//-------TATIANA's CODE PART 2----------
-				// - - - - - -GOOGLE MAP DIRECTIONS - - - - - -
+			//-------TATIANA's CODE PART 2----------
+			// - - - - - -GOOGLE MAP DIRECTIONS - - - - - -
 
-				marker.on('click',function(){
+				$('.get-direction').on('click',function(e){
+					e.preventDefault();
+
+					$('.more-details').modal('hide');
+
 					directionsLayer.clearLayers();
-					
+					var destination1 = {
+						lat:$(this).data('lat'),
+						lng:$(this).data('lng'),
+					};					
 
 					if(newCenter){
 
 						var request = {
 				          origin: newCenter,
-				          destination: this.getLatLng(),
+				          destination: destination1,
 				          travelMode: 'DRIVING'
 				        };
 						//ask directionsService to fulfill your request
@@ -696,7 +737,7 @@ function loadVenues(lat,lng){
 						directionsService.route(request,function(response,status){
 
 							var path = response.routes["0"].overview_path;
-							console.log(path);
+							// console.log(path);
 
 							var polyline = _(path).map(function(item){
 								return {lat:item.lat(),lng:item.lng()};
@@ -706,11 +747,55 @@ function loadVenues(lat,lng){
 								color:'#79E8CC',
 								weight:3
 							}).addTo(directionsLayer);
-							console.log('hi');
-
+							// console.log('hi');
 						});
+					}else{
+						if (navigator.geolocation) {
+
+							directionsLayer.clearLayers();
+
+							navigator.geolocation.getCurrentPosition(position=>{
+								var myLocation = {
+									lat:position.coords.latitude,
+									lng:position.coords.longitude
+								};
+
+								//create a request for directions
+
+								var destinationLatLng = {
+									lat: $(this).data('lat'),
+									lng: $(this).data('lng'),
+								};
+								var request = {
+							          origin: myLocation,
+							          destination: destinationLatLng,
+							          travelMode: 'DRIVING'
+							        };
+								//ask directionsService to fulfill your request
+								directionsService.route(request,function(response,status){
+
+									directionsLayer.clearLayers();
+
+									var path = response.routes["0"].overview_path;
+
+									var polyline = _(path).map(function(item){
+										return {lat:item.lat(),lng:item.lng()};
+									});
+
+									L.polyline(polyline,{
+										color:'#79E8CC',
+										weight:3
+									}).addTo(directionsLayer);
+									
+								});
+							});
+						}
 					}					
-				})
+				});
+
+
+				
+
 				//-------TATIANA's CODE PART 2 FINISHED----------
 			
 
@@ -721,26 +806,26 @@ function loadVenues(lat,lng){
 
 	});
 
-	$.ajax({
-		url:transportUrl,
-		dataType:'jsonp',
-		success:function(res){
-			// console.log(res.response.groups["0"].items);
-			var data = res.response.groups["0"].items;
-			var venues = _(data).map(function(item){
-				return {
-					latlng:{lat:item.venue.location.lat,lng:item.venue.location.lng},
-					name:item.venue.name,
-					venueid:item.venue.id,
-					category:item.venue.categories["0"].name
-				};
+	// $.ajax({
+	// 	url:transportUrl,
+	// 	dataType:'jsonp',
+	// 	success:function(res){
+	// 		// console.log(res.response.groups["0"].items);
+	// 		var data = res.response.groups["0"].items;
+	// 		var venues = _(data).map(function(item){
+	// 			return {
+	// 				latlng:{lat:item.venue.location.lat,lng:item.venue.location.lng},
+	// 				name:item.venue.name,
+	// 				venueid:item.venue.id,
+	// 				category:item.venue.categories["0"].name
+	// 			};
 
 
-			});
+	// 		});
 		
-		}
+	// 	}
 
-	});
+	// });
 }
 
 // TO HERE
@@ -763,7 +848,7 @@ function loadBusStops(lat,lng){
 }
 $(function(){
 
-	// ===========FOOD FILTER=========================
+// ===========FOOD FILTER=========================
 	$('.inner_cafe_circle').on('click',function(){
 		$('.inner_cafe_circle').css('fill','#79E8CC');
 		$('.inner_bar_circle').css('fill','white');
