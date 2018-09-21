@@ -466,7 +466,7 @@ function loadVenues(lat,lng){
 		url:exploreUrl,
 		dataType:'jsonp',
 		success:function(res){
-			// console.log(res.response.groups["0"].items);
+			console.log(res.response.groups["0"].items);
 			var data = res.response.groups["0"].items;
 			var venues = _(data).map(function(item){
 				return {
@@ -862,10 +862,9 @@ $(function(){
 
 	});
 
-	
 
 
-})
+});
 
 
 
