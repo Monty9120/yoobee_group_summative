@@ -1,6 +1,6 @@
 const version = '?v=20170901';
-const clientId = '&client_id=NRDFRIMIWO5QY4H3HTPITKL3JKOJLBJTWUHBUYJE5JHB5XCB';
-const clientSecret = '&client_secret=GIFUXB102BZZ0KXFTOCZ5XGWN1T5LLZG1NU0G5JKFRVP55DN';
+const clientId = '&client_id=N1JXRNTPPR4BUJYTKAY1BWIUSN2KX3122UI55TB4AM5J00IJ';
+const clientSecret = '&client_secret=AADWLPTOC4YMSTFOYVWQKWVWQLYAB4JGHW0R50Y4YPCOI3BF';
 
 const key = version + clientId + clientSecret;
 
@@ -88,8 +88,6 @@ $(function(){
 	map.on('movestart',function(){
 		$('#map').addClass('no-click')
 	});
-
-
 
 
 	//End of Leaflet Map
@@ -379,6 +377,32 @@ $(function(){
 		this.setStyle({fillOpacity:0, stroke:0});
 	});
 
+	var openHours = $('.venue-open-hours');
+					
+	openHours.on('click', function(){
+		console.log('hi');
+
+
+		var weeklyHours = $('.venue-open-hours').data('reveal');
+
+		// * * * Open and close .weekly-hours when .venue-open-hours is clicked
+
+		if (weeklyHours == 'close'){
+
+			$('.venue-open-hours ul.weekly-hours').addClass('open-hours')
+			$('.venue-open-hours').data('reveal', 'open');
+
+		} else {
+
+			$('.venue-open-hours ul.weekly-hours').removeClass('open-hours').data('reveal', 'close');
+			$('.venue-open-hours').data('reveal', 'close');
+
+		}		// * * * weeklyHours * * => 		if else E N D
+
+
+	}); 	// * * * openHours * * => 		on click event E N D
+
+
 });
 
 // - - - - - -AUTOCOMPLETE ADDRESS IN SEARCH FILTER - - - - - -
@@ -604,6 +628,10 @@ function loadVenues(lat,lng){
 
 				marker.on('click', function(){
 
+					//close the drop down
+					$('.venue-open-hours ul.weekly-hours').removeClass('open-hours').data('reveal', 'close');
+					$('.venue-open-hours').data('reveal', 'close');
+
 					var venueUrl = 	'https://api.foursquare.com/v2/venues/'+
 					this.venueid+key;
 
@@ -614,62 +642,94 @@ function loadVenues(lat,lng){
 						dataType:'jsonp',
 						success:function(res){ 
 
+
 							console.log(res);
 
 							var venue = res.response.venue;
 
-							$('.modal-title').text(venue.name);
-							$('.venue-description').text(venue.description);
-							$('.venue-location span').text(venue.location.formattedAddress);
-							$('.venue-phone-number span').text(venue.contact.formattedPhone);
-							$('.venue-price-range span').text(venue.price.message);
+							$('.more-details .modal-title').text(venue.name);
 
+								console.log(venue.page);
+
+							if(venue.page){
+
+								$('.venue-description').text(venue.page.pageInfo.description);
+
+
+							} else {
+
+								$('.venue-description').text('No description avalible');
+
+							}
+
+							if(venue.location){
+
+								if(venue.location.formattedAddress){
+
+									$('.venue-location span').text(venue.location.formattedAddress);
+
+								} else {
+
+									$('.venue-location span').text(venue.location.address);
+
+								}
+
+							} else {
+
+								$('.venue-location').hide();
+
+							}
+
+							if(venue.contact.formattedPhone){
+
+								if(venue.contact.formattedPhone){
+
+									$('.venue-phone-number span').text(venue.contact.formattedPhone);
+
+								} else {
+
+									$('.venue-phone-number span').text(venue.contact.phone);
+
+								}
+
+							} else {
+
+								$('.venue-phone-number ').hide();
+
+							}
+
+							if(venue.price){
+								
+								$('.venue-price-range span').text(venue.price.message);
+
+								// if(venue.price.tier == 1) {
+								// 	$('.venue-price-range span').append("<span> $</span>");
+								// }
+								
+								// if(venue.price.tier == 2) {
+								// 	$('.venue-price-range span').append("<span> $$</span>");
+								// }
+
+								// if(venue.price.tier == 3) {
+								// 	$('.venue-price-range span').append("<span> $$$</span>");
+								// }
+
+							}else {
+
+								$('.venue-price-range').hide();
+							}
+							
+							if(venue.hours){
+
+							}else{
+								$('.venue-phone-number ').hide();
+								
+							}
 						}
 
 					});		// * * * ajax * * => 		E N D
 
-					var openHours = $('.venue-open-hours');
 					
-					openHours.on('click', function(){
-
-
-
-						var weeklyHours = $('.venue-open-hours').data('reveal');
-
-						// * * * Open and close .weekly-hours when .venue-open-hours is clicked
-
-						if (weeklyHours == 'close'){
-
-							$('.venue-open-hours ul.weekly-hours').addClass('open-hours')
-							$('.venue-open-hours').data('reveal', 'open');
-
-						} else {
-
-							$('.venue-open-hours ul.weekly-hours').removeClass('open-hours').data('reveal', 'close');
-							$('.venue-open-hours').data('reveal', 'close');
-
-
-						}		// * * * weeklyHours * * => 		if else E N D
-
-       					// * * * Request Venue Hours 
-
-       // 					venueid = venue.venueid;
-       					
-       // 					let hoursUrl = 'https://api.foursquare.com/v2/venues/'+venueid+'/hours'+key;
-
-       // 					$.ajax({
-
-       // 						url:hoursUrl,
-							// dataType:'jsonp',
-							// success:function(res){
-								
-								
-							// }
-
-       // 					});		// * * * ajax * * => 		E N D
-
-					}); 	// * * * openHours * * => 		on click event E N D
-
 				}); 	// * * * marker * *  => 		on click event E N D
 
 				// - - * * Cree's Script - - - - - E N D - - * *
@@ -721,26 +781,26 @@ function loadVenues(lat,lng){
 
 	});
 
-	$.ajax({
-		url:transportUrl,
-		dataType:'jsonp',
-		success:function(res){
-			// console.log(res.response.groups["0"].items);
-			var data = res.response.groups["0"].items;
-			var venues = _(data).map(function(item){
-				return {
-					latlng:{lat:item.venue.location.lat,lng:item.venue.location.lng},
-					name:item.venue.name,
-					venueid:item.venue.id,
-					category:item.venue.categories["0"].name
-				};
+	// $.ajax({
+	// 	url:transportUrl,
+	// 	dataType:'jsonp',
+	// 	success:function(res){
+	// 		// console.log(res.response.groups["0"].items);
+	// 		var data = res.response.groups["0"].items;
+	// 		var venues = _(data).map(function(item){
+	// 			return {
+	// 				latlng:{lat:item.venue.location.lat,lng:item.venue.location.lng},
+	// 				name:item.venue.name,
+	// 				venueid:item.venue.id,
+	// 				category:item.venue.categories["0"].name
+	// 			};
 
 
-			});
+	// 		});
 		
-		}
+	// 	}
 
-	});
+	// });
 }
 
 // TO HERE
@@ -761,6 +821,7 @@ function loadBusStops(lat,lng){
 
         // });
 }
+
 $(function(){
 
 	// ===========FOOD FILTER=========================
