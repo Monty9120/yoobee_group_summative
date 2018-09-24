@@ -1,6 +1,6 @@
 const version = '?v=20170901';
-const clientId = '&client_id=Q3WBTBDNADDA1WRO5D014CAYCZME0UUHFEDCCUB4KRTR45F0';
-const clientSecret = '&client_secret=2Z031BPG0CBUU4XXUH4Y0QECGOQKBENJPKLMMW3SKZ3GVJMA';
+const clientId = '&client_id=KVZAFAFCMDFQXEBRUG0DPFVON3TDLW00D2U5N0ICFVJRIH1U';
+const clientSecret = '&client_secret=F2QLQQTXUXEJ2N3PY11FU4HR43L3H25QBYUUB1CJWOGHDPWB';
 
 const key = version + clientId + clientSecret;
 
@@ -28,8 +28,8 @@ var liquorIcon = 'custom_images/icon_liquor.svg';
 var beachIcon = 'custom_images/icon_beach.svg';
 var hostelIcon = 'custom_images/icon_backpack.svg';
 var airportIcon = 'custom_images/icon_airport.svg';
-
-
+var museumIcon = 'custom_images/icon_museum.svg';
+var attractionsIcon = 'custom_images/icon_attractions.svg';
 
 
 
@@ -39,7 +39,7 @@ var directionsService;
 $(function(){
 
 	//Leaflet Map
-	var center ={lat:-36.842744,lng:174.766994};
+	var center ={lat:-36.8535,lng:174.7650};
 	map = L.map('map',{
 		doubleClickZoom: false,
 		zoomControl:false
@@ -110,7 +110,7 @@ $(function(){
 
 //------TATIANA's CODE PART 1 - FILTERS SECTION
 
-	//- - - - - -  -LANDMARKS- - - - - - -
+//- - - - - -  -LANDMARKS- - - - - - -
 	var landmarks =
 		{
 			allauckland:[
@@ -316,7 +316,7 @@ $(function(){
 		};
 
 
-	//- - - - - -ZOOMING IN AND HIGHTLIGHTING SELECTED AREA- - - - - -
+//- - - - - -ZOOMING IN AND HIGHTLIGHTING SELECTED AREA- - - - - -
 	var areaPolygon = L.polygon([], {color: 'coral'}).addTo(map);
 	
 	$('#area-dropdown').on('change',function(){
@@ -393,13 +393,10 @@ $(function(){
 					newCenter = geolocation;
 			  });
 			}
-
 			directionsLayer.clearLayers();
 			addressLayer.clearLayers();
-
 		}
 	})
-
 });
 
 // - - - - - -AUTOCOMPLETE ADDRESS IN SEARCH FILTER - - - - - -
@@ -492,8 +489,6 @@ function loadVenues(lat,lng){
 			var data = res.response.groups["0"].items;
 			var venues = _(data).map(function(item){
 
-
-
 				return {
 					latlng:{lat:item.venue.location.lat,lng:item.venue.location.lng},
 					name:item.venue.name,
@@ -503,19 +498,17 @@ function loadVenues(lat,lng){
 
 				};
 			});
-
+			console.log(venues);
 			venueGroup.clearLayers();
 			_(venues).each(function(venue){
 
 					var iconClass = '';
 				switch(venue.category) {
 				    case "Park":
-				        icon = parkIcon;
-				        iconClass = 'park';
-				        break;
-				    case "Scenic Lookout":
+				    case "Mountain":
 				    case "Campground":
 				        icon = parkIcon;
+				        iconClass = 'park';
 				        break;
 				    case "Hostel":
 				        icon = hostelIcon;
@@ -530,6 +523,7 @@ function loadVenues(lat,lng){
 				        break;
 				    case "Bar":
 				    case "Cocktail Bar":
+				    case "Pub":
 				    	iconClass = 'bar'; 
 				        icon = barIcon;
 				        break;
@@ -592,15 +586,26 @@ function loadVenues(lat,lng){
 				   	case "Gas Station":
 				   		icon = gasIcon
 				   		break;
-				   	case "Liquor Store":
-				   		icon = parkIcon
-				   		break;
 				   	case "Beach":
 				   	case "Bay":
 				   		icon = beachIcon
 				   		break;
 				   	case "Airport":
 				   		icon = airportIcon
+				   		break;
+				   	case "History Museum":
+				   		icon = museumIcon
+				   		iconClass = 'museum';
+				   		break;				   	
+				   	case "Zoo":
+				   	case "Aquarium":
+				   	case "Movie Theater":
+				   	case "Theater":
+				   	case "Art Gallery":
+				   	case "Volcano":
+				    case "Scenic Lookout":
+				   		icon = attractionsIcon
+				   		iconClass = 'attraction';
 				   		break;
 				    default:
 				        icon = locationIcon
@@ -618,7 +623,7 @@ function loadVenues(lat,lng){
 
 
 
-				// - - * * Cree's Script - More Details - - * *
+			// - - * * Cree's Script - More Details - - * *
 
 				var venueInfo = $('.more-info');
 
@@ -848,8 +853,38 @@ function loadBusStops(lat,lng){
 }
 $(function(){
 
+// ===========CLEAR THE CIRCLE WHEN YOU CHANGE CATEGORY=======
+
+	$('.ctg-food').on('click',function(){
+		$('.custom-icon').hide();
+	   	$('.custom-icon.cafe').show();
+	   	$('.custom-icon.bar').show();
+	   	$('.custom-icon.restaurant').show();
+  	});
+
+  	$('.ctg-accomm').on('click',function(){
+  		$('.custom-icon').hide();
+		$('.custom-icon.hotel').show();
+		$('.custom-icon.motel').show();
+		$('.custom-icon.backpack').show();
+  	});
+
+  	$('.ctg-sights').on('click',function(){
+  		$('.custom-icon').hide();
+		$('.custom-icon.attraction').show();
+		$('.custom-icon.museum').show();
+		$('.custom-icon.park').show();
+  	});
+
+  	$('.ctg-transp').on('click',function(){
+  		$('.custom-icon').hide();
+		$('.custom-icon.bike').show();
+		$('.custom-icon.train').show();
+		$('.custom-icon.bus').show();
+  	});	
+
 // ===========FOOD FILTER=========================
-	$('.inner_cafe_circle').on('click',function(){
+	$('.cafe_wrap').on('click',function(){
 		$('.inner_cafe_circle').css('fill','#79E8CC');
 		$('.inner_bar_circle').css('fill','white');
 		$('.inner_restaurant_circle').css('fill','white');
@@ -857,9 +892,9 @@ $(function(){
 		$('.custom-icon').hide();
 		$('.custom-icon.cafe').show();
 
-	})
+	});
 
-	$('.inner_bar_circle').on('click',function(){
+	$('.bar_wrap').on('click',function(){
 		$('.inner_cafe_circle').css('fill','white');
 		$('.inner_bar_circle').css('fill','#79E8CC');
 		$('.inner_restaurant_circle').css('fill','white');
@@ -867,9 +902,9 @@ $(function(){
 		$('.custom-icon').hide();
 		$('.custom-icon.bar').show();
 
-	})
+	});
 
-	$('.inner_restaurant_circle').on('click',function(){
+	$('.restaurant_wrap').on('click',function(){
 		$('.inner_cafe_circle').css('fill','white');
 		$('.inner_bar_circle').css('fill','white');
 		$('.inner_restaurant_circle').css('fill','#79E8CC');
@@ -877,9 +912,9 @@ $(function(){
 		$('.custom-icon').hide();
 		$('.custom-icon.restaurant').show();
 
-	})
+	});
 
-	$('.inner_food_all_circle').on('click',function(){
+	$('.food_all_wrap').on('click',function(){
 		$('.custom-icon').hide();
 		$('.custom-icon.restaurant').show();
 		$('.custom-icon.bar').show();
@@ -890,10 +925,10 @@ $(function(){
 		$('.inner_restaurant_circle').css('fill','white');
 		
 
-	})
+	});
 
-	// ===========ACCOMMODATION FILTER=========================
-	$('.inner_hotel_circle').on('click',function(){
+// ===========ACCOMMODATION FILTER=========================
+	$('.hotel_wrap').on('click',function(){
 		$('.inner_hotel_circle').css('fill','#79E8CC');
 		$('.inner_motel_circle').css('fill','white');
 		$('.inner_backpack_circle').css('fill','white');
@@ -901,9 +936,9 @@ $(function(){
 		$('.custom-icon').hide();
 		$('.custom-icon.hotel').show();
 
-	})
+	});
 
-	$('.inner_motel_circle').on('click',function(){
+	$('.motel_wrap').on('click',function(){
 		$('.inner_motel_circle').css('fill','#79E8CC');
 		$('.inner_hotel_circle').css('fill','white');
 		$('.inner_backpack_circle').css('fill','white');
@@ -911,9 +946,9 @@ $(function(){
 		$('.custom-icon').hide();
 		$('.custom-icon.motel').show();
 
-	})
+	});
 
-	$('.inner_backpack_circle').on('click',function(){
+	$('.backpack_wrap').on('click',function(){
 		$('.inner_backpack_circle').css('fill','#79E8CC');
 		$('.inner_hotel_circle').css('fill','white');
 		$('.inner_motel_circle').css('fill','white');
@@ -921,9 +956,9 @@ $(function(){
 		$('.custom-icon').hide();
 		$('.custom-icon.backpack').show();
 
-	})
+	});
 
-	$('.inner_accom_all_circle').on('click',function(){
+	$('.accom_all_wrap').on('click',function(){
 		$('.inner_accom_all_circle').css('fill','#79E8CC');
 		$('.inner_hotel_circle').css('fill','white');
 		$('.inner_motel_circle').css('fill','white');
@@ -933,10 +968,10 @@ $(function(){
 		$('.custom-icon.motel').show();
 		$('.custom-icon.backpack').show();
 
-	})
+	});
 
-	// ===========SIGHTSEEING FILTER=========================
-	$('.inner_park_circle').on('click',function(){
+// ===========SIGHTSEEING FILTER=========================
+	$('.park_wrap').on('click',function(){
 		$('.inner_park_circle').css('fill','#79E8CC');
 		$('.inner_museum_circle').css('fill','white');
 		$('.inner_shop_circle').css('fill','white');
@@ -944,45 +979,46 @@ $(function(){
 		$('.custom-icon').hide();
 		$('.custom-icon.park').show();
 
-	})
+	});
 
-	$('.inner_museum_circle').on('click',function(){
+	$('.museum_wrap').on('click',function(){
 		$('.inner_park_circle').css('fill','white');
 		$('.inner_museum_circle').css('fill','#79E8CC');
 		$('.inner_shop_circle').css('fill','white');
 		$('.inner_sight_all_circle').css('fill','white');
 		$('.custom-icon').hide();
 		$('.custom-icon.museum').show();
+		console.log('Museum')
 
-	})
+	});
 
-	$('.inner_shop_circle').on('click',function(){
+	$('.shop_wrap').on('click',function(){
 		$('.inner_park_circle').css('fill','white');
 		$('.inner_shop_circle').css('fill','#79E8CC');
 		$('.inner_museum_circle').css('fill','white');
 		$('.inner_sight_all_circle').css('fill','white');
 		$('.custom-icon').hide();
-		$('.custom-icon.shop').show();
+		$('.custom-icon.attraction').show();
 
 
-	})
+	});
 
 
-	$('.inner_sight_all_circle').on('click',function(){
+	$('.sight_all_wrap').on('click',function(){
 		$('.inner_park_circle').css('fill','white');
 		$('.inner_sight_all_circle').css('fill','#79E8CC');
 		$('.inner_museum_circle').css('fill','white');
 		$('.inner_shop_circle').css('fill','white');
 		$('.custom-icon').hide();
-		$('.custom-icon.shop').show();
+		$('.custom-icon.attraction').show();
 		$('.custom-icon.museum').show();
 		$('.custom-icon.park').show();
 
 
-	})
+	});
 
-	// ===========TRANSPORT FILTER=========================
-	$('.inner_bus_circle').on('click',function(){
+// ===========TRANSPORT FILTER=========================
+	$('.bus_wrap').on('click',function(){
 		$('.inner_bus_circle').css('fill','#79E8CC');
 		$('.inner_train_circle').css('fill','white');
 		$('.inner_bike_circle').css('fill','white');
@@ -990,9 +1026,9 @@ $(function(){
 		$('.custom-icon').hide();
 		$('.custom-icon.bus').show();
 
-	})
+	});
 
-	$('.inner_train_circle').on('click',function(){
+	$('.train_wrap').on('click',function(){
 		$('.inner_bus_circle').css('fill','white');
 		$('.inner_train_circle').css('fill','#79E8CC');
 		$('.inner_bike_circle').css('fill','white');
@@ -1000,9 +1036,9 @@ $(function(){
 		$('.custom-icon').hide();
 		$('.custom-icon.train').show();
 
-	})
+	});
 
-	$('.inner_bike_circle').on('click',function(){
+	$('.bike_wrap').on('click',function(){
 		$('.inner_bus_circle').css('fill','white');
 		$('.inner_bike_circle').css('fill','#79E8CC');
 		$('.inner_train_circle').css('fill','white');
@@ -1010,9 +1046,9 @@ $(function(){
 		$('.custom-icon').hide();
 		$('.custom-icon.bike').show();
 
-	})
+	});
 
-	$('.inner_transport_all_circle').on('click',function(){
+	$('.transport_all_wrap').on('click',function(){
 		$('.inner_bus_circle').css('fill','white');
 		$('.inner_bike_circle').css('fill','white');
 		$('.inner_train_circle').css('fill','white');
@@ -1022,22 +1058,9 @@ $(function(){
 		$('.custom-icon.train').show();
 		$('.custom-icon.bus').show();
 
-	})
-
-	// ===========INITIAL CLICK ON CATEGORY MAP DISPLAY=========================
-
-	$('.ctg-food').on('click',function(){
-		$('.custom-icon').hide();
-		$('.custom-icon.bar').show();
-		$('.custom-icon.cafe').show();
-		$('.custom-icon.restaurant').show();
-
 	});
 
-	
-
-
-})
+});
 
 
 
