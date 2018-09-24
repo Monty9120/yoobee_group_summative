@@ -3,6 +3,7 @@
 $(function(){
 
     // Open and close nav on mobile
+    
     $('.bars').on('click', function(e) {
 
         var navData = $('.navigation').data('nav');
@@ -27,6 +28,20 @@ $(function(){
         }
     });
 
-    
+    //Highlight links when clicked
 
+    $('.desktop-nav li a').on('click',function(e){
+       
+        $('a').removeClass('active');
+        $(this).addClass('active');
+
+
+        $('.modal-header .close').on('click',function(e){
+            $('.desktop-nav li a .btn').removeClass('active');
+        });
+
+    });
+
+    
 });
+

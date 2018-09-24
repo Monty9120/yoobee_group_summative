@@ -2,6 +2,12 @@ body {
   margin: 0;
   padding: 0; }
 
+input:focus {
+  outline: none; }
+
+button {
+  outline: none; }
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -2983,28 +2989,29 @@ nav {
   .nav-wrap {
     padding: 0 9em; } }
 
-.custom-login-modal {
+.custom-login-modal, .custom-signup-modal {
   padding: 1em;
   color: #292929;
   -webkit-box-shadow: 0px 0px 28px 2px rgba(0, 0, 0, 0.16);
   box-shadow: 0px 0px 28px 2px rgba(0, 0, 0, 0.16); }
-  .custom-login-modal .modal-content {
+  .custom-login-modal .modal-content, .custom-signup-modal .modal-content {
     padding: 0 1em; }
-    .custom-login-modal .modal-content .modal-header {
+    .custom-login-modal .modal-content .modal-header, .custom-signup-modal .modal-content .modal-header {
       border-bottom: none; }
-      .custom-login-modal .modal-content .modal-header .close {
+      .custom-login-modal .modal-content .modal-header .close, .custom-signup-modal .modal-content .modal-header .close {
         border: none;
         border-radius: 5px;
         font-size: 2em; }
-  .custom-login-modal button {
+  .custom-login-modal button, .custom-signup-modal button {
     font-family: "Open Sans", sans-serif;
     letter-spacing: 1px;
     text-transform: uppercase;
     -webkit-appearance: none;
     border: 2px solid #79E8CC;
-    padding: .5em 1em;
-    margin: 3em 0 1em 0; }
-    .custom-login-modal button.submit {
+    padding: 1em 2em;
+    display: block;
+    margin: 5em auto 2em; }
+    .custom-login-modal button.submit, .custom-signup-modal button.submit {
       -webkit-box-shadow: 0px 0px 28px -8px rgba(0, 0, 0, 0.11);
       box-shadow: 0px 0px 28px -8px rgba(0, 0, 0, 0.11); }
 
@@ -3035,6 +3042,8 @@ nav {
     border: none;
     border-bottom: 1px solid #eee;
     outline: none; }
+    .custom-login-form .form-group input:focus {
+      outline: none; }
     .custom-login-form .form-group input::-webkit-input-placeholder {
       font-size: .8em;
       font-weight: 100;
@@ -3055,11 +3064,14 @@ nav {
       color: red; }
 
 .custom-login-form .form-check {
-  padding-left: 1em; }
+  padding: .5em 0 0 1em; }
   .custom-login-form .form-check:nth-of-type(odd) {
     padding-top: 2em; }
   .custom-login-form .form-check .form-check-label {
-    font-size: .8em; }
+    font-size: .7em;
+    font-family: "Open Sans", sans-serif;
+    letter-spacing: 1px;
+    padding: 1em 2em; }
 
 .food_wrap {
   font-family: "Comfortaa", cursive;
