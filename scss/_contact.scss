@@ -1,24 +1,64 @@
+
+.scene{
+	display: none;
+}
+
+	
+h3{
+	color: white;
+	font-family: $main-font;
+	margin: 10px 0;
+	font-size: 16px;
+	display: none;
+	text-align: center;
+}
+
+
+.cube-controls{
+	display: none;
+}
 .contact{
 	background-color:$dark-grey;
 
+	
+	canvas{
+		width: 60%	;
+		position: absolute;
+		left:50%;
+		top: 1500px;
+		transform: translate(-50%,0); 
+		height: 500px;
+		margin-bottom: 3em;
+		display: none;
+	}
+
 	.contact-wrap{
 		padding: 1em;
-		margin: 1em;
+		margin: 0;
 		font-family: $body-font;
 		text-align: center;
 		color: $text;
-		border: 1px white solid;
 		h1{
 			font-family: $display-font;
 			color: $mint;
 			margin-bottom: 1em;
 		}
 	
-
+		}
 		.contact-us{
 			display: flex;
 			flex-direction: column;
 			margin-bottom: 3em;
+			border: 3px white solid;
+			background-color:#111;
+			padding: 1em;
+			background-color: #113;
+			font-family: $body-font;
+			text-align: center;
+			color: $text;
+
+			height: 94%;
+
 			
 			i{
 				font-size: 3em;
@@ -32,13 +72,21 @@
 				font-family: Open Sans Condensed;
 			}
 		}
-
+		
 		.form-wrap{
 			font-family: $display-font;
-
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
+			border: 3px white solid;
+			background-color: #113;
+			padding: 1em;
+
+			font-family: $body-font;
+			text-align: center;
+			color: $text;
+
+			height: 94%;
 
 
 
@@ -68,19 +116,19 @@
 			
 			textarea{
 				padding: 5px 0px 5px 5px;
-				width: 80%;
+				width: 50%;
 				margin: auto;
 				background-color: rgba(0,0,0,0.0);
 				border: none;
 				border-radius: 0;
-				border-bottom: 1px $mint solid;
 				color: $mint;
 				text-align: center;
+				transition: all ease 0.7s;
 
 				&:focus{
-					border: thin $mint solid;
+					border-bottom: 1px $mint solid;
 					box-shadow: none;
-					/*width: 70%;*/
+					width: 80%;
 
 				}
 			}
@@ -121,11 +169,17 @@
 	
 	}
 
-}
+
 @media only screen and (min-width: 60em){
+
 	.contact{
+		h3{
+			display: block;
+		}
+
 		.contact-wrap{
 			margin: 0 25%;
+			display: none;
 	
 		.form-wrap{
 			input{
@@ -138,12 +192,12 @@
 			}
 			
 			textarea{
-				width: 40%;
+				width: 25%;
 
 				&:focus{
-					border: thin $mint solid;
+					border-bottom: thin $mint solid;
 					box-shadow: none;
-					/*width: 70%;*/
+					width: 40%;
 
 				}
 			}
@@ -164,4 +218,149 @@
 
 
 	}
+	/*	-	-	-	CUBE-	-	-	-	-	-*/
+	
+		.cube-controls{
+			display: block;
+		}
+
+		.scene{
+			width: 80vw;
+			perspective: 100%;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%,-50%);
+			padding: 3em;
+			display: block;
+			margin-top: 10%;
+			z-index: 0;
+
+
+		
+
+		.cube{
+			width: 600px;
+			height: 600px;
+			position: relative;
+			transform-style: preserve-3d;
+			transform: translateZ(-100px);
+			transition: all ease 1s;
+			margin: auto;
+			margin-top: 5em;
+			transform: rotate3d(-20,0,0,10deg);
+
+
+
+
+
+
+			.cube__face{
+				position: absolute;
+				width: 600px;
+				height: 600px;
+				/*border-radius: 20px;*/
+				box-shadow: -1px 10px 33px 0px rgba(0,0,0,0.75);
+
+				
+
+				
+			}
+
+			.cube__face--front  { transform: rotateY(  0deg) translateZ(300px);
+									background-color: rgba(200,0,0,0.5); }
+			.cube__face--right  { transform: rotateY( 90deg) translateZ(300px);
+									background-color: rgba(0,100,0,0.5) }
+			.cube__face--back   { transform: rotateY(180deg) translateZ(300px); 
+									background-color: rgba(0,0,100,0.5)}
+			.cube__face--left   { transform: rotateY(-90deg) translateZ(300px); 
+									background-color: rgba(200,200,0,0.5)}
+			.cube__face--top    { transform: rotateX( 90deg) translateZ(300px); 
+									background-color: rgba(200,0,200,0.5)}
+			.cube__face--bottom { transform: rotateX(-90deg) translateZ(300px); 
+									background-color: rgba(0,200,0,0.5)}
+		
+			&:hover{
+				/*transform: rotate3d(1,1,1,200deg)*/
+				/*transform: rotate3d(50,100,100,180deg);*/
+			}
+		}
+
+	
+
+	
+
+
+	h1{
+		color: white;
+		font-family: arial;
+		font-size: 50px;
+		text-align: center;
+		text-shadow: 0 1px 0 teal,
+               0 1px 0 teal,
+               0 1px 0 teal,
+               0 2px 0 teal,
+               0 4px 0 teal,
+
+	}
+
+	}
+	.cube-controls{
+		display: flex;
+		justify-content: center;
+		margin: 1em;
+		width: 1000px;
+		margin-left: 3em;
+		background-color: #112;
+		padding: 1em;
+		z-index: 100;
+		position: absolute;
+		top: 100px;
+		left: 50%;
+		transform: translate(-50%);
+		border-radius: 20px;
+
+
+
+
+		button{
+			padding: 1em;
+			margin: 1em;
+			width: 100px;
+			background-color: $mint;
+			border-radius: 20px;
+		}
+	}
+
+	.fixed{
+		position: absolute;
+		top: 1000px;
+		width: 100%;
+	}
+
+
+
+	canvas{
+		display: block;
+	}
+
+
+	.scene{
+
+		.rotate-left{
+			transition: all ease 1s;
+			transform: rotate3d(-20,100,10,-100deg);
+		}
+		.random{
+			transform: rotate3d(-200,-100,300,1500deg);
+		}
+
+		.rotate-top{
+			transform: rotate3d(200,100,10,320deg);
+		}
+		} 
 }
+
+
+	
+

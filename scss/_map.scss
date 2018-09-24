@@ -1,7 +1,5 @@
 #map_section{
-
-	height: 70vh;
-	// border: 1px red solid;
+	height: 80vh;
 	background-color:$dark-grey;
 
 
@@ -9,7 +7,6 @@
 		width: 100%;
 		margin: auto;
 		height: 200px;
-		/*border: 1px red solid;*/
 		text-align: center;
 
 		h2{
@@ -109,11 +106,8 @@
 	}
 
 	.map_wrap{
-		// height:90%;
-		// border:1px green solid;
 		position:relative;
 		.button_wrap{
-			// border:1px blue solid;
 			position:absolute;
 			width:25%;
 			height:70%;
@@ -127,9 +121,8 @@
 
 	#map{
 		margin: auto;
-		height: 60vh;
+		height: 70vh;
 		width: 100%;
-	
 		position: relative;
 
 		.leaflet-control-zoom{

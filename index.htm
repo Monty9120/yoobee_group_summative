@@ -32,8 +32,7 @@
         <div class="logo">
           <a href="index.htm">
             <img src="custom_images/logo.png" alt="">
-     <!--        <i class="fas fa-map-marker-alt"></i>
-            <h1>FAST</h1> -->
+
           </a>
 
         </div>
@@ -44,15 +43,19 @@
 
         <ul class="navigation mobile-nav" data-nav="close">
           <li><a href="/" class="active">Home</a></li>
-          <li><a href="#" class="btn btn-primary login-btn" data-toggle="modal" data-target="#exampleModalCenter">Login</a></li>
-          <li><a href="#" class="btn btn-primary signup-btn" data-toggle="modal" data-target="#exampleModalCenter">Sign up</a></li>
+
+          <li><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#login-modal">Login</a></li>
+          <li><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#signup-modal">Sign up</a></li>
+
           <li><a href="contact.htm">Contact</a></li>
         </ul>
 
         <ul class="navigation desktop-nav" data-nav="close">
           <li><a href="/" class="active">Home</a></li>
-          <li><a href="#" data-toggle="modal" data-target="#exampleModalCenter">Login</a></li>
-          <li><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Sign up</a></li>
+
+          <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
+          <li><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#signup-modal">Sign up</a></li>
+
           <li><a href="contact.htm">Contact</a></li>
         </ul>
 
@@ -289,7 +292,6 @@
     <div class="container">
       <div class="section sect1">
         <a href="index.htm">
-            <!-- <img src="" alt=""> -->
             <!-- filler logo -->
             <i class="fas fa-map-marker-alt"></i>
             <h1>FAST</h1>
@@ -356,7 +358,9 @@
 
 <!-- + + + + + +  SIGN-UP MODAL + + + + + + + + + + + + + + + + + + -->
 <!-- + + Bootstrap Vertically Centered Modal + + -->
-<div class="custom-signup-modal modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+<div class="custom-login-modal modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -371,7 +375,7 @@
         <form class="custom-login-form">
             
           <div class="form-group">
-            <h5 class="modal-title" id="exampleModalLongTitle">Sign-up</h5>
+            <h5 class="modal-title" id="signup-modal">Sign-up</h5>
             <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Username">
           </div> <!-- form-group end -->
 
@@ -408,7 +412,9 @@
 
 <!-- + + + + + +  LOGIN MODAL + + + + + + + + + + + + + + + + + + -->
 <!-- + + Bootstrap Vertically Centered Modal + + -->
-<div class="custom-login-modal modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+<div class="custom-login-modal modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
