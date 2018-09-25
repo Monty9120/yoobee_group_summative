@@ -1,8 +1,7 @@
 const version = '?v=20170901';
 
-
-const clientId = '&client_id=5HT44E4CMVE2IO4G5HFZXSEKTPSNFJ25U0KVW2L43UPGM0L0';
-const clientSecret = '&client_secret=4DAKUMU0QYUHHQEKLDJLREFT0BU5OREVS312JA2TNY3ZQH0A';
+const clientId = '&client_id=HRPRE30BNM5L1T43M115VGMZQW5QXQARNLYTCAT5PDXQS1N3';
+const clientSecret = '&client_secret=TJ4KSJE3HXJY44NWZQ4BAECIJZUIPK4I1GIWDLU0A0BRJRCM';
 
 
 const key = version + clientId + clientSecret;
@@ -14,6 +13,10 @@ var marker;
 var addressLayer;
 var directionsLayer;
 var directionsService;
+var busStopLayer;
+var ferryLayer;
+var trainLayer;
+
 var locationIcon = 'custom_images/icon_location.svg';
 var barIcon = 'custom_images/icon_bar.svg';
 var foodIcon = 'custom_images/icon_food.svg';
@@ -31,6 +34,10 @@ var hostelIcon = 'custom_images/icon_backpack.svg';
 var airportIcon = 'custom_images/icon_airport.svg';
 var museumIcon = 'custom_images/icon_museum.svg';
 var attractionsIcon = 'custom_images/icon_attractions.svg';
+var ferryIcon = 'custom_images/icon_ferry.svg';
+var trainIcon = 'custom_images/icon_train.svg';
+
+
 
 $(function(){
 
@@ -41,6 +48,9 @@ $(function(){
 		zoomControl:false
 	}).setView(center,14);
 	venueGroup = L.layerGroup().addTo(map);
+	busStopLayer = L.layerGroup().addTo(map);
+	ferryLayer = L.layerGroup().addTo(map);
+	trainLayer = L.layerGroup().addTo(map);
 
 	L.control.zoom({position:'topright'}).addTo(map);
 
@@ -76,8 +86,10 @@ $(function(){
 			//if icon is clicked DONT move
 			if($(e.target).hasClass('the-icon') == false){
 				var center = map.mouseEventToLatLng(e.originalEvent);
-		  		circle.setLatLng(center);
+
+		  		circle.setLatLng(center)
 		  		loadVenues(center.lat,center.lng);
+
 		  		loadBusStops(center.lat,center.lng);
 			}
 			
@@ -528,6 +540,7 @@ function loadVenues(lat,lng){
 				        break;
 				    case "Hostel":
 				        icon = hostelIcon;
+				        iconClass = 'hostel';
 				        break;
 				     case "Hotel":
 				        icon = hotelIcon;
@@ -544,7 +557,7 @@ function loadVenues(lat,lng){
 				        icon = barIcon;
 				        break;
 				    case "Coffee Shop":
-				    case "Café":
+				    case "Café": 
 				    case "Coffee":
 				    case "Bistro":
 				    	iconClass = 'cafe';
@@ -597,7 +610,10 @@ function loadVenues(lat,lng){
 				   		icon = trailIcon;
 				   		break;
 				   	case "Bus Station":
+
 				   		icon = busIcon;
+				   		iconClass = 'bus';
+
 				   		break;
 				   	case "Gas Station":
 				   		icon = gasIcon;
@@ -822,7 +838,6 @@ function loadVenues(lat,lng){
 	
 	});
 
-	
 }
 
 // TO HERE
@@ -830,7 +845,68 @@ function loadVenues(lat,lng){
 
 
 
+function loadBusStops(lat,lng){	   
+			$.ajax({
+	            url: 'https://api.at.govt.nz/v2/gtfs/stops/geosearch?lat='+lat+'&lng='+lng+'&distance='+customRadius,
+	            // dataType:'jsonp',
+	            beforeSend: function(xhrObj){
+	                // Request headers
+	                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","fba96ffb574446d59bc81f75bd69aebd");
+	            },
+	            success:function(res){
+	            	// console.log(res);
+	            	var busStops = res.response;
+	            	console.log(busStops);
+	            	busStopLayer.clearLayers();
+					_(busStops).each(function(stop){
+							var iconClass = '';
+						let ll = {
+							lat:stop.stop_lat,
+							lng:stop.stop_lon
+						}
 
+						let busStopName = {
+							name:stop.stop_name,					
+						}
+	
+						var iconUrl = 'custom_images/icon_bus.svg';
+
+						if(busStopName.name.indexOf('Ferry') != -1){
+							iconUrl = 'custom_images/icon_ferry.svg';
+						}
+
+						if(busStopName.name.indexOf('Train') != -1){
+							iconUrl = 'custom_images/icon_train.svg';
+						}
+
+
+						let busStopIcon = L.icon({
+							iconUrl: iconUrl,
+							iconSize:[35,35],
+
+						});
+
+
+						let marker = L.marker(ll,{icon:busStopIcon});
+						marker.bindPopup('<div id="mapPopup"><img src="'+busIcon+'"><h1>'+busStopName.name+'</h1><a href="#" class="sqr-bttn">More info</a></div>');
+
+						if(busStopName.name.indexOf('Ferry') != -1){
+							marker.addTo(ferryLayer)
+						}else if(busStopName.name.indexOf('Train') != -1){
+							marker.addTo(trainLayer)
+
+						}else{
+							marker.addTo(busStopLayer)
+						}
+
+
+					});
+
+	            }
+	        })
+
+      
+}
 
 $(function(){
 
@@ -871,8 +947,14 @@ $(function(){
 		$('.inner_restaurant_circle').css('fill','white');
 		$('.inner_food_all_circle').css('fill','white');
 		$('.custom-icon').hide();
+		$('busStopIcon').hide();
 		$('.custom-icon.cafe').show();
+		busStopLayer.clearLayers();
+		map.removeLayer(ferryLayer);
+		map.removeLayer(trainLayer);
+
 	});
+
 
 	$('.bar_wrap').on('click',function(){
 		$('.inner_cafe_circle').css('fill','white');
@@ -881,7 +963,10 @@ $(function(){
 		$('.inner_food_all_circle').css('fill','white');
 		$('.custom-icon').hide();
 		$('.custom-icon.bar').show();
+		busStopLayer.clearLayers();
+
 	});
+
 
 	$('.restaurant_wrap').on('click',function(){
 		$('.inner_cafe_circle').css('fill','white');
@@ -890,7 +975,10 @@ $(function(){
 		$('.inner_food_all_circle').css('fill','white');
 		$('.custom-icon').hide();
 		$('.custom-icon.restaurant').show();
+		busStopLayer.clearLayers();
+
 	});
+
 
 	$('.food_all_wrap').on('click',function(){
 		$('.custom-icon').hide();
@@ -901,7 +989,13 @@ $(function(){
 		$('.inner_cafe_circle').css('fill','white');
 		$('.inner_bar_circle').css('fill','white');
 		$('.inner_restaurant_circle').css('fill','white');
+		busStopLayer.clearLayers();
+
 	});
+
+
+
+
 
 // ===========ACCOMMODATION FILTER=========================
 	$('.hotel_wrap').on('click',function(){
@@ -911,7 +1005,9 @@ $(function(){
 		$('.inner_accom_all_circle').css('fill','white');
 		$('.custom-icon').hide();
 		$('.custom-icon.hotel').show();
+		busStopLayer.clearLayers();
 	});
+		
 
 	$('.motel_wrap').on('click',function(){
 		$('.inner_motel_circle').css('fill','#79E8CC');
@@ -920,7 +1016,11 @@ $(function(){
 		$('.inner_accom_all_circle').css('fill','white');
 		$('.custom-icon').hide();
 		$('.custom-icon.motel').show();
+		$('.custom-icon.hostel').show();
+		busStopLayer.clearLayers();
+
 	});
+
 
 	$('.backpack_wrap').on('click',function(){
 		$('.inner_backpack_circle').css('fill','#79E8CC');
@@ -928,8 +1028,12 @@ $(function(){
 		$('.inner_motel_circle').css('fill','white');
 		$('.inner_accom_all_circle').css('fill','white');
 		$('.custom-icon').hide();
+
 		$('.custom-icon.backpack').show();
+		$('.custom-icon.hostel').show();
+		busStopLayer.clearLayers();
 	});
+
 
 	$('.accom_all_wrap').on('click',function(){
 		$('.inner_accom_all_circle').css('fill','#79E8CC');
@@ -938,9 +1042,12 @@ $(function(){
 		$('.inner_backpack_circle').css('fill','white');
 		$('.custom-icon').hide();
 		$('.custom-icon.hotel').show();
-		$('.custom-icon.motel').show();
+		$('.custom-icon.hostel').show();
 		$('.custom-icon.backpack').show();
+		busStopLayer.clearLayers();
+
 	});
+
 
 // ===========SIGHTSEEING FILTER=========================
 	$('.park_wrap').on('click',function(){
@@ -950,7 +1057,10 @@ $(function(){
 		$('.inner_sight_all_circle').css('fill','white');
 		$('.custom-icon').hide();
 		$('.custom-icon.park').show();
+		busStopLayer.clearLayers();
+
 	});
+
 
 	$('.museum_wrap').on('click',function(){
 		$('.inner_park_circle').css('fill','white');
@@ -959,7 +1069,10 @@ $(function(){
 		$('.inner_sight_all_circle').css('fill','white');
 		$('.custom-icon').hide();
 		$('.custom-icon.museum').show();
+		busStopLayer.clearLayers();
+
 	});
+
 
 	$('.shop_wrap').on('click',function(){
 		$('.inner_park_circle').css('fill','white');
@@ -967,8 +1080,12 @@ $(function(){
 		$('.inner_museum_circle').css('fill','white');
 		$('.inner_sight_all_circle').css('fill','white');
 		$('.custom-icon').hide();
+
 		$('.custom-icon.attraction').show();
+		$('.custom-icon.shop').show();
+		busStopLayer.clearLayers();
 	});
+
 
 
 	$('.sight_all_wrap').on('click',function(){
@@ -980,7 +1097,10 @@ $(function(){
 		$('.custom-icon.attraction').show();
 		$('.custom-icon.museum').show();
 		$('.custom-icon.park').show();
+		busStopLayer.clearLayers();
+
 	});
+
 
 // ===========TRANSPORT FILTER=========================
 	$('.bus_wrap').on('click',function(){
@@ -989,8 +1109,13 @@ $(function(){
 		$('.inner_bike_circle').css('fill','white');
 		$('.inner_transport_all_circle').css('fill','white');
 		$('.custom-icon').hide();
+
 		$('.custom-icon.bus').show();
+		map.addLayer(busStopLayer);
+		map.removeLayer(ferryLayer);
+		map.removeLayer(trainLayer);
 	});
+
 
 	$('.train_wrap').on('click',function(){
 		$('.inner_bus_circle').css('fill','white');
@@ -998,7 +1123,11 @@ $(function(){
 		$('.inner_bike_circle').css('fill','white');
 		$('.inner_transport_all_circle').css('fill','white');
 		$('.custom-icon').hide();
+
 		$('.custom-icon.train').show();
+		map.removeLayer(busStopLayer);
+		map.removeLayer(ferryLayer);
+		map.addLayer(trainLayer);
 	});
 
 	$('.bike_wrap').on('click',function(){
@@ -1008,7 +1137,11 @@ $(function(){
 		$('.inner_transport_all_circle').css('fill','white');
 		$('.custom-icon').hide();
 		$('.custom-icon.bike').show();
+		map.addLayer(ferryLayer);
+		map.removeLayer(busStopLayer);
+		map.removeLayer(trainLayer);
 	});
+
 
 	$('.transport_all_wrap').on('click',function(){
 		$('.inner_bus_circle').css('fill','white');
@@ -1019,6 +1152,10 @@ $(function(){
 		$('.custom-icon.bike').show();
 		$('.custom-icon.train').show();
 		$('.custom-icon.bus').show();
+		map.addLayer(ferryLayer);
+		map.addLayer(busStopLayer);
+		map.addLayer(trainLayer);
+
 	});
 
 });
