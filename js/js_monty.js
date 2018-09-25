@@ -1,7 +1,7 @@
 const version = '?v=20170901';
 
-const clientId = '&client_id=KVZAFAFCMDFQXEBRUG0DPFVON3TDLW00D2U5N0ICFVJRIH1U';
-const clientSecret = '&client_secret=F2QLQQTXUXEJ2N3PY11FU4HR43L3H25QBYUUB1CJWOGHDPWB';
+const clientId = '&client_id=RHSYZOBMNIZ1TEBDONVD5PNE3SDBZLG4K0PAFI0SGJNAW2BH';
+const clientSecret = '&client_secret=RSON3RNWDRVBGIUMWC5Y2TMMPIWVIYWHM1I3WVLQJJG3AOZM';
 
 // const clientId = '&client_id=N1JXRNTPPR4BUJYTKAY1BWIUSN2KX3122UI55TB4AM5J00IJ';
 // const clientSecret = '&client_secret=AADWLPTOC4YMSTFOYVWQKWVWQLYAB4JGHW0R50Y4YPCOI3BF';
@@ -402,11 +402,11 @@ $(function(){
 		}
 	})
 
+
+
 	var openHours = $('.venue-open-hours');
 					
 	openHours.on('click', function(){
-		console.log('hi');
-
 
 		var weeklyHours = $('.venue-open-hours').data('reveal');
 
@@ -530,7 +530,8 @@ function loadVenues(lat,lng){
 
 				};
 			});
-			console.log(venues);
+
+			// console.log(venues);
 			venueGroup.clearLayers();
 			_(venues).each(function(venue){
 
@@ -651,7 +652,7 @@ function loadVenues(lat,lng){
 
 				let marker = L.marker(venue.latlng,{icon:myIcon}).addTo(venueGroup);
 
-				marker.bindPopup('<div class="custom-map-popup"><img src="'+icon+'"><h1>'+venue.name+'</h1><p>"'+venue.address+'"</p><a data-lat="'+venue.latlng.lat+'" data-lng="'+venue.latlng.lng+'" href="#" class="sqr-bttn btn btn-primary"  data-toggle="modal" data-target="#exampleModalLong">More info</a></div>');
+				marker.bindPopup('<div class="custom-map-popup"><img src="'+icon+'"><h1>'+venue.name+'</h1><p>'+venue.address+'</p><a data-lat="'+venue.latlng.lat+'" data-lng="'+venue.latlng.lng+'" href="#" class="sqr-bttn btn btn-primary"  data-toggle="modal" data-target="#exampleModalLong">More info</a></div>');
 
 
 
@@ -660,6 +661,8 @@ function loadVenues(lat,lng){
 				var venueInfo = $('.more-info');
 
 				marker.venueid = venue.venueid;
+
+		
 
 				marker.on('click', function(){
 
@@ -670,45 +673,21 @@ function loadVenues(lat,lng){
 					var venueUrl = 	'https://api.foursquare.com/v2/venues/'+
 					this.venueid+key;
 
-					// console.log(venueUrl);
-
+					
 					$.ajax({
 						url:venueUrl,
 						dataType:'jsonp',
 						success:function(res){ 
 
-
 							console.log(res);
 
 							var venue = res.response.venue;
 
-
-							if(venue.name){
-								$('.modal-title').text(venue.name);
-							}
-							if(venue.description){
-								$('.venue-description').text(venue.description);
-							}
-							if(venue.location.formattedAddress){
-								$('.venue-location span').text(venue.location.formattedAddress);
-							}
-							if(venue.contact.formattedPhone){
-								$('.venue-phone-number span').text(venue.contact.formattedPhone);
-							}
-							if(venue.price){
-								$('.venue-price-range span').text(venue.price.message);
-							}
-
-							$('.get-direction').data('lat',venue.location.lat);
-							$('.get-direction').data('lng',venue.location.lng)
-							
-
 							$('.more-details .modal-title').text(venue.name);
 
-
-								console.log(venue.page);
-
 							if(venue.page){
+
+								$('.venue-description').show();
 
 								$('.venue-description').text(venue.page.pageInfo.description);
 
@@ -719,7 +698,10 @@ function loadVenues(lat,lng){
 
 							}
 
+							// Venue Address
 							if(venue.location){
+
+								$('.venue-location').show();
 
 								if(venue.location.formattedAddress){
 
@@ -730,11 +712,16 @@ function loadVenues(lat,lng){
 									$('.venue-location span').text(venue.location.address);
 								}
 
+							} else {
 
+									$('.venue-location').hide();
 
 							}
 
+							// Venue Phone Number 
 							if(venue.contact.formattedPhone){
+
+								$('.venue-phone-number').show();
 
 								if(venue.contact.formattedPhone){
 
@@ -748,42 +735,84 @@ function loadVenues(lat,lng){
 
 							} else {
 
-								$('.venue-phone-number ').hide();
+								$('.venue-phone-number').hide();
 
 							}
 
+							// Venue Price 
 							if(venue.price){
+
+								$('.venue-price-range').show();
 								
 								$('.venue-price-range span').text(venue.price.message);
-
-								// if(venue.price.tier == 1) {
-								// 	$('.venue-price-range span').append("<span> $</span>");
-								// }
-								
-								// if(venue.price.tier == 2) {
-								// 	$('.venue-price-range span').append("<span> $$</span>");
-								// }
-
-								// if(venue.price.tier == 3) {
-								// 	$('.venue-price-range span').append("<span> $$$</span>");
-								// }
 
 							}else {
 
 								$('.venue-price-range').hide();
 							}
+
 							
+							// Venue Hours 
 							if(venue.hours){
 
+								$('.venue-open-hours').show();
+
+								$('.open-now').text(venue.hours.status);
+
+
+
 							}else{
-								$('.venue-phone-number ').hide();
-								
+
+								$('.venue-open-hours').hide();
 							}
+
+
+
+							// Get lat lng 
+							$('.get-direction').data('lat',venue.location.lat);
+							$('.get-direction').data('lng',venue.location.lng);
+
+
 						}
 
-					});		// * * * ajax * * => 		E N D
 
-					
+					});		// * * * ajax * * => 		E N D
+								
+
+
+
+					var venueHours = 'https://api.foursquare.com/v2/venues/'+marker.venueid+'/hours'+key;
+					console.log(venueHours, "hours");
+
+					$.ajax({
+						url:venueHours,
+						dataType:'jsonp',
+						success:function(res){
+
+							console.log(res);
+
+							var hours = res.response.hours;
+
+
+
+							var daysList = $('.weekly-hours .days');
+							var days = hours.timeframes["0"].days;
+
+							console.log(hours.timeframes["0"].open, "open hours");
+
+
+							_(days).each(function(days){
+
+								$('.weekly-hours').append('<li>'+days+'</li>');
+							});
+							
+							console.log(hours.timeframes["0"].days, "days");
+
+						}
+					});
+
+
+				
 				}); 	// * * * marker * *  => 		on click event E N D
 
 				// - - * * Cree's Script - - - - - E N D - - * *
@@ -853,19 +882,21 @@ function loadVenues(lat,lng){
 							        };
 								//ask directionsService to fulfill your request
 								directionsService.route(request,function(response,status){
+									if(response){
+										directionsLayer.clearLayers();
 
-									directionsLayer.clearLayers();
+										var path = response.routes["0"].overview_path;
 
-									var path = response.routes["0"].overview_path;
+										var polyline = _(path).map(function(item){
+											return {lat:item.lat(),lng:item.lng()};
+										});
 
-									var polyline = _(path).map(function(item){
-										return {lat:item.lat(),lng:item.lng()};
-									});
-
-									L.polyline(polyline,{
-										color:'#79E8CC',
-										weight:3
-									}).addTo(directionsLayer);
+										L.polyline(polyline,{
+											color:'#79E8CC',
+											weight:3
+										}).addTo(directionsLayer);
+									}
+									
 									
 								});
 							});
