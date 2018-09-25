@@ -1,7 +1,9 @@
 const version = '?v=20170901';
 
+
 const clientId = '&client_id=HRPRE30BNM5L1T43M115VGMZQW5QXQARNLYTCAT5PDXQS1N3';
 const clientSecret = '&client_secret=TJ4KSJE3HXJY44NWZQ4BAECIJZUIPK4I1GIWDLU0A0BRJRCM';
+
 
 
 const key = version + clientId + clientSecret;
@@ -404,6 +406,8 @@ $(function(){
 		}
 	});
 
+
+
 	var openHours = $('.venue-open-hours');
 					
 	openHours.on('click', function(){
@@ -526,7 +530,8 @@ function loadVenues(lat,lng){
 
 				};
 			});
-			console.log(venues);
+
+			// console.log(venues);
 			venueGroup.clearLayers();
 			_(venues).each(function(venue){
 
@@ -651,7 +656,7 @@ function loadVenues(lat,lng){
 
 				let marker = L.marker(venue.latlng,{icon:myIcon}).addTo(venueGroup);
 
-				marker.bindPopup('<div class="custom-map-popup"><img src="'+icon+'"><h1>'+venue.name+'</h1><p>"'+venue.address+'"</p><a data-lat="'+venue.latlng.lat+'" data-lng="'+venue.latlng.lng+'" href="#" class="sqr-bttn btn btn-primary"  data-toggle="modal" data-target="#exampleModalLong">More info</a></div>');
+				marker.bindPopup('<div class="custom-map-popup"><img src="'+icon+'"><h1>'+venue.name+'</h1><p>'+venue.address+'</p><a data-lat="'+venue.latlng.lat+'" data-lng="'+venue.latlng.lng+'" href="#" class="sqr-bttn btn btn-primary"  data-toggle="modal" data-target="#exampleModalLong">More info</a></div>');
 
 
 			// + + + + + + CREE's SCRIPT - MORE DETAILS + + + + + + + + +
@@ -659,30 +664,45 @@ function loadVenues(lat,lng){
 				var venueInfo = $('.more-info');
 				marker.venueid = venue.venueid;
 
+		
+
 				marker.on('click', function(){
 
 					//close the drop down
 					$('.venue-open-hours ul.weekly-hours').removeClass('open-hours').data('reveal', 'close');
 					$('.venue-open-hours').data('reveal', 'close');
 
+
 					var venueUrl = 	'https://api.foursquare.com/v2/venues/'+this.venueid+key;
+
+
+					
 
 					$.ajax({
 						url:venueUrl,
 						dataType:'jsonp',
 						success:function(res){ 
-							// console.log(res);
+
+							console.log(res);
+
 							var venue = res.response.venue;
 
 							$('.more-details .modal-title').text(venue.name);
 
 							if(venue.page){
+
+								$('.venue-description').show();
+
 								$('.venue-description').text(venue.page.pageInfo.description);
 							} else {
 								$('.venue-description').text('No description avalible');
 							}
 
+							// Venue Address
 							if(venue.location){
+
+								$('.venue-location').show();
+
 								if(venue.location.formattedAddress){
 									$('.venue-location span').text(venue.location.formattedAddress);
 								} else {
@@ -691,6 +711,18 @@ function loadVenues(lat,lng){
 							}
 							
 							if(venue.contact.formattedPhone){
+
+							} else {
+
+									$('.venue-location').hide();
+
+							}
+
+							// Venue Phone Number 
+							if(venue.contact.formattedPhone){
+
+								$('.venue-phone-number').show();
+
 								if(venue.contact.formattedPhone){
 									$('.venue-phone-number span').text(venue.contact.formattedPhone);
 								} else {
@@ -698,47 +730,86 @@ function loadVenues(lat,lng){
 								}
 
 							} else {
+
 								$('.venue-phone-number ').hide();
 							}
 
-							if(venue.price){								
-								$('.venue-price-range span').text(venue.price.message);
 
-								// if(venue.price.tier == 1) {
-								// 	$('.venue-price-range span').append("<span> $</span>");
-								// }
+							// Venue Price 
+							if(venue.price){
+
+								$('.venue-price-range').show();
 								
-								// if(venue.price.tier == 2) {
-								// 	$('.venue-price-range span').append("<span> $$</span>");
-								// }
-
-								// if(venue.price.tier == 3) {
-								// 	$('.venue-price-range span').append("<span> $$$</span>");
-								// }
+								$('.venue-price-range span').text(venue.price.message);
 
 							}else {
 								$('.venue-price-range').hide();
 							}
+
 							
+							// Venue Hours 
 							if(venue.hours){
 								$('.open-now').text(venue.hours.status);
 
+								$('.venue-open-hours').show();
+
+								$('.open-now').text(venue.hours.status);
+
+
+
 							}else{
-								$('.venue-phone-number ').hide();
-								
+
+								$('.venue-open-hours').hide();
 							}
 
 
 
+							// Get lat lng 
 							$('.get-direction').data('lat',venue.location.lat);
 							$('.get-direction').data('lng',venue.location.lng);
-							
+
+
 
 						}
 
-					});		// * * * ajax * * => 		E N D
 
-					
+					});		// * * * ajax * * => 		E N D
+								
+
+
+
+					var venueHours = 'https://api.foursquare.com/v2/venues/'+marker.venueid+'/hours'+key;
+					console.log(venueHours, "hours");
+
+					$.ajax({
+						url:venueHours,
+						dataType:'jsonp',
+						success:function(res){
+
+							console.log(res);
+
+							var hours = res.response.hours;
+
+
+
+							var daysList = $('.weekly-hours .days');
+							var days = hours.timeframes["0"].days;
+
+							console.log(hours.timeframes["0"].open, "open hours");
+
+
+							_(days).each(function(days){
+
+								$('.weekly-hours').append('<li>'+days+'</li>');
+							});
+							
+							console.log(hours.timeframes["0"].days, "days");
+
+						}
+					});
+
+
+				
 				}); 	// * * * marker * *  => 		on click event E N D
 
 				// + + + + + + CREE's SCRIPT - END + + + + + + + + +
@@ -806,10 +877,9 @@ function loadVenues(lat,lng){
 							        };
 								//ask directionsService to fulfill your request
 								directionsService.route(request,function(response,status){
-
 									if(response){
-
 										directionsLayer.clearLayers();
+
 
 										var path = response.routes["0"].overview_path;
 

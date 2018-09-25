@@ -41,8 +41,10 @@
     <!-- Mobile Nav -->
         <ul class="navigation mobile-nav" data-nav="close">
           <li><a href="index.htm" class="active">Home</a></li>
+
           <li><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#login-modal">Login</a></li>
           <li><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#signup-modal">Sign up</a></li>
+
           <li><a href="contact.htm">Contact</a></li>
         </ul>
     <!-- Desktop Nav -->
@@ -231,7 +233,6 @@
   </section>
 
 
-
 <!-- + + + + + +  FOOTER  + + + + + + + + + + + + + + + + + + -->
   <footer class="footer">
     <div class="container">
@@ -284,14 +285,13 @@
         <ul class="venue-details">
           <li class="venue-info venue-location"><i class="fas fa-map-marker-alt"></i><span>Information unavailable</span></li>
           <li class="venue-info venue-phone-number"><i class="fas fa-mobile-alt"></i><span>Information unavailable</span></li>
-          <li class="venue-info venue-price-range"><i class="fas fa-tag"></i><span>Information unavailable</span></li>
+          <li class="venue-info venue-price-range"><i class="fas fa-dollar-sign"></i><span>Information unavailable</span></li>
 
           <!-- Daily opening hours -->
           <li class="venue-open-hours" data-reveal="close">
-            <i class="far fa-clock"></i><span class="open-now">Open now: 24 Hours </span> 
+            <i class="far fa-clock"></i><span class="open-now"></span><span class="hours-timeframe"></span><span class="days"></span>
             <i class="fas fa-sort-down"></i>
             <ul class="weekly-hours">
-              <li>weekly hours</li>
             </ul> <!-- weekly-hours end -->
           </li> <!-- venue-open-hours end -->
         </ul>
@@ -350,6 +350,7 @@
 <!-- + + + + + +  SIGN-UP MODAL + + + + + + + + + + + + + + + + + + -->
 <!-- + + Bootstrap Vertically Centered Modal + + -->
 
+
 <div class="custom-login-modal modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -405,7 +406,6 @@
 <!-- + + + + + +  LOGIN MODAL + + + + + + + + + + + + + + + + + + -->
 <!-- + + Bootstrap Vertically Centered Modal + + -->
 
-
 <div class="custom-login-modal modal fade" id="login-modal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -421,13 +421,14 @@
         <form class="custom-login-form">
           <div class="form-group">
             <!-- <label for="exampleInputEmail1">Email address</label> -->
-            <h5 class="modal-title" id="exampleModalLongTitle">Login</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle2">Login</h5>
+
 
             <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div> <!-- form-group end -->
           <div class="form-group">
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
             <a href="" class="forgot-password">Forgot Password?</a>
           </div> <!-- form-group end -->
           <div class="form-check">

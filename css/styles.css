@@ -3462,7 +3462,8 @@ a.sqr-bttn {
     font-size: .8em;
     display: block;
     margin: 1em auto;
-    line-height: 1.5em; }
+    line-height: 1.5em;
+    text-align: center; }
   .more-details .modal-dialog .modal-content .modal-body ul {
     list-style-type: none;
     margin: 0 auto;
@@ -3480,7 +3481,7 @@ a.sqr-bttn {
       letter-spacing: .1em;
       border-top: 1px #eee solid;
       width: 80%;
-      margin-left: 5vw; }
+      margin: 0 auto; }
       .more-details .modal-dialog .modal-content .modal-body ul li:last-child {
         border-bottom: 1px #eee solid; }
       .more-details .modal-dialog .modal-content .modal-body ul li i {
@@ -3533,7 +3534,7 @@ a.sqr-bttn {
       opacity: 1;
       margin: 0 auto;
       width: 100%;
-      height: 6em; }
+      height: 11em; }
 
 * {
   margin: 0;
