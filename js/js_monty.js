@@ -1,10 +1,8 @@
 const version = '?v=20170901';
 
-const clientId = '&client_id=KVZAFAFCMDFQXEBRUG0DPFVON3TDLW00D2U5N0ICFVJRIH1U';
-const clientSecret = '&client_secret=F2QLQQTXUXEJ2N3PY11FU4HR43L3H25QBYUUB1CJWOGHDPWB';
+const clientId = '&client_id=2JQCG11CGRGG0NGWJI24AT30B4BWYNJBCXUO4F3Q4XR3FQJA';
+const clientSecret = '&client_secret=WWYSPWZI5UQNE0P1FANTU2MLAEB0NUAGDT1RP2EZWK0QBMZD';
 
-// const clientId = '&client_id=N1JXRNTPPR4BUJYTKAY1BWIUSN2KX3122UI55TB4AM5J00IJ';
-// const clientSecret = '&client_secret=AADWLPTOC4YMSTFOYVWQKWVWQLYAB4JGHW0R50Y4YPCOI3BF';
 
 
 const key = version + clientId + clientSecret;
@@ -68,10 +66,11 @@ $(function(){
 	
 
 	//Map icons on click event
-	$('#map').on('click','.custom-icon',function(e){
-
-		$('.custom-icon').removeClass('selected-icon')
+	$('#map').on('mouseover','.custom-icon',function(e){
 		$(this).addClass('selected-icon')
+	});
+	$('#map').on('mouseout','.custom-icon',function(e){
+		$('.custom-icon').removeClass('selected-icon')
 
 	});
 
@@ -779,6 +778,9 @@ function loadVenues(lat,lng){
 								$('.venue-phone-number ').hide();
 								
 							}
+
+							$('.get-direction').data(lat,venue.location.lat);
+							$('.get-direction').data(lng,venue.location.lng);
 						}
 
 					});		// * * * ajax * * => 		E N D

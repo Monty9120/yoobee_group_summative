@@ -2676,10 +2676,11 @@ button.close {
       #map_section #map .leaflet-marker-icon .custom-icon {
         -webkit-transform: scale(1);
         transform: scale(1);
-        fill: black; }
-      #map_section #map .leaflet-marker-icon .selected-icon {
+        fill: black;
         -webkit-transition: all ease 0.5s;
-        transition: all ease 0.5s;
+        transition: all ease 0.5s; }
+      #map_section #map .leaflet-marker-icon .selected-icon {
+        /*transition: all ease 0.5s;*/
         -webkit-filter: none;
         filter: none;
         -webkit-transform: scale(1.2);
@@ -3640,16 +3641,6 @@ h3 {
 
 .contact {
   background-color: #292929; }
-  .contact canvas {
-    width: 60%;
-    position: absolute;
-    left: 50%;
-    top: 1500px;
-    -webkit-transform: translate(-50%, 0);
-    transform: translate(-50%, 0);
-    height: 500px;
-    margin-bottom: 3em;
-    display: none; }
   .contact .contact-wrap {
     padding: 1em;
     margin: 0;

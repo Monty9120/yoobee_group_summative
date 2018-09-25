@@ -161,10 +161,11 @@
 			.custom-icon{
 				transform: scale(1);
 				fill:black;
+				transition: all ease 0.5s;
 			}
 
 			.selected-icon{
-				transition: all ease 0.5s;
+				/*transition: all ease 0.5s;*/
 				filter: none; 
 				transform: scale(1.2);
 			}
@@ -209,5 +210,4 @@
 	}
 	
 }
-
 

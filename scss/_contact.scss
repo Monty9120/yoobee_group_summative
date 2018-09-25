@@ -20,18 +20,6 @@ h3{
 .contact{
 	background-color:$dark-grey;
 
-	
-	canvas{
-		width: 60%	;
-		position: absolute;
-		left:50%;
-		top: 1500px;
-		transform: translate(-50%,0); 
-		height: 500px;
-		margin-bottom: 3em;
-		display: none;
-	}
-
 	.contact-wrap{
 		padding: 1em;
 		margin: 0;
