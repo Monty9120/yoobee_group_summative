@@ -199,15 +199,15 @@ $(function(){
 	// TRANSPORT
 	// -------------------------------------------
 
-	var oFoodAnime= anime({
-		targets:'.food_wrap',
-		translateX:[-100,0],
-		opacity:[0,1],
-		easing:'linear',
-		duration:900,
-		autoplay:true,
+	// var oFoodAnime= anime({
+	// 	targets:'.food_wrap',
+	// 	translateX:[-100,0],
+	// 	opacity:[0,1],
+	// 	easing:'linear',
+	// 	duration:900,
+	// 	autoplay:true,
 	
-	});
+	// });
 
 	var oBusAnime= anime({
 		targets:'.bus_wrap',
@@ -282,10 +282,11 @@ $(function(){
 	    $('.sightseeing_wrap').hide();
 	    $('.transport_wrap').hide();	    
 	    $('.food_wrap').show();
-	    oCafeAnime.play();
-	    oBarAnime.play();
-	    oRestaurantAnime.play();
-	   	oFoodAllAnime.play();
+	    oCafeAnime.restart();
+	    oBarAnime.restart();
+	    oRestaurantAnime.restart();
+	   	oFoodAllAnime.restart();
+	    busStopLayer.clearLayers();
 
   	});
 
@@ -298,10 +299,12 @@ $(function(){
 	    $('.transport_wrap').hide();	    
 	    $('.food_wrap').hide();
 	    $('.accommodation_wrap').show();
-	    oHotelAnime.play();
-	    oMotelAnime.play();
-	    oBackpackAnime.play();
-	    oAccomAllAnime.play();
+	    oHotelAnime.restart();
+	    oMotelAnime.restart();
+	    oBackpackAnime.restart();
+	    oAccomAllAnime.restart();
+	    busStopLayer.clearLayers();
+
   	});
 
   	$('.ctg-sights').on('click',function(){
@@ -313,10 +316,11 @@ $(function(){
 	    $('.transport_wrap').hide();	    
 	    $('.food_wrap').hide();
 	    $('.sightseeing_wrap').show();
-	    oParkAnime.play();
-	    oMuseumAnime.play();
-	    oSightAllAnime.play();
-	   	oShopAnime.play();
+	    oParkAnime.restart();
+	    oMuseumAnime.restart();
+	    oSightAllAnime.restart();
+	   	oShopAnime.restart();
+	   	busStopLayer.clearLayers();
 	 
   	});
 
@@ -329,10 +333,10 @@ $(function(){
 	    $('.sightseeing_wrap').hide();
 	    $('.food_wrap').hide();
 	    $('.transport_wrap').show();
-	    oTransportAllAnime.play();
-	    oTrainAnime.play();
-	    oBikeAnime.play();
-	    oBusAnime.play();
+	    oTransportAllAnime.restart();
+	    oTrainAnime.restart();
+	    oBikeAnime.restart();
+	    oBusAnime.restart();
   	});
 
 	//----TATIANA's FINISHED HERE
@@ -363,8 +367,8 @@ $(function(){
 	$('.rating-graph').hide();
 	$('.dropdown').on('click',function(){
 		$('.rating-graph').show();
-		oRatingAnime.play();
-		oGraphAnime.play();
+		oRatingAnime.play(1000);
+		oGraphAnime.play(1000);
 
 	});
 
