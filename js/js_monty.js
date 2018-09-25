@@ -1,7 +1,9 @@
 const version = '?v=20170901';
 
+
 const clientId = '&client_id=5HT44E4CMVE2IO4G5HFZXSEKTPSNFJ25U0KVW2L43UPGM0L0';
 const clientSecret = '&client_secret=4DAKUMU0QYUHHQEKLDJLREFT0BU5OREVS312JA2TNY3ZQH0A';
+
 
 const key = version + clientId + clientSecret;
 
@@ -56,11 +58,13 @@ $(function(){
 	customRadius = circle._mRadius;
 	
 
-	//Map icons on mouseover event
-	$('#map').on('mouseover','.custom-icon',function(e){
 
-		$('.custom-icon').removeClass('selected-icon');
+	//Map icons on click event
+	$('#map').on('mouseover','.custom-icon',function(e){
 		$(this).addClass('selected-icon');
+	});
+	$('#map').on('mouseout','.custom-icon',function(e){
+		$('.custom-icon').removeClass('selected-icon');
 
 	});
 
@@ -709,6 +713,7 @@ function loadVenues(lat,lng){
 							}
 
 
+
 							$('.get-direction').data('lat',venue.location.lat);
 							$('.get-direction').data('lng',venue.location.lng);
 							
@@ -817,46 +822,15 @@ function loadVenues(lat,lng){
 	
 	});
 
-	// $.ajax({
-	// 	url:transportUrl,
-	// 	dataType:'jsonp',
-	// 	success:function(res){
-	// 		// console.log(res.response.groups["0"].items);
-	// 		var data = res.response.groups["0"].items;
-	// 		var venues = _(data).map(function(item){
-	// 			return {
-	// 				latlng:{lat:item.venue.location.lat,lng:item.venue.location.lng},
-	// 				name:item.venue.name,
-	// 				venueid:item.venue.id,
-	// 				category:item.venue.categories["0"].name
-	// 			};
-
-
-	// 		});
-		
-	// 	}
-
-	// });
+	
 }
 
 // TO HERE
 // ===============FILTER BUTTONS FOR CATEGORY==================
 
 
-function loadBusStops(lat,lng){
 
-	       //  // $.ajax({
-        //  //    url: "https://api.at.govt.nz/v2/gtfs/stops/geosearch?lat='+lat+'&lng='+lng+'&distance=500",
-        //  //    beforeSend: function(xhrObj){
-        //  //        // Request headers
-        //  //        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","{subscription key}");
-        //  //    },
-        //  //    success:function(res){
-        //  //        console.log(res)
-        //  //    }
 
-        // });
-}
 
 $(function(){
 

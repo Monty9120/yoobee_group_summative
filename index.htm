@@ -38,14 +38,14 @@
         <div class="bars">
           <i class="fas fa-bars"></i>
         </div>
-
+    <!-- Mobile Nav -->
         <ul class="navigation mobile-nav" data-nav="close">
           <li><a href="index.htm" class="active">Home</a></li>
           <li><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#login-modal">Login</a></li>
           <li><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#signup-modal">Sign up</a></li>
           <li><a href="contact.htm">Contact</a></li>
         </ul>
-
+    <!-- Desktop Nav -->
         <ul class="navigation desktop-nav" data-nav="close">
           <li><a href="index.htm" class="active">Home</a></li>
           <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
@@ -262,6 +262,7 @@
 <!-- + + + + + + + + + + MORE DETAILS MODAL - Cree's section+ + + + + + + + + + + + + + + + + + + +  -->
 <!-- Bootstrap Modal Long-->
 
+
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
   Launch demo modal
 </button>
@@ -348,6 +349,7 @@
 
 <!-- + + + + + +  SIGN-UP MODAL + + + + + + + + + + + + + + + + + + -->
 <!-- + + Bootstrap Vertically Centered Modal + + -->
+
 <div class="custom-login-modal modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -363,8 +365,10 @@
         <form class="custom-login-form">
             
           <div class="form-group">
-            <h5 class="modal-title" id="exampleModalLongTitle1">Sign-up</h5>
-            <input type="text" class="form-control" id="exampleInputPassword2" placeholder="Username">
+
+            <h5 class="modal-title">Sign-up</h5>
+            <input type="text" class="form-control" placeholder="Username">
+
           </div> <!-- form-group end -->
 
           <div class="form-group">
@@ -400,6 +404,8 @@
 
 <!-- + + + + + +  LOGIN MODAL + + + + + + + + + + + + + + + + + + -->
 <!-- + + Bootstrap Vertically Centered Modal + + -->
+
+
 <div class="custom-login-modal modal fade" id="login-modal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -417,7 +423,7 @@
             <!-- <label for="exampleInputEmail1">Email address</label> -->
             <h5 class="modal-title" id="exampleModalLongTitle">Login</h5>
 
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div> <!-- form-group end -->
           <div class="form-group">

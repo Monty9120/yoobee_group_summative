@@ -11,8 +11,7 @@ var random = $('.button-random')
 
 
         random.on('click',function(){
-            // cube.removeClass('rotate-left rotate-top')
-            // cube.addClass('random')
+
             $('.cube').css('transform' , "rotate3d("+Math.floor((Math.random() * 360) + 1)+","+Math.floor((Math.random() * 360) + 1)+","+Math.floor((Math.random() * 360) + 1)+","+Math.floor((Math.random() * 360) + 1)+"deg)")
         });
 
