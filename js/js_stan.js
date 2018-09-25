@@ -360,14 +360,21 @@ $(function(){
   	});
 
 
-	$('.rating-graph').hide();
-	$('.dropdown').on('click',function(){
-		$('.rating-graph').show();
-		oRatingAnime.play();
-		oGraphAnime.play();
+	// $('.rating-graph').hide();
+	// $('.dropdown').on('click',function(){
+	// 	$('.rating-graph').show();
+	// 	oRatingAnime.play();
+	// 	oGraphAnime.play();
 
+	// });
+
+	$('.review-container').hide();
+
+	$('.see-review').on('click',function(e){
+		e.preventDefault();
+		$('.review-container').toggle('slow');
+		
 	});
-
 
 });
 

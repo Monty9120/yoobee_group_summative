@@ -1,23 +1,17 @@
 const version = '?v=20170901';
 
-const clientId = '&client_id=KVZAFAFCMDFQXEBRUG0DPFVON3TDLW00D2U5N0ICFVJRIH1U';
-const clientSecret = '&client_secret=F2QLQQTXUXEJ2N3PY11FU4HR43L3H25QBYUUB1CJWOGHDPWB';
-
-// const clientId = '&client_id=N1JXRNTPPR4BUJYTKAY1BWIUSN2KX3122UI55TB4AM5J00IJ';
-// const clientSecret = '&client_secret=AADWLPTOC4YMSTFOYVWQKWVWQLYAB4JGHW0R50Y4YPCOI3BF';
-
+const clientId = '&client_id=5HT44E4CMVE2IO4G5HFZXSEKTPSNFJ25U0KVW2L43UPGM0L0';
+const clientSecret = '&client_secret=4DAKUMU0QYUHHQEKLDJLREFT0BU5OREVS312JA2TNY3ZQH0A';
 
 const key = version + clientId + clientSecret;
 
-// console.log(key)
 var map;
 var venueGroup;
 var customRadius;
 var marker;
 var addressLayer;
 var directionsLayer;
-
-
+var directionsService;
 var locationIcon = 'custom_images/icon_location.svg';
 var barIcon = 'custom_images/icon_bar.svg';
 var foodIcon = 'custom_images/icon_food.svg';
@@ -36,14 +30,9 @@ var airportIcon = 'custom_images/icon_airport.svg';
 var museumIcon = 'custom_images/icon_museum.svg';
 var attractionsIcon = 'custom_images/icon_attractions.svg';
 
-
-
-
-var directionsService;
-
 $(function(){
 
-	//Leaflet Map
+	//- - - - -LEAFLET MAP - - - - - - - - - 
 	var center ={lat:-36.8535,lng:174.7650};
 	map = L.map('map',{
 		doubleClickZoom: false,
@@ -64,34 +53,34 @@ $(function(){
 		weight:2,
 		className:'circle'
 	}).addTo(map);
-	customRadius = circle._mRadius
+	customRadius = circle._mRadius;
 	
 
-	//Map icons on click event
-	$('#map').on('click','.custom-icon',function(e){
+	//Map icons on mouseover event
+	$('#map').on('mouseover','.custom-icon',function(e){
 
-		$('.custom-icon').removeClass('selected-icon')
-		$(this).addClass('selected-icon')
+		$('.custom-icon').removeClass('selected-icon');
+		$(this).addClass('selected-icon');
 
 	});
 
 	//Move center circle to mouse pos
 	$('#map').on('click',function(e) {
 		if($(this).hasClass('no-click')){
-			$(this).removeClass('no-click')
+			$(this).removeClass('no-click');
 		}else{
 			//if icon is clicked DONT move
 			if($(e.target).hasClass('the-icon') == false){
 				var center = map.mouseEventToLatLng(e.originalEvent);
-		  		circle.setLatLng(center)
-		  		loadVenues(center.lat,center.lng)
-		  		loadBusStops(center.lat,center.lng)
+		  		circle.setLatLng(center);
+		  		loadVenues(center.lat,center.lng);
+		  		loadBusStops(center.lat,center.lng);
 			}
 			
 		}
 	});
 	map.on('movestart',function(){
-		$('#map').addClass('no-click')
+		$('#map').addClass('no-click');
 	});
 
 
@@ -99,19 +88,19 @@ $(function(){
 
 	//Circle slider
 	$('.slider').on('input',function(){
-			customRadius = circle.setRadius($('.slider').val());;
+			customRadius = circle.setRadius($('.slider').val());
 			
-			customRadius = customRadius._mRadius
+			customRadius = customRadius._mRadius;
 
-			$('.slider-number').html(customRadius + ' meters')
+			$('.slider-number').html(customRadius + ' meters');
 			if (customRadius >= 1000) {
 				var units = customRadius/1000;
-				$('.slider-number').html(units.toFixed(2) + ' km')
+				$('.slider-number').html(units.toFixed(2) + ' km');
 			}
 
 	});
 
-//------TATIANA's CODE PART 1 - FILTERS SECTION
+//+ + + + + + TATIANA's CODE PART 1 - FILTERS SECTION + + + + + + + + + +
 
 //- - - - - -  -LANDMARKS- - - - - - -
 	var landmarks =
@@ -324,7 +313,6 @@ $(function(){
 	
 	$('#area-dropdown').on('change',function(){
 		var area = $(this).val();
-		console.log(area);
 		var center = {lat:-36.842744,lng:174.766994};
 		var suburb;
 		if(area == 'allauckland'){
@@ -372,10 +360,8 @@ $(function(){
 			}
 		}
 
-		areaPolygon.setLatLngs(suburb)
-		areaPolygon.setStyle({fillOpacity:0.1, stroke:1})
-		// console.log(areaPolygon);
-
+		areaPolygon.setLatLngs(suburb);
+		areaPolygon.setStyle({fillOpacity:0.1, stroke:1});
 	});
 
 	areaPolygon.on('click',function(){
@@ -400,13 +386,11 @@ $(function(){
 			directionsLayer.clearLayers();
 			addressLayer.clearLayers();
 		}
-	})
+	});
 
 	var openHours = $('.venue-open-hours');
 					
 	openHours.on('click', function(){
-		console.log('hi');
-
 
 		var weeklyHours = $('.venue-open-hours').data('reveal');
 
@@ -414,7 +398,7 @@ $(function(){
 
 		if (weeklyHours == 'close'){
 
-			$('.venue-open-hours ul.weekly-hours').addClass('open-hours')
+			$('.venue-open-hours ul.weekly-hours').addClass('open-hours');
 			$('.venue-open-hours').data('reveal', 'open');
 
 		} else {
@@ -456,7 +440,7 @@ $(function(){
 		// fields in the form.
 		autocomplete.addListener('place_changed', fillInAddress);
 
-		directionsService = new google.maps.DirectionsService;
+		directionsService = new google.maps.DirectionsService();
 	}
 
 
@@ -466,8 +450,6 @@ $(function(){
 
 		addressLayer.clearLayers();
 		var place = autocomplete.getPlace();
-		console.log('Hi')
-		console.log(place);
 
 		//Here is requested address
 		newCenter = {lat:place.geometry.location.lat(),lng:place.geometry.location.lng()};
@@ -501,8 +483,7 @@ $(function(){
 	}
 
 
-//-------TATIANA's CODE PART 1 FINISHED----------
-
+//+ + + + + + TATIANA's CODE PART 1 END + + + + + + + + + 
 
 
 // -	-	-	-	-	jQuery end 	-	-	-	-	
@@ -512,12 +493,11 @@ function loadVenues(lat,lng){
 
 	let exploreUrl = 'https://api.foursquare.com/v2/venues/explore'+key+'&limit=75&radius='+customRadius+'&ll='+lat+','+lng;
 	
-
 	$.ajax({
 		url:exploreUrl,
 		dataType:'jsonp',
 		success:function(res){
-			console.log(res.response.groups["0"].items);
+			// console.log(res.response.groups["0"].items);
 			var data = res.response.groups["0"].items;
 			var venues = _(data).map(function(item){
 
@@ -604,29 +584,29 @@ function loadVenues(lat,lng){
 				    	iconClass = 'restaurant';
 				    	break;
 				    case "Liquor Store":
-				    	icon = liquorIcon
+				    	icon = liquorIcon;
 				    	break;
 				   	case "Harbor / Marina":
-				   		icon = harbourIcon
+				   		icon = harbourIcon;
 				   		break;
 				   	case "Trail":
-				   		icon = trailIcon
+				   		icon = trailIcon;
 				   		break;
 				   	case "Bus Station":
-				   		icon = busIcon
+				   		icon = busIcon;
 				   		break;
 				   	case "Gas Station":
-				   		icon = gasIcon
+				   		icon = gasIcon;
 				   		break;
 				   	case "Beach":
 				   	case "Bay":
-				   		icon = beachIcon
+				   		icon = beachIcon;
 				   		break;
 				   	case "Airport":
-				   		icon = airportIcon
+				   		icon = airportIcon;
 				   		break;
 				   	case "History Museum":
-				   		icon = museumIcon
+				   		icon = museumIcon;
 				   		iconClass = 'museum';
 				   		break;				   	
 				   	case "Zoo":
@@ -636,11 +616,11 @@ function loadVenues(lat,lng){
 				   	case "Art Gallery":
 				   	case "Volcano":
 				    case "Scenic Lookout":
-				   		icon = attractionsIcon
+				   		icon = attractionsIcon;
 				   		iconClass = 'attraction';
 				   		break;
 				    default:
-				        icon = locationIcon
+				        icon = locationIcon;
 				}
 
 
@@ -654,11 +634,9 @@ function loadVenues(lat,lng){
 				marker.bindPopup('<div class="custom-map-popup"><img src="'+icon+'"><h1>'+venue.name+'</h1><p>"'+venue.address+'"</p><a data-lat="'+venue.latlng.lat+'" data-lng="'+venue.latlng.lng+'" href="#" class="sqr-bttn btn btn-primary"  data-toggle="modal" data-target="#exampleModalLong">More info</a></div>');
 
 
-
-			// - - * * Cree's Script - More Details - - * *
+			// + + + + + + CREE's SCRIPT - MORE DETAILS + + + + + + + + +
 
 				var venueInfo = $('.more-info');
-
 				marker.venueid = venue.venueid;
 
 				marker.on('click', function(){
@@ -667,93 +645,43 @@ function loadVenues(lat,lng){
 					$('.venue-open-hours ul.weekly-hours').removeClass('open-hours').data('reveal', 'close');
 					$('.venue-open-hours').data('reveal', 'close');
 
-					var venueUrl = 	'https://api.foursquare.com/v2/venues/'+
-					this.venueid+key;
-
-					// console.log(venueUrl);
+					var venueUrl = 	'https://api.foursquare.com/v2/venues/'+this.venueid+key;
 
 					$.ajax({
 						url:venueUrl,
 						dataType:'jsonp',
 						success:function(res){ 
-
-
-							console.log(res);
-
+							// console.log(res);
 							var venue = res.response.venue;
-
-
-							if(venue.name){
-								$('.modal-title').text(venue.name);
-							}
-							if(venue.description){
-								$('.venue-description').text(venue.description);
-							}
-							if(venue.location.formattedAddress){
-								$('.venue-location span').text(venue.location.formattedAddress);
-							}
-							if(venue.contact.formattedPhone){
-								$('.venue-phone-number span').text(venue.contact.formattedPhone);
-							}
-							if(venue.price){
-								$('.venue-price-range span').text(venue.price.message);
-							}
-
-							$('.get-direction').data('lat',venue.location.lat);
-							$('.get-direction').data('lng',venue.location.lng)
-							
 
 							$('.more-details .modal-title').text(venue.name);
 
-
-								console.log(venue.page);
-
 							if(venue.page){
-
 								$('.venue-description').text(venue.page.pageInfo.description);
-
-
 							} else {
-
 								$('.venue-description').text('No description avalible');
-
 							}
 
 							if(venue.location){
-
 								if(venue.location.formattedAddress){
-
 									$('.venue-location span').text(venue.location.formattedAddress);
-
 								} else {
-
 									$('.venue-location span').text(venue.location.address);
 								}
-
-
-
 							}
-
+							
 							if(venue.contact.formattedPhone){
-
 								if(venue.contact.formattedPhone){
-
 									$('.venue-phone-number span').text(venue.contact.formattedPhone);
-
 								} else {
-
 									$('.venue-phone-number span').text(venue.contact.phone);
-
 								}
 
 							} else {
-
 								$('.venue-phone-number ').hide();
-
 							}
 
-							if(venue.price){
-								
+							if(venue.price){								
 								$('.venue-price-range span').text(venue.price.message);
 
 								// if(venue.price.tier == 1) {
@@ -769,16 +697,22 @@ function loadVenues(lat,lng){
 								// }
 
 							}else {
-
 								$('.venue-price-range').hide();
 							}
 							
 							if(venue.hours){
+								$('.open-now').text(venue.hours.status);
 
 							}else{
 								$('.venue-phone-number ').hide();
 								
 							}
+
+
+							$('.get-direction').data('lat',venue.location.lat);
+							$('.get-direction').data('lng',venue.location.lng);
+							
+
 						}
 
 					});		// * * * ajax * * => 		E N D
@@ -786,12 +720,12 @@ function loadVenues(lat,lng){
 					
 				}); 	// * * * marker * *  => 		on click event E N D
 
-				// - - * * Cree's Script - - - - - E N D - - * *
+				// + + + + + + CREE's SCRIPT - END + + + + + + + + +
 
 
 
 
-			//-------TATIANA's CODE PART 2----------
+			//+ + + + + + TATIANA's CODE PART 2 + + + + + + + + +
 			// - - - - - -GOOGLE MAP DIRECTIONS - - - - - -
 
 				$('.get-direction').on('click',function(e){
@@ -817,7 +751,6 @@ function loadVenues(lat,lng){
 						directionsService.route(request,function(response,status){
 
 							var path = response.routes["0"].overview_path;
-							// console.log(path);
 
 							var polyline = _(path).map(function(item){
 								return {lat:item.lat(),lng:item.lng()};
@@ -827,7 +760,6 @@ function loadVenues(lat,lng){
 								color:'#79E8CC',
 								weight:3
 							}).addTo(directionsLayer);
-							// console.log('hi');
 						});
 					}else{
 						if (navigator.geolocation) {
@@ -854,18 +786,23 @@ function loadVenues(lat,lng){
 								//ask directionsService to fulfill your request
 								directionsService.route(request,function(response,status){
 
-									directionsLayer.clearLayers();
+									if(response){
 
-									var path = response.routes["0"].overview_path;
+										directionsLayer.clearLayers();
 
-									var polyline = _(path).map(function(item){
-										return {lat:item.lat(),lng:item.lng()};
-									});
+										var path = response.routes["0"].overview_path;
 
-									L.polyline(polyline,{
-										color:'#79E8CC',
-										weight:3
-									}).addTo(directionsLayer);
+										var polyline = _(path).map(function(item){
+											return {lat:item.lat(),lng:item.lng()};
+										});
+
+										L.polyline(polyline,{
+											color:'#79E8CC',
+											weight:3
+										}).addTo(directionsLayer);
+
+									}
+									
 									
 								});
 							});
@@ -873,17 +810,11 @@ function loadVenues(lat,lng){
 					}					
 				});
 
-
-				
-
-				//-------TATIANA's CODE PART 2 FINISHED----------
-			
+			//+ + + + + + TATIANA's CODE PART 2 END+ + + + + + + + +
 
 			});
 		}
 	
-
-
 	});
 
 	// $.ajax({
@@ -967,7 +898,6 @@ $(function(){
 		$('.inner_food_all_circle').css('fill','white');
 		$('.custom-icon').hide();
 		$('.custom-icon.cafe').show();
-
 	});
 
 	$('.bar_wrap').on('click',function(){
@@ -977,7 +907,6 @@ $(function(){
 		$('.inner_food_all_circle').css('fill','white');
 		$('.custom-icon').hide();
 		$('.custom-icon.bar').show();
-
 	});
 
 	$('.restaurant_wrap').on('click',function(){
@@ -987,7 +916,6 @@ $(function(){
 		$('.inner_food_all_circle').css('fill','white');
 		$('.custom-icon').hide();
 		$('.custom-icon.restaurant').show();
-
 	});
 
 	$('.food_all_wrap').on('click',function(){
@@ -999,8 +927,6 @@ $(function(){
 		$('.inner_cafe_circle').css('fill','white');
 		$('.inner_bar_circle').css('fill','white');
 		$('.inner_restaurant_circle').css('fill','white');
-		
-
 	});
 
 // ===========ACCOMMODATION FILTER=========================
@@ -1011,7 +937,6 @@ $(function(){
 		$('.inner_accom_all_circle').css('fill','white');
 		$('.custom-icon').hide();
 		$('.custom-icon.hotel').show();
-
 	});
 
 	$('.motel_wrap').on('click',function(){
@@ -1021,7 +946,6 @@ $(function(){
 		$('.inner_accom_all_circle').css('fill','white');
 		$('.custom-icon').hide();
 		$('.custom-icon.motel').show();
-
 	});
 
 	$('.backpack_wrap').on('click',function(){
@@ -1031,7 +955,6 @@ $(function(){
 		$('.inner_accom_all_circle').css('fill','white');
 		$('.custom-icon').hide();
 		$('.custom-icon.backpack').show();
-
 	});
 
 	$('.accom_all_wrap').on('click',function(){
@@ -1043,7 +966,6 @@ $(function(){
 		$('.custom-icon.hotel').show();
 		$('.custom-icon.motel').show();
 		$('.custom-icon.backpack').show();
-
 	});
 
 // ===========SIGHTSEEING FILTER=========================
@@ -1054,7 +976,6 @@ $(function(){
 		$('.inner_sight_all_circle').css('fill','white');
 		$('.custom-icon').hide();
 		$('.custom-icon.park').show();
-
 	});
 
 	$('.museum_wrap').on('click',function(){
@@ -1064,8 +985,6 @@ $(function(){
 		$('.inner_sight_all_circle').css('fill','white');
 		$('.custom-icon').hide();
 		$('.custom-icon.museum').show();
-		console.log('Museum')
-
 	});
 
 	$('.shop_wrap').on('click',function(){
@@ -1075,8 +994,6 @@ $(function(){
 		$('.inner_sight_all_circle').css('fill','white');
 		$('.custom-icon').hide();
 		$('.custom-icon.attraction').show();
-
-
 	});
 
 
@@ -1089,8 +1006,6 @@ $(function(){
 		$('.custom-icon.attraction').show();
 		$('.custom-icon.museum').show();
 		$('.custom-icon.park').show();
-
-
 	});
 
 // ===========TRANSPORT FILTER=========================
@@ -1101,7 +1016,6 @@ $(function(){
 		$('.inner_transport_all_circle').css('fill','white');
 		$('.custom-icon').hide();
 		$('.custom-icon.bus').show();
-
 	});
 
 	$('.train_wrap').on('click',function(){
@@ -1111,7 +1025,6 @@ $(function(){
 		$('.inner_transport_all_circle').css('fill','white');
 		$('.custom-icon').hide();
 		$('.custom-icon.train').show();
-
 	});
 
 	$('.bike_wrap').on('click',function(){
@@ -1121,7 +1034,6 @@ $(function(){
 		$('.inner_transport_all_circle').css('fill','white');
 		$('.custom-icon').hide();
 		$('.custom-icon.bike').show();
-
 	});
 
 	$('.transport_all_wrap').on('click',function(){
@@ -1133,9 +1045,7 @@ $(function(){
 		$('.custom-icon.bike').show();
 		$('.custom-icon.train').show();
 		$('.custom-icon.bus').show();
-
 	});
-
 
 });
 

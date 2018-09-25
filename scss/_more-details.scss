@@ -99,10 +99,6 @@
 
 					}
 				
-					
-					
-
-				
 					i {
 						font-size: 1em;
 						width: 2em;
@@ -128,7 +124,8 @@
 
 		.modal-footer {
 			border: none;
-			
+			display: flex;
+			justify-content: space-around;
 			.sqr-bttn {
 				border: 0;
 			}

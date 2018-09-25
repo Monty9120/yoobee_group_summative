@@ -3494,7 +3494,12 @@ a.sqr-bttn {
         font-size: .7em; }
 
 .more-details .modal-dialog .modal-content .modal-footer {
-  border: none; }
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around; }
   .more-details .modal-dialog .modal-content .modal-footer .sqr-bttn {
     border: 0; }
 
